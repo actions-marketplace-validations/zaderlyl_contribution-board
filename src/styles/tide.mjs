@@ -91,7 +91,8 @@ export function render(days, opts = {}) {
   // quelle que soit la position du groupe — évite d'avoir à recalculer un
   // path différent à chaque image, un seul déplacement suffit.
   const BULK = 3000;
-  const waveCmds = waveCommands(g.gridHeight);
+  const WAVE_AMP = 6;
+  const waveCmds = waveCommands(g.gridHeight, 3, WAVE_AMP);
   const bodyPath = `M${-BULK},0 L0,0 ${waveCmds} L${-BULK},${g.gridHeight} Z`;
   const edgePath = `M0,0 ${waveCmds}`;
 
@@ -110,7 +111,7 @@ export function render(days, opts = {}) {
     <stop offset="55%" stop-color="#2d6a8f"/>
     <stop offset="100%" stop-color="#173c52"/>
   </linearGradient>
-  <clipPath id="gridClip"><rect x="${g.PAD_LEFT}" y="${g.PAD_TOP}" width="${g.gridWidth}" height="${g.gridHeight}"/></clipPath>
+  <clipPath id="gridClip"><rect x="${g.PAD_LEFT}" y="${g.PAD_TOP - WAVE_AMP}" width="${g.gridWidth + WAVE_AMP}" height="${g.gridHeight + WAVE_AMP * 2}"/></clipPath>
 </defs>
 <g clip-path="url(#gridClip)">
   <g transform="translate(${g.PAD_LEFT},${g.PAD_TOP})" style="animation: tideMove ${CYCLE}s linear infinite;">
