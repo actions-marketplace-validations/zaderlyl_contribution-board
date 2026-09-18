@@ -1,0 +1,2938 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="702" height="112" viewBox="0 0 702 112">
+<defs>
+<linearGradient id="cometTrail" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0%" stop-color="#fff5e0"/>
+  <stop offset="100%" stop-color="#fff5e0" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="cometGlow">
+  <stop offset="0%" stop-color="#fff5e0" stop-opacity="0.55"/>
+  <stop offset="100%" stop-color="#fff5e0" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<style>
+rect { shape-rendering: crispEdges; }
+@keyframes twinkle0 {
+  0% { opacity: 0.1; }
+  39.4% { opacity: 0.6; }
+  100% { opacity: 0.1; }
+}
+@keyframes twinkle1 {
+  0% { opacity: 0.2; }
+  40.8% { opacity: 0.6; }
+  100% { opacity: 0.2; }
+}
+@keyframes twinkle2 {
+  0% { opacity: 0.2; }
+  67.4% { opacity: 0.7; }
+  100% { opacity: 0.2; }
+}
+@keyframes twinkle3 {
+  0% { opacity: 0.2; }
+  40.9% { opacity: 0.7; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes meteor0 {
+  0% { opacity: 0; transform: translate(-15.9px,0px) scale(0.4); }
+  0.0% { opacity: 0; transform: translate(-15.9px,0px) scale(0.4); }
+  0.1% { opacity: 1; transform: translate(-15.9px,0px) scale(0.6); }
+  2.9% { opacity: 1; transform: translate(0px,44.0px) scale(1); }
+  3.0% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+}
+@keyframes crater0 {
+  0% { opacity: 0; transform: scale(0.3); }
+  2.9% { opacity: 0; transform: scale(0.3); }
+  2.9% { opacity: 1; transform: scale(1.25); }
+  3.0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash0 {
+  0% { opacity: 0; transform: scale(0.2); }
+  2.9% { opacity: 0; transform: scale(0.2); }
+  2.9% { opacity: 0.9; transform: scale(1.1); }
+  7.9% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark0_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  2.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  2.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  7.7% { opacity: 0; transform: translate(7.5px,-1.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.5px,-1.7px) scale(0.3); }
+}
+@keyframes spark0_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  2.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  2.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  8.4% { opacity: 0; transform: translate(-3.4px,12.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.4px,12.0px) scale(0.3); }
+}
+@keyframes spark0_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  2.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  2.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  8.6% { opacity: 0; transform: translate(-2.3px,-9.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.3px,-9.2px) scale(0.3); }
+}
+@keyframes meteor1 {
+  0% { opacity: 0; transform: translate(1.6px,0px) scale(0.4); }
+  0.9% { opacity: 0; transform: translate(1.6px,0px) scale(0.4); }
+  1.0% { opacity: 1; transform: translate(1.6px,0px) scale(0.6); }
+  5.2% { opacity: 1; transform: translate(0px,83.0px) scale(1); }
+  5.3% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+}
+@keyframes crater1 {
+  0% { opacity: 0; transform: scale(0.3); }
+  5.2% { opacity: 0; transform: scale(0.3); }
+  5.3% { opacity: 1; transform: scale(1.25); }
+  5.4% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash1 {
+  0% { opacity: 0; transform: scale(0.2); }
+  5.2% { opacity: 0; transform: scale(0.2); }
+  5.3% { opacity: 0.9; transform: scale(1.1); }
+  10.2% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark1_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  5.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  5.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  9.6% { opacity: 0; transform: translate(8.8px,-3.8px) scale(0.3); }
+  100% { opacity: 0; transform: translate(8.8px,-3.8px) scale(0.3); }
+}
+@keyframes spark1_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  5.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  5.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  11.6% { opacity: 0; transform: translate(-3.9px,5.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.9px,5.1px) scale(0.3); }
+}
+@keyframes spark1_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  5.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  5.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  11.4% { opacity: 0; transform: translate(-3.4px,-9.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.4px,-9.3px) scale(0.3); }
+}
+@keyframes meteor2 {
+  0% { opacity: 0; transform: translate(-11.0px,0px) scale(0.4); }
+  3.5% { opacity: 0; transform: translate(-11.0px,0px) scale(0.4); }
+  3.6% { opacity: 1; transform: translate(-11.0px,0px) scale(0.6); }
+  7.2% { opacity: 1; transform: translate(0px,44.0px) scale(1); }
+  7.3% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+}
+@keyframes crater2 {
+  0% { opacity: 0; transform: scale(0.3); }
+  7.2% { opacity: 0; transform: scale(0.3); }
+  7.2% { opacity: 1; transform: scale(1.25); }
+  7.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash2 {
+  0% { opacity: 0; transform: scale(0.2); }
+  7.2% { opacity: 0; transform: scale(0.2); }
+  7.2% { opacity: 0.9; transform: scale(1.1); }
+  12.2% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark2_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  7.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  7.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  11.8% { opacity: 0; transform: translate(13.0px,-1.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(13.0px,-1.7px) scale(0.3); }
+}
+@keyframes spark2_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  7.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  7.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  13.0% { opacity: 0; transform: translate(-4.7px,10.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.7px,10.7px) scale(0.3); }
+}
+@keyframes spark2_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  7.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  7.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  12.5% { opacity: 0; transform: translate(-7.2px,-10.4px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-7.2px,-10.4px) scale(0.3); }
+}
+@keyframes meteor3 {
+  0% { opacity: 0; transform: translate(8.5px,0px) scale(0.4); }
+  4.4% { opacity: 0; transform: translate(8.5px,0px) scale(0.4); }
+  4.5% { opacity: 1; transform: translate(8.5px,0px) scale(0.6); }
+  8.7% { opacity: 1; transform: translate(0px,57.0px) scale(1); }
+  8.8% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+}
+@keyframes crater3 {
+  0% { opacity: 0; transform: scale(0.3); }
+  8.7% { opacity: 0; transform: scale(0.3); }
+  8.7% { opacity: 1; transform: scale(1.25); }
+  8.8% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash3 {
+  0% { opacity: 0; transform: scale(0.2); }
+  8.7% { opacity: 0; transform: scale(0.2); }
+  8.7% { opacity: 0.9; transform: scale(1.1); }
+  13.7% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark3_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  8.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  8.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  13.6% { opacity: 0; transform: translate(7.4px,1.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.4px,1.6px) scale(0.3); }
+}
+@keyframes spark3_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  8.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  8.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  15.0% { opacity: 0; transform: translate(-2.7px,7.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.7px,7.7px) scale(0.3); }
+}
+@keyframes spark3_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  8.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  8.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  13.6% { opacity: 0; transform: translate(-2.2px,-6.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.2px,-6.5px) scale(0.3); }
+}
+@keyframes meteor4 {
+  0% { opacity: 0; transform: translate(8.9px,0px) scale(0.4); }
+  6.5% { opacity: 0; transform: translate(8.9px,0px) scale(0.4); }
+  6.5% { opacity: 1; transform: translate(8.9px,0px) scale(0.6); }
+  10.4% { opacity: 1; transform: translate(0px,70.0px) scale(1); }
+  10.5% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+}
+@keyframes crater4 {
+  0% { opacity: 0; transform: scale(0.3); }
+  10.4% { opacity: 0; transform: scale(0.3); }
+  10.5% { opacity: 1; transform: scale(1.25); }
+  10.6% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash4 {
+  0% { opacity: 0; transform: scale(0.2); }
+  10.4% { opacity: 0; transform: scale(0.2); }
+  10.5% { opacity: 0.9; transform: scale(1.1); }
+  15.4% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark4_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  10.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  10.5% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  15.3% { opacity: 0; transform: translate(9.1px,-3.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.1px,-3.2px) scale(0.3); }
+}
+@keyframes spark4_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  10.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  10.5% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  17.1% { opacity: 0; transform: translate(-7.2px,5.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-7.2px,5.9px) scale(0.3); }
+}
+@keyframes spark4_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  10.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  10.5% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  16.9% { opacity: 0; transform: translate(-5.2px,-7.4px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.2px,-7.4px) scale(0.3); }
+}
+@keyframes meteor5 {
+  0% { opacity: 0; transform: translate(13.7px,0px) scale(0.4); }
+  8.7% { opacity: 0; transform: translate(13.7px,0px) scale(0.4); }
+  8.8% { opacity: 1; transform: translate(13.7px,0px) scale(0.6); }
+  12.7% { opacity: 1; transform: translate(0px,83.0px) scale(1); }
+  12.8% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+}
+@keyframes crater5 {
+  0% { opacity: 0; transform: scale(0.3); }
+  12.7% { opacity: 0; transform: scale(0.3); }
+  12.8% { opacity: 1; transform: scale(1.25); }
+  12.9% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash5 {
+  0% { opacity: 0; transform: scale(0.2); }
+  12.7% { opacity: 0; transform: scale(0.2); }
+  12.8% { opacity: 0.9; transform: scale(1.1); }
+  17.7% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark5_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  12.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  12.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  18.4% { opacity: 0; transform: translate(9.1px,2.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.1px,2.1px) scale(0.3); }
+}
+@keyframes spark5_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  12.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  12.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  17.5% { opacity: 0; transform: translate(-4.8px,7.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.8px,7.3px) scale(0.3); }
+}
+@keyframes spark5_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  12.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  12.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  17.8% { opacity: 0; transform: translate(-8.7px,-9.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-8.7px,-9.9px) scale(0.3); }
+}
+@keyframes meteor6 {
+  0% { opacity: 0; transform: translate(16.0px,0px) scale(0.4); }
+  12.7% { opacity: 0; transform: translate(16.0px,0px) scale(0.4); }
+  12.8% { opacity: 1; transform: translate(16.0px,0px) scale(0.6); }
+  15.8% { opacity: 1; transform: translate(0px,96.0px) scale(1); }
+  15.9% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+}
+@keyframes crater6 {
+  0% { opacity: 0; transform: scale(0.3); }
+  15.8% { opacity: 0; transform: scale(0.3); }
+  15.8% { opacity: 1; transform: scale(1.25); }
+  15.9% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash6 {
+  0% { opacity: 0; transform: scale(0.2); }
+  15.8% { opacity: 0; transform: scale(0.2); }
+  15.8% { opacity: 0.9; transform: scale(1.1); }
+  20.8% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark6_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  15.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  15.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  20.7% { opacity: 0; transform: translate(10.8px,1.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(10.8px,1.2px) scale(0.3); }
+}
+@keyframes spark6_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  15.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  15.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  19.9% { opacity: 0; transform: translate(-8.5px,8.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-8.5px,8.5px) scale(0.3); }
+}
+@keyframes spark6_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  15.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  15.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  22.5% { opacity: 0; transform: translate(-4.9px,-7.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.9px,-7.5px) scale(0.3); }
+}
+@keyframes meteor7 {
+  0% { opacity: 0; transform: translate(12.5px,0px) scale(0.4); }
+  16.0% { opacity: 0; transform: translate(12.5px,0px) scale(0.4); }
+  16.0% { opacity: 1; transform: translate(12.5px,0px) scale(0.6); }
+  18.9% { opacity: 1; transform: translate(0px,31.0px) scale(1); }
+  19.0% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+}
+@keyframes crater7 {
+  0% { opacity: 0; transform: scale(0.3); }
+  18.9% { opacity: 0; transform: scale(0.3); }
+  19.0% { opacity: 1; transform: scale(1.25); }
+  19.1% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash7 {
+  0% { opacity: 0; transform: scale(0.2); }
+  18.9% { opacity: 0; transform: scale(0.2); }
+  19.0% { opacity: 0.9; transform: scale(1.1); }
+  23.9% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark7_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  18.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  19.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  22.9% { opacity: 0; transform: translate(9.2px,-4.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.2px,-4.1px) scale(0.3); }
+}
+@keyframes spark7_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  18.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  19.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  25.9% { opacity: 0; transform: translate(-0.9px,6.8px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-0.9px,6.8px) scale(0.3); }
+}
+@keyframes spark7_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  18.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  19.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  24.5% { opacity: 0; transform: translate(-3.7px,-5.4px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.7px,-5.4px) scale(0.3); }
+}
+@keyframes meteor8 {
+  0% { opacity: 0; transform: translate(1.1px,0px) scale(0.4); }
+  16.7% { opacity: 0; transform: translate(1.1px,0px) scale(0.4); }
+  16.7% { opacity: 1; transform: translate(1.1px,0px) scale(0.6); }
+  20.6% { opacity: 1; transform: translate(0px,57.0px) scale(1); }
+  20.7% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+}
+@keyframes crater8 {
+  0% { opacity: 0; transform: scale(0.3); }
+  20.6% { opacity: 0; transform: scale(0.3); }
+  20.7% { opacity: 1; transform: scale(1.25); }
+  20.8% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash8 {
+  0% { opacity: 0; transform: scale(0.2); }
+  20.6% { opacity: 0; transform: scale(0.2); }
+  20.7% { opacity: 0.9; transform: scale(1.1); }
+  25.6% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark8_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  20.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  20.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  26.8% { opacity: 0; transform: translate(6.7px,2.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(6.7px,2.1px) scale(0.3); }
+}
+@keyframes spark8_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  20.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  20.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  25.0% { opacity: 0; transform: translate(-1.8px,7.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.8px,7.9px) scale(0.3); }
+}
+@keyframes spark8_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  20.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  20.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  25.7% { opacity: 0; transform: translate(-7.9px,-5.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-7.9px,-5.5px) scale(0.3); }
+}
+@keyframes meteor9 {
+  0% { opacity: 0; transform: translate(15.4px,0px) scale(0.4); }
+  18.5% { opacity: 0; transform: translate(15.4px,0px) scale(0.4); }
+  18.6% { opacity: 1; transform: translate(15.4px,0px) scale(0.6); }
+  21.8% { opacity: 1; transform: translate(0px,31.0px) scale(1); }
+  21.9% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+}
+@keyframes crater9 {
+  0% { opacity: 0; transform: scale(0.3); }
+  21.8% { opacity: 0; transform: scale(0.3); }
+  21.8% { opacity: 1; transform: scale(1.25); }
+  21.9% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash9 {
+  0% { opacity: 0; transform: scale(0.2); }
+  21.8% { opacity: 0; transform: scale(0.2); }
+  21.8% { opacity: 0.9; transform: scale(1.1); }
+  26.8% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark9_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  21.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  21.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  26.2% { opacity: 0; transform: translate(7.8px,1.8px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.8px,1.8px) scale(0.3); }
+}
+@keyframes spark9_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  21.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  21.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  26.6% { opacity: 0; transform: translate(-1.7px,10.4px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.7px,10.4px) scale(0.3); }
+}
+@keyframes spark9_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  21.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  21.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  27.1% { opacity: 0; transform: translate(-2.0px,-5.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.0px,-5.7px) scale(0.3); }
+}
+@keyframes meteor10 {
+  0% { opacity: 0; transform: translate(1.3px,0px) scale(0.4); }
+  19.6% { opacity: 0; transform: translate(1.3px,0px) scale(0.4); }
+  19.7% { opacity: 1; transform: translate(1.3px,0px) scale(0.6); }
+  24.6% { opacity: 1; transform: translate(0px,70.0px) scale(1); }
+  24.7% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+}
+@keyframes crater10 {
+  0% { opacity: 0; transform: scale(0.3); }
+  24.6% { opacity: 0; transform: scale(0.3); }
+  24.6% { opacity: 1; transform: scale(1.25); }
+  24.7% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash10 {
+  0% { opacity: 0; transform: scale(0.2); }
+  24.6% { opacity: 0; transform: scale(0.2); }
+  24.6% { opacity: 0.9; transform: scale(1.1); }
+  29.6% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark10_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  24.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  24.6% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  29.6% { opacity: 0; transform: translate(6.3px,2.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(6.3px,2.9px) scale(0.3); }
+}
+@keyframes spark10_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  24.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  24.6% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  30.5% { opacity: 0; transform: translate(-2.5px,5.8px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.5px,5.8px) scale(0.3); }
+}
+@keyframes spark10_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  24.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  24.6% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  30.5% { opacity: 0; transform: translate(-5.9px,-8.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.9px,-8.5px) scale(0.3); }
+}
+@keyframes meteor11 {
+  0% { opacity: 0; transform: translate(9.2px,0px) scale(0.4); }
+  22.7% { opacity: 0; transform: translate(9.2px,0px) scale(0.4); }
+  22.8% { opacity: 1; transform: translate(9.2px,0px) scale(0.6); }
+  25.9% { opacity: 1; transform: translate(0px,96.0px) scale(1); }
+  26.0% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+}
+@keyframes crater11 {
+  0% { opacity: 0; transform: scale(0.3); }
+  25.9% { opacity: 0; transform: scale(0.3); }
+  26.0% { opacity: 1; transform: scale(1.25); }
+  26.1% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash11 {
+  0% { opacity: 0; transform: scale(0.2); }
+  25.9% { opacity: 0; transform: scale(0.2); }
+  26.0% { opacity: 0.9; transform: scale(1.1); }
+  30.9% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark11_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  25.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  26.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  32.9% { opacity: 0; transform: translate(7.2px,-1.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.2px,-1.7px) scale(0.3); }
+}
+@keyframes spark11_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  25.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  26.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  30.1% { opacity: 0; transform: translate(-1.6px,8.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.6px,8.7px) scale(0.3); }
+}
+@keyframes spark11_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  25.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  26.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  30.9% { opacity: 0; transform: translate(-1.1px,-6.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.1px,-6.0px) scale(0.3); }
+}
+@keyframes meteor12 {
+  0% { opacity: 0; transform: translate(6.1px,0px) scale(0.4); }
+  25.8% { opacity: 0; transform: translate(6.1px,0px) scale(0.4); }
+  25.9% { opacity: 1; transform: translate(6.1px,0px) scale(0.6); }
+  28.8% { opacity: 1; transform: translate(0px,109.0px) scale(1); }
+  28.9% { opacity: 0; transform: translate(0px,109.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,109.0px) scale(1); }
+}
+@keyframes crater12 {
+  0% { opacity: 0; transform: scale(0.3); }
+  28.8% { opacity: 0; transform: scale(0.3); }
+  28.9% { opacity: 1; transform: scale(1.25); }
+  29.0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash12 {
+  0% { opacity: 0; transform: scale(0.2); }
+  28.8% { opacity: 0; transform: scale(0.2); }
+  28.9% { opacity: 0.9; transform: scale(1.1); }
+  33.8% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark12_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  28.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  28.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  32.9% { opacity: 0; transform: translate(10.2px,-2.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(10.2px,-2.2px) scale(0.3); }
+}
+@keyframes spark12_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  28.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  28.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  33.5% { opacity: 0; transform: translate(-5.1px,5.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.1px,5.6px) scale(0.3); }
+}
+@keyframes spark12_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  28.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  28.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  34.3% { opacity: 0; transform: translate(-4.0px,-7.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.0px,-7.3px) scale(0.3); }
+}
+@keyframes meteor13 {
+  0% { opacity: 0; transform: translate(4.9px,0px) scale(0.4); }
+  27.7% { opacity: 0; transform: translate(4.9px,0px) scale(0.4); }
+  27.8% { opacity: 1; transform: translate(4.9px,0px) scale(0.6); }
+  30.7% { opacity: 1; transform: translate(0px,31.0px) scale(1); }
+  30.8% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+}
+@keyframes crater13 {
+  0% { opacity: 0; transform: scale(0.3); }
+  30.7% { opacity: 0; transform: scale(0.3); }
+  30.8% { opacity: 1; transform: scale(1.25); }
+  30.9% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash13 {
+  0% { opacity: 0; transform: scale(0.2); }
+  30.7% { opacity: 0; transform: scale(0.2); }
+  30.8% { opacity: 0.9; transform: scale(1.1); }
+  35.7% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark13_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  30.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  30.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  37.5% { opacity: 0; transform: translate(7.0px,-1.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.0px,-1.2px) scale(0.3); }
+}
+@keyframes spark13_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  30.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  30.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  35.0% { opacity: 0; transform: translate(-4.3px,4.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.3px,4.3px) scale(0.3); }
+}
+@keyframes spark13_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  30.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  30.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  35.9% { opacity: 0; transform: translate(-3.6px,-8.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.6px,-8.0px) scale(0.3); }
+}
+@keyframes meteor14 {
+  0% { opacity: 0; transform: translate(4.9px,0px) scale(0.4); }
+  27.7% { opacity: 0; transform: translate(4.9px,0px) scale(0.4); }
+  27.8% { opacity: 1; transform: translate(4.9px,0px) scale(0.6); }
+  32.6% { opacity: 1; transform: translate(0px,44.0px) scale(1); }
+  32.7% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+}
+@keyframes crater14 {
+  0% { opacity: 0; transform: scale(0.3); }
+  32.6% { opacity: 0; transform: scale(0.3); }
+  32.7% { opacity: 1; transform: scale(1.25); }
+  32.8% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash14 {
+  0% { opacity: 0; transform: scale(0.2); }
+  32.6% { opacity: 0; transform: scale(0.2); }
+  32.7% { opacity: 0.9; transform: scale(1.1); }
+  37.6% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark14_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  32.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  32.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  36.9% { opacity: 0; transform: translate(8.8px,-2.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(8.8px,-2.7px) scale(0.3); }
+}
+@keyframes spark14_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  32.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  32.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  38.0% { opacity: 0; transform: translate(-7.3px,5.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-7.3px,5.5px) scale(0.3); }
+}
+@keyframes spark14_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  32.6% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  32.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  38.8% { opacity: 0; transform: translate(-5.5px,-7.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.5px,-7.6px) scale(0.3); }
+}
+@keyframes meteor15 {
+  0% { opacity: 0; transform: translate(5.3px,0px) scale(0.4); }
+  31.8% { opacity: 0; transform: translate(5.3px,0px) scale(0.4); }
+  31.9% { opacity: 1; transform: translate(5.3px,0px) scale(0.6); }
+  34.8% { opacity: 1; transform: translate(0px,70.0px) scale(1); }
+  34.9% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+}
+@keyframes crater15 {
+  0% { opacity: 0; transform: scale(0.3); }
+  34.8% { opacity: 0; transform: scale(0.3); }
+  34.8% { opacity: 1; transform: scale(1.25); }
+  34.9% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash15 {
+  0% { opacity: 0; transform: scale(0.2); }
+  34.8% { opacity: 0; transform: scale(0.2); }
+  34.8% { opacity: 0.9; transform: scale(1.1); }
+  39.8% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark15_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  34.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  34.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  39.2% { opacity: 0; transform: translate(8.2px,2.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(8.2px,2.9px) scale(0.3); }
+}
+@keyframes spark15_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  34.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  34.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  41.6% { opacity: 0; transform: translate(-4.0px,6.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.0px,6.6px) scale(0.3); }
+}
+@keyframes spark15_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  34.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  34.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  40.4% { opacity: 0; transform: translate(-3.6px,-8.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.6px,-8.1px) scale(0.3); }
+}
+@keyframes meteor16 {
+  0% { opacity: 0; transform: translate(-15.9px,0px) scale(0.4); }
+  33.9% { opacity: 0; transform: translate(-15.9px,0px) scale(0.4); }
+  33.9% { opacity: 1; transform: translate(-15.9px,0px) scale(0.6); }
+  37.8% { opacity: 1; transform: translate(0px,83.0px) scale(1); }
+  37.9% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+}
+@keyframes crater16 {
+  0% { opacity: 0; transform: scale(0.3); }
+  37.8% { opacity: 0; transform: scale(0.3); }
+  37.9% { opacity: 1; transform: scale(1.25); }
+  38.0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash16 {
+  0% { opacity: 0; transform: scale(0.2); }
+  37.8% { opacity: 0; transform: scale(0.2); }
+  37.9% { opacity: 0.9; transform: scale(1.1); }
+  42.8% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark16_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  37.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  37.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  43.6% { opacity: 0; transform: translate(7.3px,1.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.3px,1.7px) scale(0.3); }
+}
+@keyframes spark16_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  37.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  37.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  43.7% { opacity: 0; transform: translate(-7.2px,5.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-7.2px,5.6px) scale(0.3); }
+}
+@keyframes spark16_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  37.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  37.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  42.5% { opacity: 0; transform: translate(-6.1px,-9.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-6.1px,-9.0px) scale(0.3); }
+}
+@keyframes meteor17 {
+  0% { opacity: 0; transform: translate(15.0px,0px) scale(0.4); }
+  36.4% { opacity: 0; transform: translate(15.0px,0px) scale(0.4); }
+  36.4% { opacity: 1; transform: translate(15.0px,0px) scale(0.6); }
+  39.4% { opacity: 1; transform: translate(0px,109.0px) scale(1); }
+  39.5% { opacity: 0; transform: translate(0px,109.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,109.0px) scale(1); }
+}
+@keyframes crater17 {
+  0% { opacity: 0; transform: scale(0.3); }
+  39.4% { opacity: 0; transform: scale(0.3); }
+  39.4% { opacity: 1; transform: scale(1.25); }
+  39.5% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash17 {
+  0% { opacity: 0; transform: scale(0.2); }
+  39.4% { opacity: 0; transform: scale(0.2); }
+  39.4% { opacity: 0.9; transform: scale(1.1); }
+  44.4% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark17_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  39.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  39.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  45.7% { opacity: 0; transform: translate(10.5px,-1.8px) scale(0.3); }
+  100% { opacity: 0; transform: translate(10.5px,-1.8px) scale(0.3); }
+}
+@keyframes spark17_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  39.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  39.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  43.7% { opacity: 0; transform: translate(-2.6px,8.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.6px,8.2px) scale(0.3); }
+}
+@keyframes spark17_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  39.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  39.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  45.1% { opacity: 0; transform: translate(-6.9px,-5.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-6.9px,-5.9px) scale(0.3); }
+}
+@keyframes meteor18 {
+  0% { opacity: 0; transform: translate(5.5px,0px) scale(0.4); }
+  38.3% { opacity: 0; transform: translate(5.5px,0px) scale(0.4); }
+  38.4% { opacity: 1; transform: translate(5.5px,0px) scale(0.6); }
+  43.2% { opacity: 1; transform: translate(0px,31.0px) scale(1); }
+  43.3% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+}
+@keyframes crater18 {
+  0% { opacity: 0; transform: scale(0.3); }
+  43.2% { opacity: 0; transform: scale(0.3); }
+  43.2% { opacity: 1; transform: scale(1.25); }
+  43.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash18 {
+  0% { opacity: 0; transform: scale(0.2); }
+  43.2% { opacity: 0; transform: scale(0.2); }
+  43.2% { opacity: 0.9; transform: scale(1.1); }
+  48.2% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark18_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  43.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  43.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  49.3% { opacity: 0; transform: translate(11.3px,-1.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(11.3px,-1.2px) scale(0.3); }
+}
+@keyframes spark18_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  43.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  43.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  49.6% { opacity: 0; transform: translate(-5.6px,5.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.6px,5.9px) scale(0.3); }
+}
+@keyframes spark18_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  43.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  43.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  48.0% { opacity: 0; transform: translate(-3.0px,-10.8px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.0px,-10.8px) scale(0.3); }
+}
+@keyframes meteor19 {
+  0% { opacity: 0; transform: translate(11.5px,0px) scale(0.4); }
+  43.3% { opacity: 0; transform: translate(11.5px,0px) scale(0.4); }
+  43.4% { opacity: 1; transform: translate(11.5px,0px) scale(0.6); }
+  46.9% { opacity: 1; transform: translate(0px,44.0px) scale(1); }
+  47.0% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+}
+@keyframes crater19 {
+  0% { opacity: 0; transform: scale(0.3); }
+  46.9% { opacity: 0; transform: scale(0.3); }
+  46.9% { opacity: 1; transform: scale(1.25); }
+  47.0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash19 {
+  0% { opacity: 0; transform: scale(0.2); }
+  46.9% { opacity: 0; transform: scale(0.2); }
+  46.9% { opacity: 0.9; transform: scale(1.1); }
+  51.9% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark19_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  46.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  46.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  53.5% { opacity: 0; transform: translate(9.3px,-0.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.3px,-0.9px) scale(0.3); }
+}
+@keyframes spark19_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  46.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  46.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  51.3% { opacity: 0; transform: translate(-2.7px,7.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.7px,7.2px) scale(0.3); }
+}
+@keyframes spark19_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  46.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  46.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  52.6% { opacity: 0; transform: translate(-4.0px,-7.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.0px,-7.5px) scale(0.3); }
+}
+@keyframes meteor20 {
+  0% { opacity: 0; transform: translate(8.4px,0px) scale(0.4); }
+  47.2% { opacity: 0; transform: translate(8.4px,0px) scale(0.4); }
+  47.2% { opacity: 1; transform: translate(8.4px,0px) scale(0.6); }
+  50.2% { opacity: 1; transform: translate(0px,57.0px) scale(1); }
+  50.3% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+}
+@keyframes crater20 {
+  0% { opacity: 0; transform: scale(0.3); }
+  50.2% { opacity: 0; transform: scale(0.3); }
+  50.2% { opacity: 1; transform: scale(1.25); }
+  50.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash20 {
+  0% { opacity: 0; transform: scale(0.2); }
+  50.2% { opacity: 0; transform: scale(0.2); }
+  50.2% { opacity: 0.9; transform: scale(1.1); }
+  55.2% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark20_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  50.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  50.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  55.6% { opacity: 0; transform: translate(9.2px,-1.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.2px,-1.5px) scale(0.3); }
+}
+@keyframes spark20_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  50.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  50.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  55.4% { opacity: 0; transform: translate(-7.7px,7.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-7.7px,7.5px) scale(0.3); }
+}
+@keyframes spark20_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  50.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  50.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  57.1% { opacity: 0; transform: translate(-1.6px,-6.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.6px,-6.6px) scale(0.3); }
+}
+@keyframes meteor21 {
+  0% { opacity: 0; transform: translate(2.7px,0px) scale(0.4); }
+  47.7% { opacity: 0; transform: translate(2.7px,0px) scale(0.4); }
+  47.8% { opacity: 1; transform: translate(2.7px,0px) scale(0.6); }
+  51.3% { opacity: 1; transform: translate(0px,70.0px) scale(1); }
+  51.4% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+}
+@keyframes crater21 {
+  0% { opacity: 0; transform: scale(0.3); }
+  51.3% { opacity: 0; transform: scale(0.3); }
+  51.4% { opacity: 1; transform: scale(1.25); }
+  51.5% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash21 {
+  0% { opacity: 0; transform: scale(0.2); }
+  51.3% { opacity: 0; transform: scale(0.2); }
+  51.4% { opacity: 0.9; transform: scale(1.1); }
+  56.3% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark21_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  51.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  51.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  57.2% { opacity: 0; transform: translate(8.5px,-2.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(8.5px,-2.3px) scale(0.3); }
+}
+@keyframes spark21_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  51.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  51.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  56.7% { opacity: 0; transform: translate(-5.6px,9.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.6px,9.6px) scale(0.3); }
+}
+@keyframes spark21_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  51.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  51.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  56.6% { opacity: 0; transform: translate(-5.0px,-11.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.0px,-11.9px) scale(0.3); }
+}
+@keyframes meteor22 {
+  0% { opacity: 0; transform: translate(12.0px,0px) scale(0.4); }
+  49.3% { opacity: 0; transform: translate(12.0px,0px) scale(0.4); }
+  49.3% { opacity: 1; transform: translate(12.0px,0px) scale(0.6); }
+  54.0% { opacity: 1; transform: translate(0px,83.0px) scale(1); }
+  54.1% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+}
+@keyframes crater22 {
+  0% { opacity: 0; transform: scale(0.3); }
+  54.0% { opacity: 0; transform: scale(0.3); }
+  54.0% { opacity: 1; transform: scale(1.25); }
+  54.1% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash22 {
+  0% { opacity: 0; transform: scale(0.2); }
+  54.0% { opacity: 0; transform: scale(0.2); }
+  54.0% { opacity: 0.9; transform: scale(1.1); }
+  59.0% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark22_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  54.0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  54.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  60.3% { opacity: 0; transform: translate(12.5px,4.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(12.5px,4.5px) scale(0.3); }
+}
+@keyframes spark22_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  54.0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  54.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  60.7% { opacity: 0; transform: translate(-3.7px,7.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.7px,7.2px) scale(0.3); }
+}
+@keyframes spark22_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  54.0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  54.0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  60.1% { opacity: 0; transform: translate(-4.7px,-12.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.7px,-12.3px) scale(0.3); }
+}
+@keyframes meteor23 {
+  0% { opacity: 0; transform: translate(-11.4px,0px) scale(0.4); }
+  52.3% { opacity: 0; transform: translate(-11.4px,0px) scale(0.4); }
+  52.3% { opacity: 1; transform: translate(-11.4px,0px) scale(0.6); }
+  56.2% { opacity: 1; transform: translate(0px,96.0px) scale(1); }
+  56.3% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+}
+@keyframes crater23 {
+  0% { opacity: 0; transform: scale(0.3); }
+  56.2% { opacity: 0; transform: scale(0.3); }
+  56.2% { opacity: 1; transform: scale(1.25); }
+  56.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash23 {
+  0% { opacity: 0; transform: scale(0.2); }
+  56.2% { opacity: 0; transform: scale(0.2); }
+  56.2% { opacity: 0.9; transform: scale(1.1); }
+  61.2% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark23_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  56.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  56.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  61.7% { opacity: 0; transform: translate(10.4px,-0.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(10.4px,-0.6px) scale(0.3); }
+}
+@keyframes spark23_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  56.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  56.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  60.6% { opacity: 0; transform: translate(-3.3px,11.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.3px,11.5px) scale(0.3); }
+}
+@keyframes spark23_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  56.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  56.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  62.3% { opacity: 0; transform: translate(-3.3px,-11.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.3px,-11.3px) scale(0.3); }
+}
+@keyframes meteor24 {
+  0% { opacity: 0; transform: translate(6.7px,0px) scale(0.4); }
+  54.7% { opacity: 0; transform: translate(6.7px,0px) scale(0.4); }
+  54.8% { opacity: 1; transform: translate(6.7px,0px) scale(0.6); }
+  57.3% { opacity: 1; transform: translate(0px,70.0px) scale(1); }
+  57.4% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+}
+@keyframes crater24 {
+  0% { opacity: 0; transform: scale(0.3); }
+  57.3% { opacity: 0; transform: scale(0.3); }
+  57.3% { opacity: 1; transform: scale(1.25); }
+  57.4% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash24 {
+  0% { opacity: 0; transform: scale(0.2); }
+  57.3% { opacity: 0; transform: scale(0.2); }
+  57.3% { opacity: 0.9; transform: scale(1.1); }
+  62.3% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark24_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  57.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  57.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  62.5% { opacity: 0; transform: translate(7.8px,-2.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.8px,-2.6px) scale(0.3); }
+}
+@keyframes spark24_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  57.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  57.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  62.3% { opacity: 0; transform: translate(-1.6px,10.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.6px,10.0px) scale(0.3); }
+}
+@keyframes spark24_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  57.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  57.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  64.2% { opacity: 0; transform: translate(-4.3px,-5.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.3px,-5.7px) scale(0.3); }
+}
+@keyframes meteor25 {
+  0% { opacity: 0; transform: translate(11.8px,0px) scale(0.4); }
+  56.0% { opacity: 0; transform: translate(11.8px,0px) scale(0.4); }
+  56.0% { opacity: 1; transform: translate(11.8px,0px) scale(0.6); }
+  60.2% { opacity: 1; transform: translate(0px,70.0px) scale(1); }
+  60.3% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+}
+@keyframes crater25 {
+  0% { opacity: 0; transform: scale(0.3); }
+  60.2% { opacity: 0; transform: scale(0.3); }
+  60.2% { opacity: 1; transform: scale(1.25); }
+  60.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash25 {
+  0% { opacity: 0; transform: scale(0.2); }
+  60.2% { opacity: 0; transform: scale(0.2); }
+  60.2% { opacity: 0.9; transform: scale(1.1); }
+  65.2% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark25_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  60.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  60.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  64.3% { opacity: 0; transform: translate(8.6px,3.8px) scale(0.3); }
+  100% { opacity: 0; transform: translate(8.6px,3.8px) scale(0.3); }
+}
+@keyframes spark25_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  60.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  60.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  66.6% { opacity: 0; transform: translate(-4.2px,8.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-4.2px,8.1px) scale(0.3); }
+}
+@keyframes spark25_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  60.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  60.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  64.8% { opacity: 0; transform: translate(-3.9px,-8.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.9px,-8.5px) scale(0.3); }
+}
+@keyframes meteor26 {
+  0% { opacity: 0; transform: translate(12.1px,0px) scale(0.4); }
+  59.1% { opacity: 0; transform: translate(12.1px,0px) scale(0.4); }
+  59.1% { opacity: 1; transform: translate(12.1px,0px) scale(0.6); }
+  61.8% { opacity: 1; transform: translate(0px,83.0px) scale(1); }
+  61.9% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+}
+@keyframes crater26 {
+  0% { opacity: 0; transform: scale(0.3); }
+  61.8% { opacity: 0; transform: scale(0.3); }
+  61.9% { opacity: 1; transform: scale(1.25); }
+  62.0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash26 {
+  0% { opacity: 0; transform: scale(0.2); }
+  61.8% { opacity: 0; transform: scale(0.2); }
+  61.9% { opacity: 0.9; transform: scale(1.1); }
+  66.8% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark26_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  66.4% { opacity: 0; transform: translate(11.7px,-1.4px) scale(0.3); }
+  100% { opacity: 0; transform: translate(11.7px,-1.4px) scale(0.3); }
+}
+@keyframes spark26_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  67.6% { opacity: 0; transform: translate(4.0px,11.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(4.0px,11.5px) scale(0.3); }
+}
+@keyframes spark26_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  66.0% { opacity: 0; transform: translate(-6.5px,7.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-6.5px,7.1px) scale(0.3); }
+}
+@keyframes spark26_3 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  66.9% { opacity: 0; transform: translate(-9.3px,-3.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-9.3px,-3.5px) scale(0.3); }
+}
+@keyframes spark26_4 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.8% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  61.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  68.1% { opacity: 0; transform: translate(3.0px,-13.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(3.0px,-13.2px) scale(0.3); }
+}
+@keyframes meteor27 {
+  0% { opacity: 0; transform: translate(8.5px,0px) scale(0.4); }
+  58.1% { opacity: 0; transform: translate(8.5px,0px) scale(0.4); }
+  58.1% { opacity: 1; transform: translate(8.5px,0px) scale(0.6); }
+  63.4% { opacity: 1; transform: translate(0px,96.0px) scale(1); }
+  63.5% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+}
+@keyframes crater27 {
+  0% { opacity: 0; transform: scale(0.3); }
+  63.4% { opacity: 0; transform: scale(0.3); }
+  63.4% { opacity: 1; transform: scale(1.25); }
+  63.5% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash27 {
+  0% { opacity: 0; transform: scale(0.2); }
+  63.4% { opacity: 0; transform: scale(0.2); }
+  63.4% { opacity: 0.9; transform: scale(1.1); }
+  68.4% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark27_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  68.2% { opacity: 0; transform: translate(11.8px,3.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(11.8px,3.7px) scale(0.3); }
+}
+@keyframes spark27_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  67.7% { opacity: 0; transform: translate(9.0px,13.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.0px,13.2px) scale(0.3); }
+}
+@keyframes spark27_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  67.7% { opacity: 0; transform: translate(-8.8px,11.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-8.8px,11.9px) scale(0.3); }
+}
+@keyframes spark27_3 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  69.8% { opacity: 0; transform: translate(-11.1px,-13.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-11.1px,-13.6px) scale(0.3); }
+}
+@keyframes spark27_4 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  63.4% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  68.6% { opacity: 0; transform: translate(4.4px,-9.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(4.4px,-9.3px) scale(0.3); }
+}
+@keyframes meteor28 {
+  0% { opacity: 0; transform: translate(3.8px,0px) scale(0.4); }
+  62.3% { opacity: 0; transform: translate(3.8px,0px) scale(0.4); }
+  62.3% { opacity: 1; transform: translate(3.8px,0px) scale(0.6); }
+  65.2% { opacity: 1; transform: translate(0px,109.0px) scale(1); }
+  65.3% { opacity: 0; transform: translate(0px,109.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,109.0px) scale(1); }
+}
+@keyframes crater28 {
+  0% { opacity: 0; transform: scale(0.3); }
+  65.2% { opacity: 0; transform: scale(0.3); }
+  65.2% { opacity: 1; transform: scale(1.25); }
+  65.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash28 {
+  0% { opacity: 0; transform: scale(0.2); }
+  65.2% { opacity: 0; transform: scale(0.2); }
+  65.2% { opacity: 0.9; transform: scale(1.1); }
+  70.2% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark28_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  65.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  65.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  69.9% { opacity: 0; transform: translate(8.7px,-1.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(8.7px,-1.6px) scale(0.3); }
+}
+@keyframes spark28_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  65.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  65.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  71.8% { opacity: 0; transform: translate(-6.5px,8.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-6.5px,8.3px) scale(0.3); }
+}
+@keyframes spark28_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  65.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  65.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  69.8% { opacity: 0; transform: translate(-5.9px,-5.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.9px,-5.1px) scale(0.3); }
+}
+@keyframes meteor29 {
+  0% { opacity: 0; transform: translate(-15.7px,0px) scale(0.4); }
+  66.0% { opacity: 0; transform: translate(-15.7px,0px) scale(0.4); }
+  66.0% { opacity: 1; transform: translate(-15.7px,0px) scale(0.6); }
+  68.7% { opacity: 1; transform: translate(0px,57.0px) scale(1); }
+  68.8% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+}
+@keyframes crater29 {
+  0% { opacity: 0; transform: scale(0.3); }
+  68.7% { opacity: 0; transform: scale(0.3); }
+  68.7% { opacity: 1; transform: scale(1.25); }
+  68.8% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash29 {
+  0% { opacity: 0; transform: scale(0.2); }
+  68.7% { opacity: 0; transform: scale(0.2); }
+  68.7% { opacity: 0.9; transform: scale(1.1); }
+  73.7% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark29_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  68.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  68.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  74.0% { opacity: 0; transform: translate(10.7px,2.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(10.7px,2.6px) scale(0.3); }
+}
+@keyframes spark29_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  68.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  68.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  73.3% { opacity: 0; transform: translate(-5.1px,3.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.1px,3.7px) scale(0.3); }
+}
+@keyframes spark29_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  68.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  68.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  73.8% { opacity: 0; transform: translate(-2.5px,-11.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.5px,-11.0px) scale(0.3); }
+}
+@keyframes meteor30 {
+  0% { opacity: 0; transform: translate(-9.1px,0px) scale(0.4); }
+  67.3% { opacity: 0; transform: translate(-9.1px,0px) scale(0.4); }
+  67.4% { opacity: 1; transform: translate(-9.1px,0px) scale(0.6); }
+  72.5% { opacity: 1; transform: translate(0px,70.0px) scale(1); }
+  72.6% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+}
+@keyframes crater30 {
+  0% { opacity: 0; transform: scale(0.3); }
+  72.5% { opacity: 0; transform: scale(0.3); }
+  72.5% { opacity: 1; transform: scale(1.25); }
+  72.6% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash30 {
+  0% { opacity: 0; transform: scale(0.2); }
+  72.5% { opacity: 0; transform: scale(0.2); }
+  72.5% { opacity: 0.9; transform: scale(1.1); }
+  77.5% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark30_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  72.5% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  72.5% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  78.7% { opacity: 0; transform: translate(9.4px,-3.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.4px,-3.0px) scale(0.3); }
+}
+@keyframes spark30_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  72.5% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  72.5% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  77.5% { opacity: 0; transform: translate(-11.4px,8.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-11.4px,8.5px) scale(0.3); }
+}
+@keyframes spark30_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  72.5% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  72.5% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  78.7% { opacity: 0; transform: translate(-8.6px,-7.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-8.6px,-7.7px) scale(0.3); }
+}
+@keyframes meteor31 {
+  0% { opacity: 0; transform: translate(-11.2px,0px) scale(0.4); }
+  72.8% { opacity: 0; transform: translate(-11.2px,0px) scale(0.4); }
+  72.9% { opacity: 1; transform: translate(-11.2px,0px) scale(0.6); }
+  76.1% { opacity: 1; transform: translate(0px,83.0px) scale(1); }
+  76.2% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+}
+@keyframes crater31 {
+  0% { opacity: 0; transform: scale(0.3); }
+  76.1% { opacity: 0; transform: scale(0.3); }
+  76.2% { opacity: 1; transform: scale(1.25); }
+  76.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash31 {
+  0% { opacity: 0; transform: scale(0.2); }
+  76.1% { opacity: 0; transform: scale(0.2); }
+  76.2% { opacity: 0.9; transform: scale(1.1); }
+  81.1% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark31_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  76.1% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  76.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  81.0% { opacity: 0; transform: translate(9.2px,-1.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.2px,-1.6px) scale(0.3); }
+}
+@keyframes spark31_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  76.1% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  76.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  82.4% { opacity: 0; transform: translate(-7.2px,9.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-7.2px,9.5px) scale(0.3); }
+}
+@keyframes spark31_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  76.1% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  76.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  81.7% { opacity: 0; transform: translate(-5.3px,-6.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.3px,-6.2px) scale(0.3); }
+}
+@keyframes meteor32 {
+  0% { opacity: 0; transform: translate(10.3px,0px) scale(0.4); }
+  76.2% { opacity: 0; transform: translate(10.3px,0px) scale(0.4); }
+  76.3% { opacity: 1; transform: translate(10.3px,0px) scale(0.6); }
+  79.9% { opacity: 1; transform: translate(0px,96.0px) scale(1); }
+  80.0% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+}
+@keyframes crater32 {
+  0% { opacity: 0; transform: scale(0.3); }
+  79.9% { opacity: 0; transform: scale(0.3); }
+  79.9% { opacity: 1; transform: scale(1.25); }
+  80.0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash32 {
+  0% { opacity: 0; transform: scale(0.2); }
+  79.9% { opacity: 0; transform: scale(0.2); }
+  79.9% { opacity: 0.9; transform: scale(1.1); }
+  84.9% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark32_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  84.7% { opacity: 0; transform: translate(9.3px,-3.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.3px,-3.0px) scale(0.3); }
+}
+@keyframes spark32_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  84.9% { opacity: 0; transform: translate(6.9px,14.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(6.9px,14.0px) scale(0.3); }
+}
+@keyframes spark32_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  85.1% { opacity: 0; transform: translate(-9.3px,9.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-9.3px,9.0px) scale(0.3); }
+}
+@keyframes spark32_3 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  86.7% { opacity: 0; transform: translate(-9.0px,-7.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-9.0px,-7.3px) scale(0.3); }
+}
+@keyframes spark32_4 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  79.9% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  86.3% { opacity: 0; transform: translate(7.9px,-12.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.9px,-12.3px) scale(0.3); }
+}
+@keyframes meteor33 {
+  0% { opacity: 0; transform: translate(15.5px,0px) scale(0.4); }
+  79.3% { opacity: 0; transform: translate(15.5px,0px) scale(0.4); }
+  79.4% { opacity: 1; transform: translate(15.5px,0px) scale(0.6); }
+  82.3% { opacity: 1; transform: translate(0px,31.0px) scale(1); }
+  82.4% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,31.0px) scale(1); }
+}
+@keyframes crater33 {
+  0% { opacity: 0; transform: scale(0.3); }
+  82.3% { opacity: 0; transform: scale(0.3); }
+  82.3% { opacity: 1; transform: scale(1.25); }
+  82.4% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash33 {
+  0% { opacity: 0; transform: scale(0.2); }
+  82.3% { opacity: 0; transform: scale(0.2); }
+  82.3% { opacity: 0.9; transform: scale(1.1); }
+  87.3% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark33_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  88.9% { opacity: 0; transform: translate(10.4px,0.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(10.4px,0.3px) scale(0.3); }
+}
+@keyframes spark33_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  88.5% { opacity: 0; transform: translate(0.8px,14.6px) scale(0.3); }
+  100% { opacity: 0; transform: translate(0.8px,14.6px) scale(0.3); }
+}
+@keyframes spark33_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  87.1% { opacity: 0; transform: translate(-5.7px,7.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.7px,7.2px) scale(0.3); }
+}
+@keyframes spark33_3 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  86.4% { opacity: 0; transform: translate(-7.9px,-5.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-7.9px,-5.3px) scale(0.3); }
+}
+@keyframes spark33_4 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  82.3% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  87.1% { opacity: 0; transform: translate(7.9px,-11.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.9px,-11.9px) scale(0.3); }
+}
+@keyframes meteor34 {
+  0% { opacity: 0; transform: translate(-15.5px,0px) scale(0.4); }
+  79.5% { opacity: 0; transform: translate(-15.5px,0px) scale(0.4); }
+  79.6% { opacity: 1; transform: translate(-15.5px,0px) scale(0.6); }
+  83.7% { opacity: 1; transform: translate(0px,44.0px) scale(1); }
+  83.8% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,44.0px) scale(1); }
+}
+@keyframes crater34 {
+  0% { opacity: 0; transform: scale(0.3); }
+  83.7% { opacity: 0; transform: scale(0.3); }
+  83.8% { opacity: 1; transform: scale(1.25); }
+  83.9% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash34 {
+  0% { opacity: 0; transform: scale(0.2); }
+  83.7% { opacity: 0; transform: scale(0.2); }
+  83.8% { opacity: 0.9; transform: scale(1.1); }
+  88.7% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark34_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  83.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  83.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  89.9% { opacity: 0; transform: translate(13.2px,5.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(13.2px,5.1px) scale(0.3); }
+}
+@keyframes spark34_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  83.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  83.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  89.2% { opacity: 0; transform: translate(-6.8px,10.2px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-6.8px,10.2px) scale(0.3); }
+}
+@keyframes spark34_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  83.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  83.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  90.4% { opacity: 0; transform: translate(-2.8px,-10.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-2.8px,-10.3px) scale(0.3); }
+}
+@keyframes meteor35 {
+  0% { opacity: 0; transform: translate(14.5px,0px) scale(0.4); }
+  83.6% { opacity: 0; transform: translate(14.5px,0px) scale(0.4); }
+  83.7% { opacity: 1; transform: translate(14.5px,0px) scale(0.6); }
+  87.2% { opacity: 1; transform: translate(0px,57.0px) scale(1); }
+  87.3% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,57.0px) scale(1); }
+}
+@keyframes crater35 {
+  0% { opacity: 0; transform: scale(0.3); }
+  87.2% { opacity: 0; transform: scale(0.3); }
+  87.2% { opacity: 1; transform: scale(1.25); }
+  87.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash35 {
+  0% { opacity: 0; transform: scale(0.2); }
+  87.2% { opacity: 0; transform: scale(0.2); }
+  87.2% { opacity: 0.9; transform: scale(1.1); }
+  92.2% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark35_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  87.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  87.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  93.4% { opacity: 0; transform: translate(9.7px,-3.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(9.7px,-3.3px) scale(0.3); }
+}
+@keyframes spark35_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  87.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  87.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  93.3% { opacity: 0; transform: translate(-1.6px,6.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.6px,6.1px) scale(0.3); }
+}
+@keyframes spark35_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  87.2% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  87.2% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  94.1% { opacity: 0; transform: translate(-1.6px,-6.9px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.6px,-6.9px) scale(0.3); }
+}
+@keyframes meteor36 {
+  0% { opacity: 0; transform: translate(0.9px,0px) scale(0.4); }
+  83.9% { opacity: 0; transform: translate(0.9px,0px) scale(0.4); }
+  84.0% { opacity: 1; transform: translate(0.9px,0px) scale(0.6); }
+  88.7% { opacity: 1; transform: translate(0px,70.0px) scale(1); }
+  88.8% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,70.0px) scale(1); }
+}
+@keyframes crater36 {
+  0% { opacity: 0; transform: scale(0.3); }
+  88.7% { opacity: 0; transform: scale(0.3); }
+  88.7% { opacity: 1; transform: scale(1.25); }
+  88.8% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash36 {
+  0% { opacity: 0; transform: scale(0.2); }
+  88.7% { opacity: 0; transform: scale(0.2); }
+  88.7% { opacity: 0.9; transform: scale(1.1); }
+  93.7% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark36_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  88.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  88.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  93.8% { opacity: 0; transform: translate(7.9px,1.4px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.9px,1.4px) scale(0.3); }
+}
+@keyframes spark36_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  88.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  88.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  95.4% { opacity: 0; transform: translate(-3.6px,7.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-3.6px,7.3px) scale(0.3); }
+}
+@keyframes spark36_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  88.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  88.7% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  94.6% { opacity: 0; transform: translate(-1.1px,-11.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.1px,-11.7px) scale(0.3); }
+}
+@keyframes meteor37 {
+  0% { opacity: 0; transform: translate(9.9px,0px) scale(0.4); }
+  87.0% { opacity: 0; transform: translate(9.9px,0px) scale(0.4); }
+  87.1% { opacity: 1; transform: translate(9.9px,0px) scale(0.6); }
+  90.7% { opacity: 1; transform: translate(0px,83.0px) scale(1); }
+  90.8% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,83.0px) scale(1); }
+}
+@keyframes crater37 {
+  0% { opacity: 0; transform: scale(0.3); }
+  90.7% { opacity: 0; transform: scale(0.3); }
+  90.8% { opacity: 1; transform: scale(1.25); }
+  90.9% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash37 {
+  0% { opacity: 0; transform: scale(0.2); }
+  90.7% { opacity: 0; transform: scale(0.2); }
+  90.8% { opacity: 0.9; transform: scale(1.1); }
+  95.7% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark37_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  90.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  90.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  97.0% { opacity: 0; transform: translate(7.7px,3.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(7.7px,3.0px) scale(0.3); }
+}
+@keyframes spark37_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  90.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  90.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  95.5% { opacity: 0; transform: translate(-1.8px,9.7px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-1.8px,9.7px) scale(0.3); }
+}
+@keyframes spark37_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  90.7% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  90.8% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  96.7% { opacity: 0; transform: translate(-5.4px,-8.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-5.4px,-8.1px) scale(0.3); }
+}
+@keyframes meteor38 {
+  0% { opacity: 0; transform: translate(-0.5px,0px) scale(0.4); }
+  87.4% { opacity: 0; transform: translate(-0.5px,0px) scale(0.4); }
+  87.5% { opacity: 1; transform: translate(-0.5px,0px) scale(0.6); }
+  92.0% { opacity: 1; transform: translate(0px,96.0px) scale(1); }
+  92.1% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+  100% { opacity: 0; transform: translate(0px,96.0px) scale(1); }
+}
+@keyframes crater38 {
+  0% { opacity: 0; transform: scale(0.3); }
+  92.0% { opacity: 0; transform: scale(0.3); }
+  92.1% { opacity: 1; transform: scale(1.25); }
+  92.2% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes flash38 {
+  0% { opacity: 0; transform: scale(0.2); }
+  92.0% { opacity: 0; transform: scale(0.2); }
+  92.1% { opacity: 0.9; transform: scale(1.1); }
+  97.0% { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes spark38_0 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.1% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  96.2% { opacity: 0; transform: translate(15.5px,-1.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(15.5px,-1.3px) scale(0.3); }
+}
+@keyframes spark38_1 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.1% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  98.6% { opacity: 0; transform: translate(8.5px,11.1px) scale(0.3); }
+  100% { opacity: 0; transform: translate(8.5px,11.1px) scale(0.3); }
+}
+@keyframes spark38_2 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.1% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  97.7% { opacity: 0; transform: translate(-8.6px,5.5px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-8.6px,5.5px) scale(0.3); }
+}
+@keyframes spark38_3 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.1% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  96.5% { opacity: 0; transform: translate(-16.2px,-3.3px) scale(0.3); }
+  100% { opacity: 0; transform: translate(-16.2px,-3.3px) scale(0.3); }
+}
+@keyframes spark38_4 {
+  0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.0% { opacity: 0; transform: translate(0px,0px) scale(1); }
+  92.1% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  97.0% { opacity: 0; transform: translate(0.1px,-12.0px) scale(0.3); }
+  100% { opacity: 0; transform: translate(0.1px,-12.0px) scale(0.3); }
+}
+
+</style>
+<rect width="702" height="112" fill="#0d1117"/>
+<circle cx="164.7" cy="75.8" r="0.7" fill="#ffffff" style="animation: twinkle0 18.7s ease-in-out -7.9s infinite;"/>
+<circle cx="357.9" cy="19.2" r="0.7" fill="#ffffff" style="animation: twinkle1 18.6s ease-in-out -12.5s infinite;"/>
+<circle cx="85.8" cy="102.1" r="1.0" fill="#ffffff" style="animation: twinkle2 21.8s ease-in-out -7.3s infinite;"/>
+<circle cx="65.9" cy="86.8" r="0.8" fill="#ffffff" style="animation: twinkle3 17.7s ease-in-out -6.8s infinite;"/>
+<circle cx="530.5" cy="76.0" r="0.9" fill="#ffffff" style="animation: twinkle0 25.1s ease-in-out -12.9s infinite;"/>
+<circle cx="588.7" cy="62.2" r="0.7" fill="#ffffff" style="animation: twinkle1 14.7s ease-in-out -9.7s infinite;"/>
+<circle cx="274.6" cy="38.2" r="0.7" fill="#ffffff" style="animation: twinkle2 20.2s ease-in-out -12.4s infinite;"/>
+<circle cx="77.4" cy="78.1" r="0.4" fill="#ffffff" style="animation: twinkle3 22.8s ease-in-out -12.8s infinite;"/>
+<circle cx="370.9" cy="5.0" r="1.1" fill="#ffffff" style="animation: twinkle0 17.2s ease-in-out -9.6s infinite;"/>
+<circle cx="420.2" cy="21.6" r="0.6" fill="#ffffff" style="animation: twinkle1 19.7s ease-in-out -13.9s infinite;"/>
+<circle cx="316.5" cy="60.5" r="0.7" fill="#ffffff" style="animation: twinkle2 27.9s ease-in-out -14.3s infinite;"/>
+<circle cx="519.1" cy="11.9" r="0.5" fill="#ffffff" style="animation: twinkle3 19.3s ease-in-out -6.6s infinite;"/>
+<circle cx="658.6" cy="84.1" r="0.5" fill="#ffffff" style="animation: twinkle0 24.1s ease-in-out -13.7s infinite;"/>
+<circle cx="159.1" cy="25.3" r="0.8" fill="#ffffff" style="animation: twinkle1 28.0s ease-in-out -23.6s infinite;"/>
+<circle cx="492.8" cy="58.2" r="0.7" fill="#ffffff" style="animation: twinkle2 21.0s ease-in-out -19.9s infinite;"/>
+<circle cx="140.0" cy="4.1" r="1.0" fill="#ffffff" style="animation: twinkle3 18.8s ease-in-out -0.5s infinite;"/>
+<circle cx="225.2" cy="40.3" r="0.5" fill="#ffffff" style="animation: twinkle0 17.0s ease-in-out -1.7s infinite;"/>
+<circle cx="347.9" cy="99.4" r="0.9" fill="#ffffff" style="animation: twinkle1 22.7s ease-in-out -15.2s infinite;"/>
+<circle cx="158.9" cy="25.4" r="0.5" fill="#ffffff" style="animation: twinkle2 23.6s ease-in-out -11.0s infinite;"/>
+<circle cx="685.6" cy="45.5" r="1.0" fill="#ffffff" style="animation: twinkle3 27.3s ease-in-out -14.5s infinite;"/>
+<circle cx="119.8" cy="67.2" r="0.4" fill="#ffffff" style="animation: twinkle0 16.4s ease-in-out -3.0s infinite;"/>
+<circle cx="38.3" cy="42.3" r="0.4" fill="#ffffff" style="animation: twinkle1 15.4s ease-in-out -6.3s infinite;"/>
+<circle cx="128.1" cy="40.5" r="0.7" fill="#ffffff" style="animation: twinkle2 14.2s ease-in-out -10.1s infinite;"/>
+<circle cx="216.5" cy="87.1" r="1.1" fill="#ffffff" style="animation: twinkle3 17.7s ease-in-out -2.7s infinite;"/>
+<circle cx="430.6" cy="22.8" r="1.1" fill="#ffffff" style="animation: twinkle0 22.4s ease-in-out -21.5s infinite;"/>
+<circle cx="252.5" cy="82.0" r="0.9" fill="#ffffff" style="animation: twinkle1 15.4s ease-in-out -12.9s infinite;"/>
+<circle cx="40.1" cy="79.7" r="1.1" fill="#ffffff" style="animation: twinkle2 17.8s ease-in-out -15.6s infinite;"/>
+<circle cx="696.4" cy="4.2" r="0.6" fill="#ffffff" style="animation: twinkle3 24.3s ease-in-out -7.9s infinite;"/>
+
+<rect x="8" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="8" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="8" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="8" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="8" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="8" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="8" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="21" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="21" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="21" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="21" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="21" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="21" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="21" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="34" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="34" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="34" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="34" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="34" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="34" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="34" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="47" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="47" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="47" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="47" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="47" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="47" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="47" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="60" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="60" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="60" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="60" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="60" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="60" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="60" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="73" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="73" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="73" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="73" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="73" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="73" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="73" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="86" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="86" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="86" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="86" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="86" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="86" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="86" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="99" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="99" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="99" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="99" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="99" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="99" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="99" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="112" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="112" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="112" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="112" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="112" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="112" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="112" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="125" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="125" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="125" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="125" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="125" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="125" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="125" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="138" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="138" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="138" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="138" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="138" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="138" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="138" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="151" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="151" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="151" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="151" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="151" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="151" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="151" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="164" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="164" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="164" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="164" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="164" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="164" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="164" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="177" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="177" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="177" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="177" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="177" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="177" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="177" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="190" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="190" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="190" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="190" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="190" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="190" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="190" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="203" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="203" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="203" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="203" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="203" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="203" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="203" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="216" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="216" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="216" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="216" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="216" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="216" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="216" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="229" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="229" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="229" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="229" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="229" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="229" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="229" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="242" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="242" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="242" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="242" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="242" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="242" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="242" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="255" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="255" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="255" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="255" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="255" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="255" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="255" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="268" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="268" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="268" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="268" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="268" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="268" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="268" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="281" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="281" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="281" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="281" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="281" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="281" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="281" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="294" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="294" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="294" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="294" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="294" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="294" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="294" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="307" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="307" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="307" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="307" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="307" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="307" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="307" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="320" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="320" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="320" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="320" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="320" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="320" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="320" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="333" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="333" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="333" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="333" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="333" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="333" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="333" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="346" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="346" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="346" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="346" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="346" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="346" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="346" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="359" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="359" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="359" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="359" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="359" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="359" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="359" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="372" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="372" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="372" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="372" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="372" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="372" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="372" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="385" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="385" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="385" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="385" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="385" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="385" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="385" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="398" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="398" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="398" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="398" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="398" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="398" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="398" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="411" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="411" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="411" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="411" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="411" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="411" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="411" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="424" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="424" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="424" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="424" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="424" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="424" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="424" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="437" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="437" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="437" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="437" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="437" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="437" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="437" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="450" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="450" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="450" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="450" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="450" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="450" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="450" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="463" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="463" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="463" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="463" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="463" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="463" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="463" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="476" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="476" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="476" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="476" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="476" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="476" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="476" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="489" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="489" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="489" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="489" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="489" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="489" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="489" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="502" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="502" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="502" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="502" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="502" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="502" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="502" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="515" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="515" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="515" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="515" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="515" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="515" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="515" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="528" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="528" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="528" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="528" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="528" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="528" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="528" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="541" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="541" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="541" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="541" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="541" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="541" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="541" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="554" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="554" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="554" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="554" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="554" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="554" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="554" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="567" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="567" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="567" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="567" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="567" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="567" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="567" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="580" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="580" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="580" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="580" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="580" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="580" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="580" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="593" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="593" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="593" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="593" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="593" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="593" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="593" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="606" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="606" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="606" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="606" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="606" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="606" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="606" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="619" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="619" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="619" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="619" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="619" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="619" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="619" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="632" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="632" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="632" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="632" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="632" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="632" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="632" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="645" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="645" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="645" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="645" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="645" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="645" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="645" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="658" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="658" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="658" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="658" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="658" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="658" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="658" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="671" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="671" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="671" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="671" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="671" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="671" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="671" y="94" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="684" y="16" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="684" y="29" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="684" y="42" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="684" y="55" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="684" y="68" width="10" height="10" rx="2" fill="#161b22"/>
+<rect x="684" y="81" width="10" height="10" rx="2" fill="#161b22"/>
+
+<g transform="translate(338,34)">
+<circle r="9.2" fill="#fff5e0" style="animation: flash0 9s linear infinite; opacity:0;"/>
+<circle r="6.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash0 9s linear infinite; opacity:0;"/>
+<g style="animation: crater0 9s linear infinite; opacity:0;">
+<circle r="4.2" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.9" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.6" y2="-0.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark0_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.2" y2="4.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark0_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.8" y2="-3.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark0_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(338,73)">
+<circle r="8.2" fill="#fff5e0" style="animation: flash1 9s linear infinite; opacity:0;"/>
+<circle r="6.0" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash1 9s linear infinite; opacity:0;"/>
+<g style="animation: crater1 9s linear infinite; opacity:0;">
+<circle r="3.7" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.7" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.1" y2="-1.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark1_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.4" y2="1.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark1_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.2" y2="-3.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark1_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(377,34)">
+<circle r="10.5" fill="#fff5e0" style="animation: flash2 9s linear infinite; opacity:0;"/>
+<circle r="7.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash2 9s linear infinite; opacity:0;"/>
+<g style="animation: crater2 9s linear infinite; opacity:0;">
+<circle r="4.8" fill="#8a4d0d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.2" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="4.5" y2="-0.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark2_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.6" y2="3.7" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark2_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.5" y2="-3.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark2_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(377,47)">
+<circle r="9.0" fill="#fff5e0" style="animation: flash3 9s linear infinite; opacity:0;"/>
+<circle r="6.5" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash3 9s linear infinite; opacity:0;"/>
+<g style="animation: crater3 9s linear infinite; opacity:0;">
+<circle r="4.1" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.8" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.6" y2="0.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark3_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.0" y2="2.7" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark3_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.8" y2="-2.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark3_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(377,60)">
+<circle r="8.2" fill="#fff5e0" style="animation: flash4 9s linear infinite; opacity:0;"/>
+<circle r="6.0" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash4 9s linear infinite; opacity:0;"/>
+<g style="animation: crater4 9s linear infinite; opacity:0;">
+<circle r="3.7" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.7" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.2" y2="-1.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark4_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.5" y2="2.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark4_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.8" y2="-2.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark4_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(377,73)">
+<circle r="11.6" fill="#fff5e0" style="animation: flash5 9s linear infinite; opacity:0;"/>
+<circle r="8.4" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash5 9s linear infinite; opacity:0;"/>
+<g style="animation: crater5 9s linear infinite; opacity:0;">
+<circle r="5.3" fill="#ffb84d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.4" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.2" y2="0.7" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark5_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.7" y2="2.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark5_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.1" y2="-3.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark5_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(377,86)">
+<circle r="10.6" fill="#fff5e0" style="animation: flash6 9s linear infinite; opacity:0;"/>
+<circle r="7.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash6 9s linear infinite; opacity:0;"/>
+<g style="animation: crater6 9s linear infinite; opacity:0;">
+<circle r="4.8" fill="#8a4d0d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.2" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.8" y2="0.4" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark6_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.0" y2="3.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark6_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.7" y2="-2.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark6_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(390,21)">
+<circle r="7.9" fill="#fff5e0" style="animation: flash7 9s linear infinite; opacity:0;"/>
+<circle r="5.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash7 9s linear infinite; opacity:0;"/>
+<g style="animation: crater7 9s linear infinite; opacity:0;">
+<circle r="3.6" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.2" y2="-1.4" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark7_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.3" y2="2.4" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark7_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.3" y2="-1.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark7_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(390,47)">
+<circle r="7.9" fill="#fff5e0" style="animation: flash8 9s linear infinite; opacity:0;"/>
+<circle r="5.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash8 9s linear infinite; opacity:0;"/>
+<g style="animation: crater8 9s linear infinite; opacity:0;">
+<circle r="3.6" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.3" y2="0.7" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark8_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.6" y2="2.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark8_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.8" y2="-1.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark8_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(429,21)">
+<circle r="7.9" fill="#fff5e0" style="animation: flash9 9s linear infinite; opacity:0;"/>
+<circle r="5.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash9 9s linear infinite; opacity:0;"/>
+<g style="animation: crater9 9s linear infinite; opacity:0;">
+<circle r="3.6" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.7" y2="0.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark9_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.6" y2="3.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark9_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.7" y2="-2.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark9_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(481,60)">
+<circle r="8.2" fill="#fff5e0" style="animation: flash10 9s linear infinite; opacity:0;"/>
+<circle r="6.0" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash10 9s linear infinite; opacity:0;"/>
+<g style="animation: crater10 9s linear infinite; opacity:0;">
+<circle r="3.7" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.7" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.2" y2="1.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark10_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.9" y2="2.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark10_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.1" y2="-3.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark10_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(481,86)">
+<circle r="7.9" fill="#fff5e0" style="animation: flash11 9s linear infinite; opacity:0;"/>
+<circle r="5.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash11 9s linear infinite; opacity:0;"/>
+<g style="animation: crater11 9s linear infinite; opacity:0;">
+<circle r="3.6" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.5" y2="-0.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark11_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.5" y2="3.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark11_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.4" y2="-2.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark11_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(481,99)">
+<circle r="9.0" fill="#fff5e0" style="animation: flash12 9s linear infinite; opacity:0;"/>
+<circle r="6.5" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash12 9s linear infinite; opacity:0;"/>
+<g style="animation: crater12 9s linear infinite; opacity:0;">
+<circle r="4.1" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.8" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.6" y2="-0.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark12_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.8" y2="2.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark12_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.4" y2="-2.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark12_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(494,21)">
+<circle r="7.9" fill="#fff5e0" style="animation: flash13 9s linear infinite; opacity:0;"/>
+<circle r="5.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash13 9s linear infinite; opacity:0;"/>
+<g style="animation: crater13 9s linear infinite; opacity:0;">
+<circle r="3.6" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.4" y2="-0.4" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark13_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.5" y2="1.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark13_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.2" y2="-2.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark13_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(507,34)">
+<circle r="9.0" fill="#fff5e0" style="animation: flash14 9s linear infinite; opacity:0;"/>
+<circle r="6.5" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash14 9s linear infinite; opacity:0;"/>
+<g style="animation: crater14 9s linear infinite; opacity:0;">
+<circle r="4.1" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.8" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.1" y2="-0.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark14_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.5" y2="1.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark14_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.9" y2="-2.7" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark14_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(507,60)">
+<circle r="8.5" fill="#fff5e0" style="animation: flash15 9s linear infinite; opacity:0;"/>
+<circle r="6.2" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash15 9s linear infinite; opacity:0;"/>
+<g style="animation: crater15 9s linear infinite; opacity:0;">
+<circle r="3.9" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.7" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.9" y2="1.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark15_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.4" y2="2.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark15_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.3" y2="-2.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark15_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(507,73)">
+<circle r="9.9" fill="#fff5e0" style="animation: flash16 9s linear infinite; opacity:0;"/>
+<circle r="7.2" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash16 9s linear infinite; opacity:0;"/>
+<g style="animation: crater16 9s linear infinite; opacity:0;">
+<circle r="4.5" fill="#8a4d0d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.0" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.6" y2="0.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark16_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.5" y2="2.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark16_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.1" y2="-3.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark16_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(507,99)">
+<circle r="8.8" fill="#fff5e0" style="animation: flash17 9s linear infinite; opacity:0;"/>
+<circle r="6.4" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash17 9s linear infinite; opacity:0;"/>
+<g style="animation: crater17 9s linear infinite; opacity:0;">
+<circle r="4.0" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.8" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.7" y2="-0.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark17_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.9" y2="2.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark17_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.4" y2="-2.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark17_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(520,21)">
+<circle r="8.8" fill="#fff5e0" style="animation: flash18 9s linear infinite; opacity:0;"/>
+<circle r="6.4" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash18 9s linear infinite; opacity:0;"/>
+<g style="animation: crater18 9s linear infinite; opacity:0;">
+<circle r="4.0" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.8" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="4.0" y2="-0.4" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark18_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.0" y2="2.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark18_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.1" y2="-3.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark18_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(520,34)">
+<circle r="9.0" fill="#fff5e0" style="animation: flash19 9s linear infinite; opacity:0;"/>
+<circle r="6.5" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash19 9s linear infinite; opacity:0;"/>
+<g style="animation: crater19 9s linear infinite; opacity:0;">
+<circle r="4.1" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.8" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.3" y2="-0.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark19_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.9" y2="2.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark19_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.4" y2="-2.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark19_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(520,47)">
+<circle r="8.8" fill="#fff5e0" style="animation: flash20 9s linear infinite; opacity:0;"/>
+<circle r="6.4" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash20 9s linear infinite; opacity:0;"/>
+<g style="animation: crater20 9s linear infinite; opacity:0;">
+<circle r="4.0" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.8" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.2" y2="-0.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark20_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.7" y2="2.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark20_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.5" y2="-2.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark20_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(520,60)">
+<circle r="9.9" fill="#fff5e0" style="animation: flash21 9s linear infinite; opacity:0;"/>
+<circle r="7.2" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash21 9s linear infinite; opacity:0;"/>
+<g style="animation: crater21 9s linear infinite; opacity:0;">
+<circle r="4.5" fill="#8a4d0d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.0" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.0" y2="-0.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark21_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.9" y2="3.4" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark21_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.8" y2="-4.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark21_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(520,73)">
+<circle r="9.9" fill="#fff5e0" style="animation: flash22 9s linear infinite; opacity:0;"/>
+<circle r="7.2" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash22 9s linear infinite; opacity:0;"/>
+<g style="animation: crater22 9s linear infinite; opacity:0;">
+<circle r="4.5" fill="#8a4d0d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.0" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="4.4" y2="1.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark22_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.3" y2="2.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark22_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.7" y2="-4.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark22_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(520,86)">
+<circle r="10.5" fill="#fff5e0" style="animation: flash23 9s linear infinite; opacity:0;"/>
+<circle r="7.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash23 9s linear infinite; opacity:0;"/>
+<g style="animation: crater23 9s linear infinite; opacity:0;">
+<circle r="4.8" fill="#8a4d0d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.2" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.6" y2="-0.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark23_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.2" y2="4.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark23_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.2" y2="-3.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark23_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(546,60)">
+<circle r="7.9" fill="#fff5e0" style="animation: flash24 9s linear infinite; opacity:0;"/>
+<circle r="5.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash24 9s linear infinite; opacity:0;"/>
+<g style="animation: crater24 9s linear infinite; opacity:0;">
+<circle r="3.6" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.7" y2="-0.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark24_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.6" y2="3.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark24_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.5" y2="-2.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark24_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(637,60)">
+<circle r="9.2" fill="#fff5e0" style="animation: flash25 9s linear infinite; opacity:0;"/>
+<circle r="6.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash25 9s linear infinite; opacity:0;"/>
+<g style="animation: crater25 9s linear infinite; opacity:0;">
+<circle r="4.2" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.9" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.0" y2="1.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark25_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.5" y2="2.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark25_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.4" y2="-3.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark25_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(663,73)">
+<circle r="12.6" fill="#fff5e0" style="animation: flash26 9s linear infinite; opacity:0;"/>
+<circle r="9.1" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash26 9s linear infinite; opacity:0;"/>
+<g style="animation: crater26 9s linear infinite; opacity:0;">
+<circle r="5.7" fill="#ffb84d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="4.1" y2="-0.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark26_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="1.4" y2="4.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark26_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.3" y2="2.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark26_2 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.2" y2="-1.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark26_3 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="1.1" y2="-4.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark26_4 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(663,86)">
+<circle r="12.9" fill="#fff5e0" style="animation: flash27 9s linear infinite; opacity:0;"/>
+<circle r="9.4" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash27 9s linear infinite; opacity:0;"/>
+<g style="animation: crater27 9s linear infinite; opacity:0;">
+<circle r="5.9" fill="#ffb84d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="4.1" y2="1.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark27_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="3.1" y2="4.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark27_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.1" y2="4.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark27_2 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.9" y2="-4.7" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark27_3 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="1.6" y2="-3.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark27_4 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(663,99)">
+<circle r="7.9" fill="#fff5e0" style="animation: flash28 9s linear infinite; opacity:0;"/>
+<circle r="5.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash28 9s linear infinite; opacity:0;"/>
+<g style="animation: crater28 9s linear infinite; opacity:0;">
+<circle r="3.6" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.6" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.1" y2="-0.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark28_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.3" y2="2.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark28_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.1" y2="-1.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark28_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(676,47)">
+<circle r="8.5" fill="#fff5e0" style="animation: flash29 9s linear infinite; opacity:0;"/>
+<circle r="6.2" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash29 9s linear infinite; opacity:0;"/>
+<g style="animation: crater29 9s linear infinite; opacity:0;">
+<circle r="3.9" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.7" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.7" y2="0.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark29_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.8" y2="1.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark29_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.9" y2="-3.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark29_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(676,60)">
+<circle r="10.8" fill="#fff5e0" style="animation: flash30 9s linear infinite; opacity:0;"/>
+<circle r="7.8" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash30 9s linear infinite; opacity:0;"/>
+<g style="animation: crater30 9s linear infinite; opacity:0;">
+<circle r="4.9" fill="#ff9100" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.2" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.3" y2="-1.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark30_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-4.0" y2="3.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark30_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.0" y2="-2.7" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark30_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(676,73)">
+<circle r="10.9" fill="#fff5e0" style="animation: flash31 9s linear infinite; opacity:0;"/>
+<circle r="7.9" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash31 9s linear infinite; opacity:0;"/>
+<g style="animation: crater31 9s linear infinite; opacity:0;">
+<circle r="4.9" fill="#ff9100" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.2" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.2" y2="-0.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark31_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.5" y2="3.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark31_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.8" y2="-2.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark31_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(676,86)">
+<circle r="11.8" fill="#fff5e0" style="animation: flash32 9s linear infinite; opacity:0;"/>
+<circle r="8.6" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash32 9s linear infinite; opacity:0;"/>
+<g style="animation: crater32 9s linear infinite; opacity:0;">
+<circle r="5.4" fill="#ffb84d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.4" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.3" y2="-1.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark32_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="2.4" y2="4.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark32_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.3" y2="3.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark32_2 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.1" y2="-2.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark32_3 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="2.8" y2="-4.3" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark32_4 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(689,21)">
+<circle r="11.7" fill="#fff5e0" style="animation: flash33 9s linear infinite; opacity:0;"/>
+<circle r="8.5" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash33 9s linear infinite; opacity:0;"/>
+<g style="animation: crater33 9s linear infinite; opacity:0;">
+<circle r="5.3" fill="#ffb84d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.4" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.6" y2="0.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark33_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="0.3" y2="5.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark33_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.0" y2="2.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark33_2 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.8" y2="-1.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark33_3 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="2.8" y2="-4.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark33_4 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(689,34)">
+<circle r="10.5" fill="#fff5e0" style="animation: flash34 9s linear infinite; opacity:0;"/>
+<circle r="7.7" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash34 9s linear infinite; opacity:0;"/>
+<g style="animation: crater34 9s linear infinite; opacity:0;">
+<circle r="4.8" fill="#8a4d0d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.2" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="4.6" y2="1.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark34_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-2.4" y2="3.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark34_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.0" y2="-3.6" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark34_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(689,47)">
+<circle r="8.2" fill="#fff5e0" style="animation: flash35 9s linear infinite; opacity:0;"/>
+<circle r="6.0" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash35 9s linear infinite; opacity:0;"/>
+<g style="animation: crater35 9s linear infinite; opacity:0;">
+<circle r="3.7" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.7" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="3.4" y2="-1.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark35_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.6" y2="2.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark35_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.6" y2="-2.4" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark35_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(689,60)">
+<circle r="8.8" fill="#fff5e0" style="animation: flash36 9s linear infinite; opacity:0;"/>
+<circle r="6.4" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash36 9s linear infinite; opacity:0;"/>
+<g style="animation: crater36 9s linear infinite; opacity:0;">
+<circle r="4.0" fill="#4a2e0f" stroke="#00000055" stroke-width="0.6"/>
+<circle r="1.8" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.8" y2="0.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark36_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.3" y2="2.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark36_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.4" y2="-4.1" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark36_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(689,73)">
+<circle r="10.4" fill="#fff5e0" style="animation: flash37 9s linear infinite; opacity:0;"/>
+<circle r="7.6" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash37 9s linear infinite; opacity:0;"/>
+<g style="animation: crater37 9s linear infinite; opacity:0;">
+<circle r="4.7" fill="#8a4d0d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.1" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="2.7" y2="1.0" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark37_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-0.6" y2="3.4" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark37_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-1.9" y2="-2.8" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark37_2 9s linear infinite; opacity:0;"/>
+</g>
+<g transform="translate(689,86)">
+<circle r="12.2" fill="#fff5e0" style="animation: flash38 9s linear infinite; opacity:0;"/>
+<circle r="8.9" fill="none" stroke="#ff9100" stroke-width="0.8" style="animation: flash38 9s linear infinite; opacity:0;"/>
+<g style="animation: crater38 9s linear infinite; opacity:0;">
+<circle r="5.5" fill="#ffb84d" stroke="#00000055" stroke-width="0.6"/>
+<circle r="2.5" fill="#00000030"/>
+</g>
+<line x1="0" y1="0" x2="5.4" y2="-0.5" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark38_0 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="3.0" y2="3.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark38_1 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-3.0" y2="1.9" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark38_2 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="-5.7" y2="-1.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark38_3 9s linear infinite; opacity:0;"/>
+<line x1="0" y1="0" x2="0.0" y2="-4.2" stroke="#ff9100" stroke-width="1" stroke-linecap="round" style="animation: spark38_4 9s linear infinite; opacity:0;"/>
+</g>
+
+<g transform="translate(338,-10)">
+<g class="meteor" style="animation: meteor0 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-3.5" y2="-9.6" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.8" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(338,-10)">
+<g class="meteor" style="animation: meteor1 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.1" y2="-7.4" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(377,-10)">
+<g class="meteor" style="animation: meteor2 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-2.8" y2="-11.1" stroke="url(#cometTrail)" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.9" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.2" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(377,-10)">
+<g class="meteor" style="animation: meteor3 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.3" y2="-8.8" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.8" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(377,-10)">
+<g class="meteor" style="animation: meteor4 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.9" y2="-7.3" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(377,-10)">
+<g class="meteor" style="animation: meteor5 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.3" y2="-7.8" stroke="url(#cometTrail)" stroke-width="1.9" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="4.1" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.3" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(377,-10)">
+<g class="meteor" style="animation: meteor6 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.5" y2="-8.8" stroke="url(#cometTrail)" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.9" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.2" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(390,-10)">
+<g class="meteor" style="animation: meteor7 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="3.6" y2="-9.0" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.6" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(390,-10)">
+<g class="meteor" style="animation: meteor8 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.2" y2="-8.0" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.6" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(429,-10)">
+<g class="meteor" style="animation: meteor9 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="4.1" y2="-8.3" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.6" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(481,-10)">
+<g class="meteor" style="animation: meteor10 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.2" y2="-10.7" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(481,-10)">
+<g class="meteor" style="animation: meteor11 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.0" y2="-10.6" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.6" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(481,-10)">
+<g class="meteor" style="animation: meteor12 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.4" y2="-7.8" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.8" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(494,-10)">
+<g class="meteor" style="animation: meteor13 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.5" y2="-9.2" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.6" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(507,-10)">
+<g class="meteor" style="animation: meteor14 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.3" y2="-11.2" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.8" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(507,-10)">
+<g class="meteor" style="animation: meteor15 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.8" y2="-10.3" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(507,-10)">
+<g class="meteor" style="animation: meteor16 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-1.9" y2="-10.1" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.9" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(507,-10)">
+<g class="meteor" style="animation: meteor17 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.5" y2="-11.0" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(520,-10)">
+<g class="meteor" style="animation: meteor18 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.9" y2="-10.9" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(520,-10)">
+<g class="meteor" style="animation: meteor19 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="2.5" y2="-9.6" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.8" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(520,-10)">
+<g class="meteor" style="animation: meteor20 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.2" y2="-7.9" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(520,-10)">
+<g class="meteor" style="animation: meteor21 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.4" y2="-9.9" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.9" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(520,-10)">
+<g class="meteor" style="animation: meteor22 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.0" y2="-7.0" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.9" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(520,-10)">
+<g class="meteor" style="animation: meteor23 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-1.0" y2="-8.8" stroke="url(#cometTrail)" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.9" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.2" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(546,-10)">
+<g class="meteor" style="animation: meteor24 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.7" y2="-7.6" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.6" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(637,-10)">
+<g class="meteor" style="animation: meteor25 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.5" y2="-8.8" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.8" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(663,-10)">
+<g class="meteor" style="animation: meteor26 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.3" y2="-9.1" stroke="url(#cometTrail)" stroke-width="1.9" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="4.2" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.3" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.2" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(663,-10)">
+<g class="meteor" style="animation: meteor27 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.8" y2="-9.1" stroke="url(#cometTrail)" stroke-width="1.9" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="4.2" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.3" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.2" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(663,-10)">
+<g class="meteor" style="animation: meteor28 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.4" y2="-10.3" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.6" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(676,-10)">
+<g class="meteor" style="animation: meteor29 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-2.4" y2="-8.7" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(676,-10)">
+<g class="meteor" style="animation: meteor30 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-1.5" y2="-11.4" stroke="url(#cometTrail)" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="4.0" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.2" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(676,-10)">
+<g class="meteor" style="animation: meteor31 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-1.1" y2="-8.5" stroke="url(#cometTrail)" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="4.0" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.2" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(676,-10)">
+<g class="meteor" style="animation: meteor32 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.2" y2="-11.4" stroke="url(#cometTrail)" stroke-width="1.9" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="4.1" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.3" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(689,-10)">
+<g class="meteor" style="animation: meteor33 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="4.5" y2="-8.9" stroke="url(#cometTrail)" stroke-width="1.9" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="4.1" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.3" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(689,-10)">
+<g class="meteor" style="animation: meteor34 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-2.5" y2="-7.1" stroke="url(#cometTrail)" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.9" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.2" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(689,-10)">
+<g class="meteor" style="animation: meteor35 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="2.7" y2="-10.6" stroke="url(#cometTrail)" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.0" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(689,-10)">
+<g class="meteor" style="animation: meteor36 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="0.1" y2="-9.2" stroke="url(#cometTrail)" stroke-width="1.7" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.7" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.1" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.0" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(689,-10)">
+<g class="meteor" style="animation: meteor37 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="1.0" y2="-8.1" stroke="url(#cometTrail)" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="3.9" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.2" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+<g transform="translate(689,-10)">
+<g class="meteor" style="animation: meteor38 9s linear infinite; opacity:0; transform-origin: 0px 0px;">
+<line x1="0" y1="0" x2="-0.1" y2="-9.8" stroke="url(#cometTrail)" stroke-width="1.9" stroke-linecap="round"/>
+<circle cx="0" cy="0" r="4.1" fill="url(#cometGlow)"/>
+<circle cx="0" cy="0" r="2.3" fill="#fff5e0"/>
+<circle cx="0" cy="0" r="1.1" fill="#ff9100"/>
+</g>
+</g>
+
+</svg>
