@@ -1,0 +1,47 @@
+name: "Contribution Board"
+description: "Anime ta grille de contributions GitHub avec des visuels originaux (canon, et d'autres à venir) plutôt qu'un simple graphique."
+branding:
+  icon: "target"
+  color: "orange"
+
+inputs:
+  github_token:
+    description: "Jeton pour interroger l'API GitHub (secrets.GITHUB_TOKEN suffit pour un profil public)."
+    required: true
+  username:
+    description: "Compte GitHub dont on affiche les contributions."
+    required: true
+  style:
+    description: "Style de rendu. Voir src/styles/ pour la liste."
+    required: false
+    default: "cannon"
+  output:
+    description: "Chemin du SVG généré."
+    required: false
+    default: "contribution-board.svg"
+  accent:
+    description: "Couleur d'accent, en hexadécimal sans #."
+    required: false
+    default: "ff9100"
+  background:
+    description: "Couleur de fond."
+    required: false
+    default: "#0d1117"
+
+outputs:
+  svg_path:
+    description: "Chemin du SVG généré (identique à l'input `output`)."
+    value: ${{ steps.generate.outputs.svg_path }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: generate
+      shell: bash
+      run: |
+        node "${{ github.action_path }}/src/generate.mjs" "${{ inputs.username }}" "${{ inputs.style }}" "${{ inputs.output }}"
+        echo "svg_path=${{ inputs.output }}" >> "$GITHUB_OUTPUT"
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+        CB_ACCENT: ${{ inputs.accent }}
+        CB_BACKGROUND: ${{ inputs.background }}
