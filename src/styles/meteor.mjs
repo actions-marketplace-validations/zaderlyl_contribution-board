@@ -97,11 +97,12 @@ export function render(days, opts = {}) {
       `  100% { opacity: 0; transform: translate(0px,${fallDistance.toFixed(2)}px) scale(1); }\n` +
       `}\n`;
 
-    meteorEls += `<g class="meteor" style="animation: ${mName} ${CYCLE}s linear infinite; opacity:0; transform-origin: ${d.tx}px ${FALL_START_Y}px;" transform="translate(${d.tx},${FALL_START_Y})">\n` +
+    meteorEls += `<g transform="translate(${d.tx},${FALL_START_Y})">\n` +
+      `<g class="meteor" style="animation: ${mName} ${CYCLE}s linear infinite; opacity:0; transform-origin: 0px 0px;">\n` +
       `<line x1="0" y1="0" x2="${tailX}" y2="${tailY}" stroke="url(#cometTrail)" stroke-width="1.4" stroke-linecap="round"/>\n` +
       `<circle cx="0" cy="0" r="1.7" fill="#fff5e0"/>\n` +
       `<circle cx="0" cy="0" r="0.8" fill="#${accent}"/>\n` +
-      `</g>\n`;
+      `</g>\n</g>\n`;
 
     // Cratère persistant + flash + éclat de particules qui se dissipent.
     const craterR = g.CELL * 0.42;
