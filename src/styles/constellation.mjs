@@ -1,8 +1,11 @@
 // Style "constellation" : un point lumineux voyage de commit en commit en
 // traçant une ligne fine entre chaque case visitée, jusqu'à former une
 // figure façon ciel étoilé. L'ordre de parcours n'est pas chronologique
-// (ça zigzaguerait dans tous les sens) mais un plus-proche-voisin glouton
-// et déterministe, pour un tracé qui ressemble à un vrai trajet.
+// (ça zigzaguerait dans tous les sens) : un plus-proche-voisin glouton
+// donne un premier trajet cohérent, puis un passage 2-opt (heuristique
+// standard pour approximer le TSP) supprime les croisements évitables —
+// le tout déterministe, sans vrai TSP exact (NP-difficile, inutile ici
+// vu que c'est purement esthétique).
 
 import { LEVEL_COLOR, gridGeometry } from "../lib/contributions.mjs";
 
@@ -19,6 +22,37 @@ function hash(n) {
   x = Math.imul(x, 0xc2b2ae35);
   x ^= x >>> 16;
   return (x >>> 0) / 4294967295;
+}
+
+function dist(a, b) {
+  return Math.hypot(a.tx - b.tx, a.ty - b.ty);
+}
+
+// Améliore un chemin (liste de points) par 2-opt : tant qu'inverser un
+// tronçon [i..j] raccourcit le trajet total, on l'inverse. Élimine les
+// croisements évitables laissés par le plus-proche-voisin glouton. Borné
+// à quelques passes — suffisant pour converger sur la taille d'une grille
+// de contributions (quelques centaines de points au plus).
+function twoOptImprove(path, maxPasses = 6) {
+  const n = path.length;
+  let improved = true, pass = 0;
+  while (improved && pass < maxPasses) {
+    improved = false;
+    pass++;
+    for (let i = 1; i < n - 1; i++) {
+      for (let j = i + 1; j < n; j++) {
+        const a = path[i - 1], b = path[i], c = path[j], d = path[j + 1];
+        const before = dist(a, b) + (d ? dist(c, d) : 0);
+        const after = dist(a, c) + (d ? dist(b, d) : 0);
+        if (after < before - 1e-6) {
+          let lo = i, hi = j;
+          while (lo < hi) { [path[lo], path[hi]] = [path[hi], path[lo]]; lo++; hi--; }
+          improved = true;
+        }
+      }
+    }
+  }
+  return path;
 }
 
 export function render(days, opts = {}) {
@@ -39,7 +73,7 @@ export function render(days, opts = {}) {
 
   // Chemin du point lumineux : plus-proche-voisin glouton en partant du
   // premier commit chronologique, plutôt qu'un parcours ligne par ligne.
-  const path = [];
+  let path = [];
   if (activeDays.length) {
     const remaining = activeDays.slice(1);
     path.push(activeDays[0]);
@@ -53,6 +87,7 @@ export function render(days, opts = {}) {
       });
       path.push(remaining.splice(bestIdx, 1)[0]);
     }
+    path = twoOptImprove(path);
   }
 
   // Étoiles de fond scintillantes, pour l'ambiance "ciel étoilé".
