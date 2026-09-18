@@ -4,6 +4,12 @@ Ta grille de contributions GitHub racontée autrement : pas un graphique statiqu
 
 Zéro dépendance externe (Node 20+, `fetch` global), self-hosted via GitHub Action — pas d'instance tierce qui peut tomber en panne, tout tourne chez toi.
 
+| Style | Aperçu |
+|---|---|
+| `cannon` | Un canon fixe, planté dans un coin, qui pivote pour viser et tire un carré coloré sur chaque commit, au bon endroit et au bon moment. |
+| `tide` | Une marée qui avance, recouvre la grille, puis se retire en laissant un coquillage sur chaque commit. |
+| `meteor` | Une pluie de météores tombe à intervalles irréguliers et s'écrase sur chaque commit, laissant un cratère coloré et un éclat de particules qui se dissipe. |
+| `constellation` | Un point lumineux relie chaque commit par une ligne fine, dessinant une constellation qui prend forme au fil du temps. |
 ## Démos
 
 | Style | Aperçu | Description |
