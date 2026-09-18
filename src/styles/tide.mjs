@@ -26,13 +26,17 @@ function tierFor(count) {
   return TIERS.find((t) => count < t.max) ?? TIERS.at(-1);
 }
 
-function foamPath(height, amp = 3, period = 16) {
-  let d = `M0,0`;
-  let y = 0, side = 1;
-  while (y < height) {
-    const ny = Math.min(height, y + period / 2);
-    d += ` Q${side * amp},${(y + ny) / 2} 0,${ny}`;
-    y = ny;
+// Grandes courbes douces (S-curves) plutôt qu'un zigzag mécanique — c'est
+// ce qui fait vraiment "vague" plutôt que "dents de scie". `segments` de
+// grandes ondulations sur toute la hauteur, `amp` leur amplitude.
+function waveCommands(height, segments = 3, amp = 6) {
+  const step = height / segments;
+  let d = "";
+  let side = -1;
+  for (let i = 0; i < segments; i++) {
+    const y0 = i * step, y1 = (i + 1) * step;
+    const cx = side * amp;
+    d += ` C ${cx.toFixed(1)},${(y0 + step * 0.25).toFixed(1)} ${(-cx).toFixed(1)},${(y0 + step * 0.75).toFixed(1)} 0,${y1.toFixed(1)}`;
     side *= -1;
   }
   return d;
@@ -81,17 +85,17 @@ export function render(days, opts = {}) {
     shellEls += `<text x="${cx}" y="${cy}" font-size="${(g.CELL * d.tier.scale).toFixed(1)}" text-anchor="middle" dominant-baseline="central" style="animation: ${name} ${CYCLE}s linear infinite; opacity:0;">${d.tier.icon}</text>\n`;
   });
 
-  // Eau : dégradé (plus clair en surface) + bord d'écume ondulé qui suit
-  // exactement le même déplacement que le corps de l'eau (translateX avec
-  // les mêmes paliers horaires), plutôt qu'un simple aplat à bord droit.
-  const waterKeyframes = `@keyframes tideWidth {
-  0% { width: 0px; }
-  ${pct(ADVANCE_END).toFixed(2)}% { width: ${g.gridWidth}px; }
-  ${pct(HOLD_END).toFixed(2)}% { width: ${g.gridWidth}px; }
-  ${pct(RECEDE_END).toFixed(2)}% { width: 0px; }
-  100% { width: 0px; }
-}
-@keyframes foamMove {
+  // Eau : dégradé + un vrai bord de vague (grandes courbes) porté par un
+  // seul <g> translaté en X. Le corps de l'eau est un pavé qui déborde très
+  // largement à gauche (BULK) pour rester toujours plein derrière le bord,
+  // quelle que soit la position du groupe — évite d'avoir à recalculer un
+  // path différent à chaque image, un seul déplacement suffit.
+  const BULK = 3000;
+  const waveCmds = waveCommands(g.gridHeight);
+  const bodyPath = `M${-BULK},0 L0,0 ${waveCmds} L${-BULK},${g.gridHeight} Z`;
+  const edgePath = `M0,0 ${waveCmds}`;
+
+  const waterKeyframes = `@keyframes tideMove {
   0% { transform: translateX(0px); }
   ${pct(ADVANCE_END).toFixed(2)}% { transform: translateX(${g.gridWidth}px); }
   ${pct(HOLD_END).toFixed(2)}% { transform: translateX(${g.gridWidth}px); }
@@ -106,10 +110,14 @@ export function render(days, opts = {}) {
     <stop offset="55%" stop-color="#2d6a8f"/>
     <stop offset="100%" stop-color="#173c52"/>
   </linearGradient>
+  <clipPath id="gridClip"><rect x="${g.PAD_LEFT}" y="${g.PAD_TOP}" width="${g.gridWidth}" height="${g.gridHeight}"/></clipPath>
 </defs>
-<rect x="${g.PAD_LEFT}" y="${g.PAD_TOP}" width="0" height="${g.gridHeight}" fill="url(#waterGrad)" opacity="0.68" style="animation: tideWidth ${CYCLE}s linear infinite;"/>
-<g transform="translate(${g.PAD_LEFT},${g.PAD_TOP})" style="animation: foamMove ${CYCLE}s linear infinite;">
-  <path d="${foamPath(g.gridHeight)}" fill="none" stroke="#dff3fa" stroke-width="1.6" opacity="0.75"/>
+<g clip-path="url(#gridClip)">
+  <g transform="translate(${g.PAD_LEFT},${g.PAD_TOP})" style="animation: tideMove ${CYCLE}s linear infinite;">
+    <path d="${bodyPath}" fill="url(#waterGrad)" opacity="0.75"/>
+    <path d="${edgePath}" fill="none" stroke="#eaf7ff" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+    <path d="${edgePath}" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/>
+  </g>
 </g>`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${g.width}" height="${g.height}" viewBox="0 0 ${g.width} ${g.height}">
