@@ -73,6 +73,14 @@ Puis dans ton `README.md` :
 | `accent` | `ff9100` | Couleur d'accent (hex, sans `#`) — pas encore utilisée par tous les styles |
 | `background` | `#0d1117` | Couleur de fond |
 
+### Changer de style
+
+Édite la valeur `style:` dans ton workflow et commit. Ce n'est **pas automatique** :
+
+- le fichier YAML change tout de suite, mais le SVG affiché sur ton profil ne se régénère que quand le workflow tourne réellement ;
+- par défaut, ça arrive au prochain déclenchement du `cron` (une fois par jour) ;
+- pour voir le changement tout de suite, lance le workflow à la main : onglet **Actions** de ton dépôt profil → le workflow → **Run workflow**.
+
 ## Architecture
 
 ```
