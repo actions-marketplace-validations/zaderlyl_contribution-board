@@ -14,8 +14,8 @@ export const meta = {
 
 const TOP_N = 5;
 const RINGS_PER_ORIGIN = 3;
-const PULSE_DUR = 3.2;   // s, durée d'un aller simple d'anneau — indépendant du CYCLE, boucle en continu
-const BLINK_DUR = 0.7;   // s, période du clignotement rouge des émetteurs
+const PULSE_DUR = 6;     // s, durée d'un aller simple d'anneau — indépendant du CYCLE, boucle en continu
+const BLINK_DUR = 1.6;   // s, période du clignotement rouge des émetteurs
 
 export function render(days, opts = {}) {
   const accent = `#${(opts.accent ?? "ff9100").replace(/^#/, "")}`;
@@ -80,7 +80,7 @@ export function render(days, opts = {}) {
   });
   const blinkKeyframes = `@keyframes originBlink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.25; }
+  50% { opacity: 0.4; }
 }`;
 
   // Anneaux : 3 par émetteur, décalés en phase (façon sonar), qui bouclent
@@ -89,13 +89,14 @@ export function render(days, opts = {}) {
   // repérés.
   const ringKeyframes = `@keyframes ringPulse {
   0% { r: 0px; opacity: 0.85; }
+  60% { opacity: 0.3; }
   100% { r: ${maxDist.toFixed(1)}px; opacity: 0; }
 }`;
   let ringEls = "";
   origins.forEach((o) => {
     for (let i = 0; i < RINGS_PER_ORIGIN; i++) {
       const delay = -(i * PULSE_DUR) / RINGS_PER_ORIGIN;
-      ringEls += `<circle cx="${o.x}" cy="${o.y}" r="0" fill="none" stroke="${RED}" stroke-width="1.2" style="animation: ringPulse ${PULSE_DUR}s linear ${delay.toFixed(2)}s infinite;"/>\n`;
+      ringEls += `<circle cx="${o.x}" cy="${o.y}" r="0" fill="none" stroke="${RED}" stroke-width="1.2" style="animation: ringPulse ${PULSE_DUR}s ease-out ${delay.toFixed(2)}s infinite;"/>\n`;
     }
   });
 
