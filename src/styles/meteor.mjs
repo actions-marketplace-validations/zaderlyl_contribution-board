@@ -48,14 +48,29 @@ export function render(days, opts = {}) {
     d.ty = g.cellY(d.row) + g.CELL / 2;
   });
 
-  // Étoiles décoratives, fixes, dispersées derrière la grille.
-  let starEls = "";
-  for (let i = 0; i < 36; i++) {
+  // Étoiles décoratives dispersées derrière la grille, avec un léger
+  // scintillement (quelques variantes de keyframes partagées entre toutes
+  // les étoiles pour ne pas alourdir le fichier).
+  const TWINKLE_VARIANTS = 4;
+  let starEls = "", twinkleKeyframes = "";
+  for (let v = 0; v < TWINKLE_VARIANTS; v++) {
+    const lo = 0.1 + hash(v * 97 + 1) * 0.15;
+    const hi = 0.55 + hash(v * 97 + 2) * 0.35;
+    const peak = 30 + hash(v * 97 + 3) * 40;
+    twinkleKeyframes += `@keyframes twinkle${v} {\n` +
+      `  0% { opacity: ${lo.toFixed(1)}; }\n` +
+      `  ${peak.toFixed(1)}% { opacity: ${hi.toFixed(1)}; }\n` +
+      `  100% { opacity: ${lo.toFixed(1)}; }\n` +
+      `}\n`;
+  }
+  for (let i = 0; i < 28; i++) {
     const sx = hash(i * 17 + 3) * g.width;
     const sy = hash(i * 29 + 11) * (g.PAD_TOP + g.gridHeight);
-    const sr = 0.4 + hash(i * 53 + 5) * 0.6;
-    const so = 0.15 + hash(i * 71 + 9) * 0.35;
-    starEls += `<circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="${sr.toFixed(2)}" fill="#ffffff" opacity="${so.toFixed(2)}"/>\n`;
+    const sr = 0.4 + hash(i * 53 + 5) * 0.7;
+    const variant = i % TWINKLE_VARIANTS;
+    const dur = (CYCLE * (1.4 + hash(i * 61 + 13) * 1.8)).toFixed(1);
+    const delay = (-hash(i * 43 + 21) * dur).toFixed(1);
+    starEls += `<circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="${sr.toFixed(1)}" fill="#ffffff" style="animation: twinkle${variant} ${dur}s ease-in-out ${delay}s infinite;"/>\n`;
   }
 
   let cellRects = "";
@@ -63,10 +78,17 @@ export function render(days, opts = {}) {
     cellRects += `<rect x="${g.cellX(d.col)}" y="${g.cellY(d.row)}" width="${g.CELL}" height="${g.CELL}" rx="2" fill="${LEVEL_COLOR.NONE}"/>\n`;
   });
 
+  // Intensité : plus il y a de commits ce jour-là, plus le météore et son
+  // cratère sont gros (dans l'esprit des trouvailles de "tide" selon le
+  // nombre de commits, mais ici en taille d'impact plutôt qu'en rareté).
+  const maxCount = Math.max(1, ...activeDays.map((d) => d.count));
+  const sizeFor = (count) => 0.75 + Math.sqrt(count / maxCount) * 0.65;
+
   let meteorEls = "", craterEls = "", meteorKeyframes = "";
 
   activeDays.forEach((d, i) => {
     const seed = d.col * 131 + d.row * 7 + i;
+    const sizeMul = sizeFor(d.count);
     const fallDistance = d.ty - FALL_START_Y;
     const dxDrift = (hash(seed * 3 + 1) - 0.5) * g.CELL * 3.2;
     const fallFrac = 0.045 + hash(seed * 5 + 2) * 0.05;
@@ -81,52 +103,53 @@ export function render(days, opts = {}) {
     const vlen = Math.max(1, Math.hypot(vx, vy));
     const ux = vx / vlen, uy = vy / vlen;
     const tailLen = 7 + hash(seed * 13 + 4) * 5;
-    const tailX = (-ux * tailLen).toFixed(2);
-    const tailY = (-uy * tailLen).toFixed(2);
+    const tailX = (-ux * tailLen).toFixed(1);
+    const tailY = (-uy * tailLen).toFixed(1);
 
     const mName = `meteor${i}`;
     const cName = `crater${i}`;
     const fName = `flash${i}`;
 
     meteorKeyframes += `@keyframes ${mName} {\n` +
-      `  0% { opacity: 0; transform: translate(${dxDrift.toFixed(2)}px,0px) scale(0.4); }\n` +
-      `  ${startPct.toFixed(3)}% { opacity: 0; transform: translate(${dxDrift.toFixed(2)}px,0px) scale(0.4); }\n` +
-      `  ${Math.min(startPct + EPS, arrive).toFixed(3)}% { opacity: 1; transform: translate(${dxDrift.toFixed(2)}px,0px) scale(0.6); }\n` +
-      `  ${arrive.toFixed(3)}% { opacity: 1; transform: translate(0px,${fallDistance.toFixed(2)}px) scale(1); }\n` +
-      `  ${gone.toFixed(3)}% { opacity: 0; transform: translate(0px,${fallDistance.toFixed(2)}px) scale(1); }\n` +
-      `  100% { opacity: 0; transform: translate(0px,${fallDistance.toFixed(2)}px) scale(1); }\n` +
+      `  0% { opacity: 0; transform: translate(${dxDrift.toFixed(1)}px,0px) scale(0.4); }\n` +
+      `  ${startPct.toFixed(1)}% { opacity: 0; transform: translate(${dxDrift.toFixed(1)}px,0px) scale(0.4); }\n` +
+      `  ${Math.min(startPct + EPS, arrive).toFixed(1)}% { opacity: 1; transform: translate(${dxDrift.toFixed(1)}px,0px) scale(0.6); }\n` +
+      `  ${arrive.toFixed(1)}% { opacity: 1; transform: translate(0px,${fallDistance.toFixed(1)}px) scale(1); }\n` +
+      `  ${gone.toFixed(1)}% { opacity: 0; transform: translate(0px,${fallDistance.toFixed(1)}px) scale(1); }\n` +
+      `  100% { opacity: 0; transform: translate(0px,${fallDistance.toFixed(1)}px) scale(1); }\n` +
       `}\n`;
 
+    const headR = 1.5 + sizeMul * 0.6;
     meteorEls += `<g transform="translate(${d.tx},${FALL_START_Y})">\n` +
       `<g class="meteor" style="animation: ${mName} ${CYCLE}s linear infinite; opacity:0; transform-origin: 0px 0px;">\n` +
-      `<line x1="0" y1="0" x2="${tailX}" y2="${tailY}" stroke="url(#cometTrail)" stroke-width="1.4" stroke-linecap="round"/>\n` +
-      `<circle cx="0" cy="0" r="1.7" fill="#fff5e0"/>\n` +
-      `<circle cx="0" cy="0" r="0.8" fill="#${accent}"/>\n` +
+      `<line x1="0" y1="0" x2="${tailX}" y2="${tailY}" stroke="url(#cometTrail)" stroke-width="${(1.1 + sizeMul * 0.6).toFixed(1)}" stroke-linecap="round"/>\n` +
+      `<circle cx="0" cy="0" r="${(headR * 1.8).toFixed(1)}" fill="url(#cometGlow)"/>\n` +
+      `<circle cx="0" cy="0" r="${headR.toFixed(1)}" fill="#fff5e0"/>\n` +
+      `<circle cx="0" cy="0" r="${(headR * 0.5).toFixed(1)}" fill="#${accent}"/>\n` +
       `</g>\n</g>\n`;
 
-    // Cratère persistant + flash + éclat de particules qui se dissipent.
-    const craterR = g.CELL * 0.42;
+    // Cratère persistant + flash + onde de choc + éclat de particules qui se dissipent.
+    const craterR = g.CELL * 0.42 * sizeMul;
     const popMid = Math.min(100, arrive + EPS);
     const popEnd = Math.min(100, arrive + EPS * 3);
     const flashEnd = Math.min(100, arrive + pct(CYCLE * 0.05));
 
     meteorKeyframes += `@keyframes ${cName} {\n` +
       `  0% { opacity: 0; transform: scale(0.3); }\n` +
-      `  ${arrive.toFixed(3)}% { opacity: 0; transform: scale(0.3); }\n` +
-      `  ${popMid.toFixed(3)}% { opacity: 1; transform: scale(1.25); }\n` +
-      `  ${popEnd.toFixed(3)}% { opacity: 1; transform: scale(1); }\n` +
+      `  ${arrive.toFixed(1)}% { opacity: 0; transform: scale(0.3); }\n` +
+      `  ${popMid.toFixed(1)}% { opacity: 1; transform: scale(1.25); }\n` +
+      `  ${popEnd.toFixed(1)}% { opacity: 1; transform: scale(1); }\n` +
       `  100% { opacity: 1; transform: scale(1); }\n` +
       `}\n`;
     meteorKeyframes += `@keyframes ${fName} {\n` +
       `  0% { opacity: 0; transform: scale(0.2); }\n` +
-      `  ${arrive.toFixed(3)}% { opacity: 0; transform: scale(0.2); }\n` +
-      `  ${popMid.toFixed(3)}% { opacity: 0.9; transform: scale(1.1); }\n` +
-      `  ${flashEnd.toFixed(3)}% { opacity: 0; transform: scale(2.4); }\n` +
+      `  ${arrive.toFixed(1)}% { opacity: 0; transform: scale(0.2); }\n` +
+      `  ${popMid.toFixed(1)}% { opacity: 0.9; transform: scale(1.1); }\n` +
+      `  ${flashEnd.toFixed(1)}% { opacity: 0; transform: scale(2.4); }\n` +
       `  100% { opacity: 0; transform: scale(2.4); }\n` +
       `}\n`;
-
     let sparkEls = "";
-    const sparkCount = 4;
+    const sparkCount = d.count >= maxCount * 0.6 ? 5 : 3;
     for (let s = 0; s < sparkCount; s++) {
       const sSeed = seed * 7 + s * 19 + 31;
       const angle = (s / sparkCount) * Math.PI * 2 + (hash(sSeed) - 0.5) * 0.9;
@@ -136,19 +159,20 @@ export function render(days, opts = {}) {
       const sName = `spark${i}_${s}`;
       meteorKeyframes += `@keyframes ${sName} {\n` +
         `  0% { opacity: 0; transform: translate(0px,0px) scale(1); }\n` +
-        `  ${arrive.toFixed(3)}% { opacity: 0; transform: translate(0px,0px) scale(1); }\n` +
-        `  ${popMid.toFixed(3)}% { opacity: 1; transform: translate(0px,0px) scale(1); }\n` +
-        `  ${sparkEnd.toFixed(3)}% { opacity: 0; transform: translate(${ex.toFixed(2)}px,${ey.toFixed(2)}px) scale(0.3); }\n` +
-        `  100% { opacity: 0; transform: translate(${ex.toFixed(2)}px,${ey.toFixed(2)}px) scale(0.3); }\n` +
+        `  ${arrive.toFixed(1)}% { opacity: 0; transform: translate(0px,0px) scale(1); }\n` +
+        `  ${popMid.toFixed(1)}% { opacity: 1; transform: translate(0px,0px) scale(1); }\n` +
+        `  ${sparkEnd.toFixed(1)}% { opacity: 0; transform: translate(${ex.toFixed(1)}px,${ey.toFixed(1)}px) scale(0.3); }\n` +
+        `  100% { opacity: 0; transform: translate(${ex.toFixed(1)}px,${ey.toFixed(1)}px) scale(0.3); }\n` +
         `}\n`;
-      sparkEls += `<line x1="0" y1="0" x2="${(ex * 0.35).toFixed(2)}" y2="${(ey * 0.35).toFixed(2)}" stroke="#${accent}" stroke-width="1" stroke-linecap="round" style="animation: ${sName} ${CYCLE}s linear infinite; opacity:0;"/>\n`;
+      sparkEls += `<line x1="0" y1="0" x2="${(ex * 0.35).toFixed(1)}" y2="${(ey * 0.35).toFixed(1)}" stroke="#${accent}" stroke-width="1" stroke-linecap="round" style="animation: ${sName} ${CYCLE}s linear infinite; opacity:0;"/>\n`;
     }
 
     craterEls += `<g transform="translate(${d.tx},${d.ty})">\n` +
-      `<circle r="${(craterR * 2.2).toFixed(2)}" fill="#fff5e0" style="animation: ${fName} ${CYCLE}s linear infinite; opacity:0;"/>\n` +
+      `<circle r="${(craterR * 2.2).toFixed(1)}" fill="#fff5e0" style="animation: ${fName} ${CYCLE}s linear infinite; opacity:0;"/>\n` +
+      `<circle r="${(craterR * 1.6).toFixed(1)}" fill="none" stroke="#${accent}" stroke-width="0.8" style="animation: ${fName} ${CYCLE}s linear infinite; opacity:0;"/>\n` +
       `<g style="animation: ${cName} ${CYCLE}s linear infinite; opacity:0;">\n` +
-      `<circle r="${craterR.toFixed(2)}" fill="${LEVEL_COLOR[d.level]}" stroke="#00000055" stroke-width="0.6"/>\n` +
-      `<circle r="${(craterR * 0.45).toFixed(2)}" fill="#00000030"/>\n` +
+      `<circle r="${craterR.toFixed(1)}" fill="${LEVEL_COLOR[d.level]}" stroke="#00000055" stroke-width="0.6"/>\n` +
+      `<circle r="${(craterR * 0.45).toFixed(1)}" fill="#00000030"/>\n` +
       `</g>\n` +
       sparkEls +
       `</g>\n`;
@@ -160,9 +184,14 @@ export function render(days, opts = {}) {
   <stop offset="0%" stop-color="#fff5e0"/>
   <stop offset="100%" stop-color="#fff5e0" stop-opacity="0"/>
 </linearGradient>
+<radialGradient id="cometGlow">
+  <stop offset="0%" stop-color="#fff5e0" stop-opacity="0.55"/>
+  <stop offset="100%" stop-color="#fff5e0" stop-opacity="0"/>
+</radialGradient>
 </defs>
 <style>
 rect { shape-rendering: crispEdges; }
+${twinkleKeyframes}
 ${meteorKeyframes}
 </style>
 <rect width="${g.width}" height="${g.height}" fill="${bg}"/>
