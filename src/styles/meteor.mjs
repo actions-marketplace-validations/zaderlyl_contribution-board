@@ -25,8 +25,8 @@ function hash(n) {
 export function render(days, opts = {}) {
   const accent = opts.accent ?? "ff9100";
   const bg = opts.background ?? "#0d1117";
-  const CYCLE = opts.cycle ?? 13;
-  const ACTIVE_SPAN = CYCLE * 0.88;
+  const CYCLE = opts.cycle ?? 9;
+  const ACTIVE_SPAN = CYCLE * 0.92;
   const EPS = 0.05;
   const FALL_START_Y = -10;
 
@@ -91,7 +91,7 @@ export function render(days, opts = {}) {
     const sizeMul = sizeFor(d.count);
     const fallDistance = d.ty - FALL_START_Y;
     const dxDrift = (hash(seed * 3 + 1) - 0.5) * g.CELL * 3.2;
-    const fallFrac = 0.045 + hash(seed * 5 + 2) * 0.05;
+    const fallFrac = 0.025 + hash(seed * 5 + 2) * 0.03;
     const fallDur = CYCLE * fallFrac;
 
     const arrive = pct(d.t);
