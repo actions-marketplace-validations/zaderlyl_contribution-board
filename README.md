@@ -7,6 +7,7 @@ Des animations SVG originales pour ta grille de contributions GitHub — pas jus
 | Style | Aperçu |
 |---|---|
 | `cannon` | Un canon fixe, planté dans un coin, qui pivote pour viser et tire un carré coloré sur chaque commit, au bon endroit et au bon moment. |
+| `tide` | Une marée qui avance, recouvre la grille, puis se retire en laissant un coquillage sur chaque commit. |
 
 D'autres styles sont prévus (voir [Issues](../../issues)) — l'architecture (`src/lib/` pour les données et la géométrie, `src/styles/*.mjs` pour le rendu) est faite pour en accueillir facilement.
 
