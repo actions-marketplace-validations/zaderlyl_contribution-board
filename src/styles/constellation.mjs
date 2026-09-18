@@ -80,7 +80,7 @@ export function render(days, opts = {}) {
 
   let cellRects = "";
   days.forEach((d) => {
-    cellRects += `<rect x="${g.cellX(d.col)}" y="${g.cellY(d.row)}" width="${g.CELL}" height="${g.CELL}" rx="2" fill="${LEVEL_COLOR.NONE}"/>\n`;
+    cellRects += `<rect x="${g.cellX(d.col)}" y="${g.cellY(d.row)}" width="${g.CELL}" height="${g.CELL}" rx="2" fill="${LEVEL_COLOR.NONE}" opacity="0.55"/>\n`;
   });
 
   // Moment d'arrivée de chaque nœud le long du chemin : vitesse ~constante
@@ -118,26 +118,34 @@ export function render(days, opts = {}) {
       `  100% { opacity: 1; transform: scale(1); }\n` +
       `}\n`;
     nodeEls += `<g transform="translate(${d.tx.toFixed(1)},${d.ty.toFixed(1)})">\n` +
-      `<circle r="${(r * 2.4).toFixed(1)}" fill="url(#starGlow)" style="animation: ${nName} ${CYCLE}s linear infinite; opacity:0; transform-origin: 0px 0px;"/>\n` +
-      `<circle r="${r.toFixed(1)}" fill="${LEVEL_COLOR[d.level]}" stroke="#fff5e0" stroke-width="0.4" style="animation: ${nName} ${CYCLE}s linear infinite; opacity:0; transform-origin: 0px 0px;"/>\n` +
+      `<circle r="${(r * 3).toFixed(1)}" fill="url(#starGlow)" style="animation: ${nName} ${CYCLE}s ease-out infinite; opacity:0; transform-origin: 0px 0px;"/>\n` +
+      `<circle r="${r.toFixed(1)}" fill="${LEVEL_COLOR[d.level]}" stroke="#fff5e0" stroke-width="0.4" style="animation: ${nName} ${CYCLE}s ease-out infinite; opacity:0; transform-origin: 0px 0px;"/>\n` +
       `</g>\n`;
 
     if (i === 0) {
       travelerFrames.push(`0% { opacity: 1; transform: translate(${d.tx.toFixed(1)}px,${d.ty.toFixed(1)}px); }`);
     } else {
       const p0 = path[i - 1];
-      const len = Math.hypot(d.tx - p0.tx, d.ty - p0.ty);
+      const dx = d.tx - p0.tx, dy = d.ty - p0.ty;
+      const len = Math.hypot(dx, dy);
+      // Légère courbe (au lieu d'un trait droit) pour un tracé plus organique —
+      // décalage perpendiculaire borné pour ne pas déformer les longs segments.
+      const nx = len ? -dy / len : 0, ny = len ? dx / len : 0;
+      const bow = Math.min(len * 0.22, 9) * (hash(d.col * 131 + d.row * 7 + i + 500) - 0.5) * 2;
+      const midX = (p0.tx + d.tx) / 2 + nx * bow;
+      const midY = (p0.ty + d.ty) / 2 + ny * bow;
+
       const startPct = pct(p0.arrive);
       const segName = `seg${i}`;
       keyframes += `@keyframes ${segName} {\n` +
-        `  0% { stroke-dashoffset: ${len.toFixed(1)}; }\n` +
-        `  ${startPct.toFixed(1)}% { stroke-dashoffset: ${len.toFixed(1)}; }\n` +
+        `  0% { stroke-dashoffset: 100; }\n` +
+        `  ${startPct.toFixed(1)}% { stroke-dashoffset: 100; }\n` +
         `  ${arrivePct.toFixed(1)}% { stroke-dashoffset: 0; }\n` +
         `  100% { stroke-dashoffset: 0; }\n` +
         `}\n`;
-      const common = `x1="${p0.tx.toFixed(1)}" y1="${p0.ty.toFixed(1)}" x2="${d.tx.toFixed(1)}" y2="${d.ty.toFixed(1)}" stroke-linecap="round" stroke-dasharray="${len.toFixed(1)}" style="animation: ${segName} ${CYCLE}s linear infinite; stroke-dashoffset:${len.toFixed(1)};"`;
-      lineEls += `<line ${common} stroke="#${accent}" stroke-width="2.4" opacity="0.16"/>\n`;
-      lineEls += `<line ${common} stroke="#fff5e0" stroke-width="0.8" opacity="0.8"/>\n`;
+      const common = `d="M${p0.tx.toFixed(1)},${p0.ty.toFixed(1)} Q${midX.toFixed(1)},${midY.toFixed(1)} ${d.tx.toFixed(1)},${d.ty.toFixed(1)}" pathLength="100" stroke-linecap="round" fill="none" stroke-dasharray="100" style="animation: ${segName} ${CYCLE}s ease-in-out infinite; stroke-dashoffset:100;"`;
+      lineEls += `<path ${common} stroke="#${accent}" stroke-width="2.4" opacity="0.16"/>\n`;
+      lineEls += `<path ${common} stroke="#fff5e0" stroke-width="0.8" opacity="0.8"/>\n`;
       travelerFrames.push(`${arrivePct.toFixed(1)}% { opacity: 1; transform: translate(${d.tx.toFixed(1)}px,${d.ty.toFixed(1)}px); }`);
     }
   });
@@ -149,9 +157,9 @@ export function render(days, opts = {}) {
     travelerFrames.push(`${fadeAt.toFixed(1)}% { opacity: 0; transform: translate(${path.at(-1).tx.toFixed(1)}px,${path.at(-1).ty.toFixed(1)}px); }`);
     travelerFrames.push(`100% { opacity: 0; transform: translate(${path.at(-1).tx.toFixed(1)}px,${path.at(-1).ty.toFixed(1)}px); }`);
     keyframes += `@keyframes traveler {\n  ${travelerFrames.join("\n  ")}\n}\n`;
-    travelerEl = `<g style="animation: traveler ${CYCLE}s linear infinite; opacity:0;">\n` +
-      `<circle r="3.2" fill="url(#starGlow)"/>\n` +
-      `<circle r="1.1" fill="#fff5e0"/>\n` +
+    travelerEl = `<g style="animation: traveler ${CYCLE}s ease-in-out infinite; opacity:0;">\n` +
+      `<circle r="4" fill="url(#starGlow)"/>\n` +
+      `<circle r="1.3" fill="#fff5e0"/>\n` +
       `</g>\n`;
   }
 
@@ -161,6 +169,11 @@ export function render(days, opts = {}) {
   <stop offset="0%" stop-color="#fff5e0" stop-opacity="0.6"/>
   <stop offset="100%" stop-color="#fff5e0" stop-opacity="0"/>
 </radialGradient>
+<radialGradient id="vignette" cx="50%" cy="45%" r="75%">
+  <stop offset="0%" stop-color="#${accent}" stop-opacity="0.10"/>
+  <stop offset="60%" stop-color="#${accent}" stop-opacity="0.03"/>
+  <stop offset="100%" stop-color="#${accent}" stop-opacity="0"/>
+</radialGradient>
 </defs>
 <style>
 rect { shape-rendering: crispEdges; }
@@ -168,6 +181,7 @@ ${twinkleKeyframes}
 ${keyframes}
 </style>
 <rect width="${g.width}" height="${g.height}" fill="${bg}"/>
+<rect width="${g.width}" height="${g.height}" fill="url(#vignette)"/>
 ${starEls}
 ${cellRects}
 ${lineEls}
