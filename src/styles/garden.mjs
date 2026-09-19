@@ -68,9 +68,9 @@ export function render(days, opts = {}) {
     .sort((a, b) => a.col - b.col || a.row - b.row);
   const n = ordered.length;
   const growSpan = GROW_END / Math.max(n, 1);
-  const growDur = Math.min(0.03, Math.max(0.006, growSpan * 0.8));
+  const growDur = Math.min(0.045, Math.max(0.014, growSpan * 0.8));
   const wiltSpan = (WILT_END - HOLD_END) / Math.max(n, 1);
-  const wiltDur = Math.min(0.03, Math.max(0.006, wiltSpan * 0.8));
+  const wiltDur = Math.min(0.045, Math.max(0.014, wiltSpan * 0.8));
 
   let plantEls = "", plantKeyframes = "";
   ordered.forEach((d, i) => {
@@ -100,13 +100,13 @@ export function render(days, opts = {}) {
 
     plantKeyframes += `@keyframes ${name} {\n` +
       `  0% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
-      `  ${(growStart * 100).toFixed(3)}% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
-      `  ${(growPeak * 100).toFixed(3)}% { opacity: 1; transform: scale(1.18) rotate(0deg); }\n` +
-      `  ${(growEnd * 100).toFixed(3)}% { opacity: 1; transform: scale(1) rotate(0deg); }\n` +
-      `  ${(s1 * 100).toFixed(3)}% { transform: scale(1) rotate(5deg); }\n` +
-      `  ${(s2 * 100).toFixed(3)}% { transform: scale(1) rotate(-4deg); }\n` +
-      `  ${(s3 * 100).toFixed(3)}% { transform: scale(1) rotate(3deg); }\n` +
-      `  ${(wiltStart * 100).toFixed(3)}% { opacity: 1; transform: scale(1) rotate(0deg); }\n` +
+      `  ${(growStart * 100).toFixed(3)}% { opacity: 0; transform: scale(0.25) rotate(0deg); animation-timing-function: ease-out; }\n` +
+      `  ${(growPeak * 100).toFixed(3)}% { opacity: 1; transform: scale(1.18) rotate(0deg); animation-timing-function: ease-in-out; }\n` +
+      `  ${(growEnd * 100).toFixed(3)}% { opacity: 1; transform: scale(1) rotate(0deg); animation-timing-function: ease-in-out; }\n` +
+      `  ${(s1 * 100).toFixed(3)}% { transform: scale(1) rotate(5deg); animation-timing-function: ease-in-out; }\n` +
+      `  ${(s2 * 100).toFixed(3)}% { transform: scale(1) rotate(-4deg); animation-timing-function: ease-in-out; }\n` +
+      `  ${(s3 * 100).toFixed(3)}% { transform: scale(1) rotate(3deg); animation-timing-function: ease-in; }\n` +
+      `  ${(wiltStart * 100).toFixed(3)}% { opacity: 1; transform: scale(1) rotate(0deg); animation-timing-function: ease-in; }\n` +
       `  ${(wiltEnd * 100).toFixed(3)}% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
       `  100% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
       `}\n`;
