@@ -11,434 +11,434 @@
 </defs>
 <style>
 rect { shape-rendering: crispEdges; }
-text { font-family: -apple-system, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; transform-box: fill-box; transform-origin: 50% 65%; }
+text { font-family: -apple-system, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; transform-box: fill-box; transform-origin: center; }
 @keyframes plant0 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   0.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   1.231% { opacity: 1; transform: scale(1) rotate(0deg); }
-  24.686% { transform: scale(1) rotate(5deg); }
-  48.142% { transform: scale(1) rotate(-4deg); }
-  69.922% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  8.231% { transform: scale(1) rotate(5deg); }
+  15.231% { transform: scale(1) rotate(-4deg); }
+  21.731% { transform: scale(1) rotate(3deg); }
+  26.231% { opacity: 1; transform: scale(1) rotate(0deg); }
+  27.462% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant1 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   1.538% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   2.769% { opacity: 1; transform: scale(1) rotate(0deg); }
-  25.794% { transform: scale(1) rotate(5deg); }
-  48.818% { transform: scale(1) rotate(-4deg); }
-  70.198% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  9.769% { transform: scale(1) rotate(5deg); }
+  16.769% { transform: scale(1) rotate(-4deg); }
+  23.269% { transform: scale(1) rotate(3deg); }
+  27.769% { opacity: 1; transform: scale(1) rotate(0deg); }
+  29.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant2 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   3.077% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   4.308% { opacity: 1; transform: scale(1) rotate(0deg); }
-  26.902% { transform: scale(1) rotate(5deg); }
-  49.495% { transform: scale(1) rotate(-4deg); }
-  70.475% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  11.308% { transform: scale(1) rotate(5deg); }
+  18.308% { transform: scale(1) rotate(-4deg); }
+  24.808% { transform: scale(1) rotate(3deg); }
+  29.308% { opacity: 1; transform: scale(1) rotate(0deg); }
+  30.538% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant3 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   4.615% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   5.846% { opacity: 1; transform: scale(1) rotate(0deg); }
-  28.009% { transform: scale(1) rotate(5deg); }
-  50.172% { transform: scale(1) rotate(-4deg); }
-  70.752% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  12.846% { transform: scale(1) rotate(5deg); }
+  19.846% { transform: scale(1) rotate(-4deg); }
+  26.346% { transform: scale(1) rotate(3deg); }
+  30.846% { opacity: 1; transform: scale(1) rotate(0deg); }
+  32.077% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant4 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   6.154% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   7.385% { opacity: 1; transform: scale(1) rotate(0deg); }
-  29.117% { transform: scale(1) rotate(5deg); }
-  50.849% { transform: scale(1) rotate(-4deg); }
-  71.029% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  14.385% { transform: scale(1) rotate(5deg); }
+  21.385% { transform: scale(1) rotate(-4deg); }
+  27.885% { transform: scale(1) rotate(3deg); }
+  32.385% { opacity: 1; transform: scale(1) rotate(0deg); }
+  33.615% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant5 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   7.692% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   8.923% { opacity: 1; transform: scale(1) rotate(0deg); }
-  30.225% { transform: scale(1) rotate(5deg); }
-  51.526% { transform: scale(1) rotate(-4deg); }
-  71.306% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  15.923% { transform: scale(1) rotate(5deg); }
+  22.923% { transform: scale(1) rotate(-4deg); }
+  29.423% { transform: scale(1) rotate(3deg); }
+  33.923% { opacity: 1; transform: scale(1) rotate(0deg); }
+  35.154% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant6 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   9.231% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   10.462% { opacity: 1; transform: scale(1) rotate(0deg); }
-  31.332% { transform: scale(1) rotate(5deg); }
-  52.203% { transform: scale(1) rotate(-4deg); }
-  71.583% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  17.462% { transform: scale(1) rotate(5deg); }
+  24.462% { transform: scale(1) rotate(-4deg); }
+  30.962% { transform: scale(1) rotate(3deg); }
+  35.462% { opacity: 1; transform: scale(1) rotate(0deg); }
+  36.692% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant7 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   10.769% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   12.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  32.440% { transform: scale(1) rotate(5deg); }
-  52.880% { transform: scale(1) rotate(-4deg); }
-  71.860% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  19.000% { transform: scale(1) rotate(5deg); }
+  26.000% { transform: scale(1) rotate(-4deg); }
+  32.500% { transform: scale(1) rotate(3deg); }
+  37.000% { opacity: 1; transform: scale(1) rotate(0deg); }
+  38.231% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant8 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   12.308% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   13.538% { opacity: 1; transform: scale(1) rotate(0deg); }
-  33.548% { transform: scale(1) rotate(5deg); }
-  53.557% { transform: scale(1) rotate(-4deg); }
-  72.137% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  20.538% { transform: scale(1) rotate(5deg); }
+  27.538% { transform: scale(1) rotate(-4deg); }
+  34.038% { transform: scale(1) rotate(3deg); }
+  38.538% { opacity: 1; transform: scale(1) rotate(0deg); }
+  39.769% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant9 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   13.846% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   15.077% { opacity: 1; transform: scale(1) rotate(0deg); }
-  34.655% { transform: scale(1) rotate(5deg); }
-  54.234% { transform: scale(1) rotate(-4deg); }
-  72.414% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  22.077% { transform: scale(1) rotate(5deg); }
+  29.077% { transform: scale(1) rotate(-4deg); }
+  35.577% { transform: scale(1) rotate(3deg); }
+  40.077% { opacity: 1; transform: scale(1) rotate(0deg); }
+  41.308% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant10 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   15.385% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   16.615% { opacity: 1; transform: scale(1) rotate(0deg); }
-  35.763% { transform: scale(1) rotate(5deg); }
-  54.911% { transform: scale(1) rotate(-4deg); }
-  72.691% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  23.615% { transform: scale(1) rotate(5deg); }
+  30.615% { transform: scale(1) rotate(-4deg); }
+  37.115% { transform: scale(1) rotate(3deg); }
+  41.615% { opacity: 1; transform: scale(1) rotate(0deg); }
+  42.846% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant11 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   16.923% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   18.154% { opacity: 1; transform: scale(1) rotate(0deg); }
-  36.871% { transform: scale(1) rotate(5deg); }
-  55.588% { transform: scale(1) rotate(-4deg); }
-  72.968% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  25.154% { transform: scale(1) rotate(5deg); }
+  32.154% { transform: scale(1) rotate(-4deg); }
+  38.654% { transform: scale(1) rotate(3deg); }
+  43.154% { opacity: 1; transform: scale(1) rotate(0deg); }
+  44.385% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant12 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   18.462% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   19.692% { opacity: 1; transform: scale(1) rotate(0deg); }
-  37.978% { transform: scale(1) rotate(5deg); }
-  56.265% { transform: scale(1) rotate(-4deg); }
-  73.245% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  26.692% { transform: scale(1) rotate(5deg); }
+  33.692% { transform: scale(1) rotate(-4deg); }
+  40.192% { transform: scale(1) rotate(3deg); }
+  44.692% { opacity: 1; transform: scale(1) rotate(0deg); }
+  45.923% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant13 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   20.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   21.231% { opacity: 1; transform: scale(1) rotate(0deg); }
-  39.086% { transform: scale(1) rotate(5deg); }
-  56.942% { transform: scale(1) rotate(-4deg); }
-  73.522% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  28.231% { transform: scale(1) rotate(5deg); }
+  35.231% { transform: scale(1) rotate(-4deg); }
+  41.731% { transform: scale(1) rotate(3deg); }
+  46.231% { opacity: 1; transform: scale(1) rotate(0deg); }
+  47.462% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant14 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   21.538% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   22.769% { opacity: 1; transform: scale(1) rotate(0deg); }
-  40.194% { transform: scale(1) rotate(5deg); }
-  57.618% { transform: scale(1) rotate(-4deg); }
-  73.798% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  29.769% { transform: scale(1) rotate(5deg); }
+  36.769% { transform: scale(1) rotate(-4deg); }
+  43.269% { transform: scale(1) rotate(3deg); }
+  47.769% { opacity: 1; transform: scale(1) rotate(0deg); }
+  49.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant15 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   23.077% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   24.308% { opacity: 1; transform: scale(1) rotate(0deg); }
-  41.302% { transform: scale(1) rotate(5deg); }
-  58.295% { transform: scale(1) rotate(-4deg); }
-  74.075% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  31.308% { transform: scale(1) rotate(5deg); }
+  38.308% { transform: scale(1) rotate(-4deg); }
+  44.808% { transform: scale(1) rotate(3deg); }
+  49.308% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50.538% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant16 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   24.615% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   25.846% { opacity: 1; transform: scale(1) rotate(0deg); }
-  42.409% { transform: scale(1) rotate(5deg); }
-  58.972% { transform: scale(1) rotate(-4deg); }
-  74.352% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  32.846% { transform: scale(1) rotate(5deg); }
+  39.846% { transform: scale(1) rotate(-4deg); }
+  46.346% { transform: scale(1) rotate(3deg); }
+  50.846% { opacity: 1; transform: scale(1) rotate(0deg); }
+  52.077% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant17 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   26.154% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   27.385% { opacity: 1; transform: scale(1) rotate(0deg); }
-  43.517% { transform: scale(1) rotate(5deg); }
-  59.649% { transform: scale(1) rotate(-4deg); }
-  74.629% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  34.385% { transform: scale(1) rotate(5deg); }
+  41.385% { transform: scale(1) rotate(-4deg); }
+  47.885% { transform: scale(1) rotate(3deg); }
+  52.385% { opacity: 1; transform: scale(1) rotate(0deg); }
+  53.615% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant18 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   27.692% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   28.923% { opacity: 1; transform: scale(1) rotate(0deg); }
-  44.625% { transform: scale(1) rotate(5deg); }
-  60.326% { transform: scale(1) rotate(-4deg); }
-  74.906% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  35.923% { transform: scale(1) rotate(5deg); }
+  42.923% { transform: scale(1) rotate(-4deg); }
+  49.423% { transform: scale(1) rotate(3deg); }
+  53.923% { opacity: 1; transform: scale(1) rotate(0deg); }
+  55.154% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant19 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   29.231% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   30.462% { opacity: 1; transform: scale(1) rotate(0deg); }
-  45.732% { transform: scale(1) rotate(5deg); }
-  61.003% { transform: scale(1) rotate(-4deg); }
-  75.183% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  37.462% { transform: scale(1) rotate(5deg); }
+  44.462% { transform: scale(1) rotate(-4deg); }
+  50.962% { transform: scale(1) rotate(3deg); }
+  55.462% { opacity: 1; transform: scale(1) rotate(0deg); }
+  56.692% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant20 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   30.769% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   32.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  46.840% { transform: scale(1) rotate(5deg); }
-  61.680% { transform: scale(1) rotate(-4deg); }
-  75.460% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  39.000% { transform: scale(1) rotate(5deg); }
+  46.000% { transform: scale(1) rotate(-4deg); }
+  52.500% { transform: scale(1) rotate(3deg); }
+  57.000% { opacity: 1; transform: scale(1) rotate(0deg); }
+  58.231% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant21 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   32.308% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   33.538% { opacity: 1; transform: scale(1) rotate(0deg); }
-  47.948% { transform: scale(1) rotate(5deg); }
-  62.357% { transform: scale(1) rotate(-4deg); }
-  75.737% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  40.538% { transform: scale(1) rotate(5deg); }
+  47.538% { transform: scale(1) rotate(-4deg); }
+  54.038% { transform: scale(1) rotate(3deg); }
+  58.538% { opacity: 1; transform: scale(1) rotate(0deg); }
+  59.769% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant22 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   33.846% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   35.077% { opacity: 1; transform: scale(1) rotate(0deg); }
-  49.055% { transform: scale(1) rotate(5deg); }
-  63.034% { transform: scale(1) rotate(-4deg); }
-  76.014% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  42.077% { transform: scale(1) rotate(5deg); }
+  49.077% { transform: scale(1) rotate(-4deg); }
+  55.577% { transform: scale(1) rotate(3deg); }
+  60.077% { opacity: 1; transform: scale(1) rotate(0deg); }
+  61.308% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant23 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   35.385% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   36.615% { opacity: 1; transform: scale(1) rotate(0deg); }
-  50.163% { transform: scale(1) rotate(5deg); }
-  63.711% { transform: scale(1) rotate(-4deg); }
-  76.291% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  43.615% { transform: scale(1) rotate(5deg); }
+  50.615% { transform: scale(1) rotate(-4deg); }
+  57.115% { transform: scale(1) rotate(3deg); }
+  61.615% { opacity: 1; transform: scale(1) rotate(0deg); }
+  62.846% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant24 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   36.923% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   38.154% { opacity: 1; transform: scale(1) rotate(0deg); }
-  51.271% { transform: scale(1) rotate(5deg); }
-  64.388% { transform: scale(1) rotate(-4deg); }
-  76.568% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  45.154% { transform: scale(1) rotate(5deg); }
+  52.154% { transform: scale(1) rotate(-4deg); }
+  58.654% { transform: scale(1) rotate(3deg); }
+  63.154% { opacity: 1; transform: scale(1) rotate(0deg); }
+  64.385% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant25 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   38.462% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   39.692% { opacity: 1; transform: scale(1) rotate(0deg); }
-  52.378% { transform: scale(1) rotate(5deg); }
-  65.065% { transform: scale(1) rotate(-4deg); }
-  76.845% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  46.692% { transform: scale(1) rotate(5deg); }
+  53.692% { transform: scale(1) rotate(-4deg); }
+  60.192% { transform: scale(1) rotate(3deg); }
+  64.692% { opacity: 1; transform: scale(1) rotate(0deg); }
+  65.923% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant26 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   40.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   41.231% { opacity: 1; transform: scale(1) rotate(0deg); }
-  53.486% { transform: scale(1) rotate(5deg); }
-  65.742% { transform: scale(1) rotate(-4deg); }
-  77.122% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  48.231% { transform: scale(1) rotate(5deg); }
+  55.231% { transform: scale(1) rotate(-4deg); }
+  61.731% { transform: scale(1) rotate(3deg); }
+  66.231% { opacity: 1; transform: scale(1) rotate(0deg); }
+  67.462% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant27 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   41.538% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   42.769% { opacity: 1; transform: scale(1) rotate(0deg); }
-  54.594% { transform: scale(1) rotate(5deg); }
-  66.418% { transform: scale(1) rotate(-4deg); }
-  77.398% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  49.769% { transform: scale(1) rotate(5deg); }
+  56.769% { transform: scale(1) rotate(-4deg); }
+  63.269% { transform: scale(1) rotate(3deg); }
+  67.769% { opacity: 1; transform: scale(1) rotate(0deg); }
+  69.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant28 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   43.077% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   44.308% { opacity: 1; transform: scale(1) rotate(0deg); }
-  55.702% { transform: scale(1) rotate(5deg); }
-  67.095% { transform: scale(1) rotate(-4deg); }
-  77.675% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  51.308% { transform: scale(1) rotate(5deg); }
+  58.308% { transform: scale(1) rotate(-4deg); }
+  64.808% { transform: scale(1) rotate(3deg); }
+  69.308% { opacity: 1; transform: scale(1) rotate(0deg); }
+  70.538% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant29 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   44.615% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   45.846% { opacity: 1; transform: scale(1) rotate(0deg); }
-  56.809% { transform: scale(1) rotate(5deg); }
-  67.772% { transform: scale(1) rotate(-4deg); }
-  77.952% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  52.846% { transform: scale(1) rotate(5deg); }
+  59.846% { transform: scale(1) rotate(-4deg); }
+  66.346% { transform: scale(1) rotate(3deg); }
+  70.846% { opacity: 1; transform: scale(1) rotate(0deg); }
+  72.077% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant30 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   46.154% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   47.385% { opacity: 1; transform: scale(1) rotate(0deg); }
-  57.917% { transform: scale(1) rotate(5deg); }
-  68.449% { transform: scale(1) rotate(-4deg); }
-  78.229% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  54.385% { transform: scale(1) rotate(5deg); }
+  61.385% { transform: scale(1) rotate(-4deg); }
+  67.885% { transform: scale(1) rotate(3deg); }
+  72.385% { opacity: 1; transform: scale(1) rotate(0deg); }
+  73.615% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant31 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   47.692% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   48.923% { opacity: 1; transform: scale(1) rotate(0deg); }
-  59.025% { transform: scale(1) rotate(5deg); }
-  69.126% { transform: scale(1) rotate(-4deg); }
-  78.506% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  55.923% { transform: scale(1) rotate(5deg); }
+  62.923% { transform: scale(1) rotate(-4deg); }
+  69.423% { transform: scale(1) rotate(3deg); }
+  73.923% { opacity: 1; transform: scale(1) rotate(0deg); }
+  75.154% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant32 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   49.231% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   50.462% { opacity: 1; transform: scale(1) rotate(0deg); }
-  60.132% { transform: scale(1) rotate(5deg); }
-  69.803% { transform: scale(1) rotate(-4deg); }
-  78.783% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  57.462% { transform: scale(1) rotate(5deg); }
+  64.462% { transform: scale(1) rotate(-4deg); }
+  70.962% { transform: scale(1) rotate(3deg); }
+  75.462% { opacity: 1; transform: scale(1) rotate(0deg); }
+  76.692% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant33 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   50.769% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   52.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  61.240% { transform: scale(1) rotate(5deg); }
-  70.480% { transform: scale(1) rotate(-4deg); }
-  79.060% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  59.000% { transform: scale(1) rotate(5deg); }
+  66.000% { transform: scale(1) rotate(-4deg); }
+  72.500% { transform: scale(1) rotate(3deg); }
+  77.000% { opacity: 1; transform: scale(1) rotate(0deg); }
+  78.231% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant34 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   52.308% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   53.538% { opacity: 1; transform: scale(1) rotate(0deg); }
-  62.348% { transform: scale(1) rotate(5deg); }
-  71.157% { transform: scale(1) rotate(-4deg); }
-  79.337% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  60.538% { transform: scale(1) rotate(5deg); }
+  67.538% { transform: scale(1) rotate(-4deg); }
+  74.038% { transform: scale(1) rotate(3deg); }
+  78.538% { opacity: 1; transform: scale(1) rotate(0deg); }
+  79.769% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant35 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   53.846% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   55.077% { opacity: 1; transform: scale(1) rotate(0deg); }
-  63.455% { transform: scale(1) rotate(5deg); }
-  71.834% { transform: scale(1) rotate(-4deg); }
-  79.614% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  62.077% { transform: scale(1) rotate(5deg); }
+  69.077% { transform: scale(1) rotate(-4deg); }
+  75.577% { transform: scale(1) rotate(3deg); }
+  80.077% { opacity: 1; transform: scale(1) rotate(0deg); }
+  81.308% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant36 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   55.385% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   56.615% { opacity: 1; transform: scale(1) rotate(0deg); }
-  64.563% { transform: scale(1) rotate(5deg); }
-  72.511% { transform: scale(1) rotate(-4deg); }
-  79.891% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  63.615% { transform: scale(1) rotate(5deg); }
+  70.615% { transform: scale(1) rotate(-4deg); }
+  77.115% { transform: scale(1) rotate(3deg); }
+  81.615% { opacity: 1; transform: scale(1) rotate(0deg); }
+  82.846% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant37 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   56.923% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   58.154% { opacity: 1; transform: scale(1) rotate(0deg); }
-  65.671% { transform: scale(1) rotate(5deg); }
-  73.188% { transform: scale(1) rotate(-4deg); }
-  80.168% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  65.154% { transform: scale(1) rotate(5deg); }
+  72.154% { transform: scale(1) rotate(-4deg); }
+  78.654% { transform: scale(1) rotate(3deg); }
+  83.154% { opacity: 1; transform: scale(1) rotate(0deg); }
+  84.385% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 @keyframes plant38 {
   0% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   58.462% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   59.692% { opacity: 1; transform: scale(1) rotate(0deg); }
-  66.778% { transform: scale(1) rotate(5deg); }
-  73.865% { transform: scale(1) rotate(-4deg); }
-  80.445% { transform: scale(1) rotate(3deg); }
-  85.000% { opacity: 1; transform: scale(1) rotate(0deg); }
-  97.000% { opacity: 0; transform: scale(0.25) rotate(0deg); }
+  66.692% { transform: scale(1) rotate(5deg); }
+  73.692% { transform: scale(1) rotate(-4deg); }
+  80.192% { transform: scale(1) rotate(3deg); }
+  84.692% { opacity: 1; transform: scale(1) rotate(0deg); }
+  85.923% { opacity: 0; transform: scale(0.25) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.25) rotate(0deg); }
 }
 
@@ -817,6 +817,7 @@ text { font-family: -apple-system, "Apple Color Emoji", "Segoe UI Emoji", sans-s
 <rect x="684" y="47" width="10" height="10" rx="2.5" fill="#000" opacity="0.08"/>
 <rect x="684" y="60" width="10" height="10" rx="2.5" fill="#fff" opacity="0.12"/>
 <rect x="684" y="73" width="10" height="10" rx="2.5" fill="#fff" opacity="0.12"/>
+<rect x="684" y="86" width="10" height="10" rx="2.5" fill="#fff" opacity="0.11"/>
 
 <text x="338" y="26" font-size="8.0" text-anchor="middle" dominant-baseline="central" filter="url(#plantShadow)" style="animation: plant0 16s linear infinite; opacity:0;">🌿</text>
 <text x="338" y="65" font-size="8.0" text-anchor="middle" dominant-baseline="central" filter="url(#plantShadow)" style="animation: plant1 16s linear infinite; opacity:0;">🌿</text>

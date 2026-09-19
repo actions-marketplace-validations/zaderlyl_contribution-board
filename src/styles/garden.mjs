@@ -4,8 +4,10 @@
 // propre grille) — rien pour un jour sans commit, de l'herbe pour "presque
 // rien", puis fleur et enfin arbre pour les plus gros jours. Les plantes
 // poussent dans l'ordre chronologique (comme sur une vraie saison), ondulent
-// doucement une fois écloses, tiennent en pleine floraison, puis se fanent
-// d'un coup avant que la boucle recommence.
+// doucement une fois écloses, tiennent en pleine floraison le même temps
+// chacune, puis se fanent à leur tour dans le même ordre — une vague de
+// fanaison qui suit la vague de pousse, plutôt qu'un fondu groupé qui
+// couperait court aux plantes les plus récentes.
 
 import { gridGeometry } from "../lib/contributions.mjs";
 
@@ -39,9 +41,8 @@ function hash(n) {
 export function render(days, opts = {}) {
   const bg = opts.background ?? "#0d1117";
   const CYCLE = opts.cycle ?? 16;
-  const GROW_END = 0.6;   // fin de la pousse (toutes les plantes ont poussé)
-  const HOLD_END = 0.85;  // jardin en pleine floraison (avec léger balancement)
-  const WILT_END = 0.97;  // fané, juste avant que la boucle reparte
+  const GROW_END = 0.6;  // fin de la pousse (toutes les plantes ont poussé)
+  const BLOOM = 0.25;     // durée de pleine floraison, propre à chaque plante
 
   const g = gridGeometry(days, { top: 8, left: 8, right: 8, bottom: 8 });
   const bedX = g.PAD_LEFT - 3, bedY = g.PAD_TOP - 3;
@@ -77,13 +78,20 @@ export function render(days, opts = {}) {
     const growStart = (i / n) * GROW_END;
     const growEnd = growStart + growDur;
 
-    // Léger balancement une fois éclos : quelques degrés de rotation, deux
+    // Chaque plante fleurit BLOOM (fraction du cycle) après avoir fini de
+    // pousser, puis se fane — indépendamment des autres. Comme la fanaison
+    // suit la pousse avec le même décalage pour toutes, elle balaie la
+    // grille dans le même ordre chronologique qu'une vague qui chasse
+    // l'autre, et chaque plante profite du même temps de floraison.
+    const wiltStart = growEnd + BLOOM;
+    const wiltEnd = wiltStart + growDur;
+
+    // Léger balancement une fois éclose : quelques degrés de rotation, deux
     // allers-retours, avant la fanaison — donne un peu de vie sans ajouter
     // une deuxième animation (tout reste dans le même `transform`).
-    const swaySpan = Math.max(0, HOLD_END - growEnd);
-    const s1 = growEnd + swaySpan * 0.28;
-    const s2 = growEnd + swaySpan * 0.56;
-    const s3 = growEnd + swaySpan * 0.82;
+    const s1 = growEnd + BLOOM * 0.28;
+    const s2 = growEnd + BLOOM * 0.56;
+    const s3 = growEnd + BLOOM * 0.82;
 
     plantKeyframes += `@keyframes ${name} {\n` +
       `  0% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
@@ -92,8 +100,8 @@ export function render(days, opts = {}) {
       `  ${(s1 * 100).toFixed(3)}% { transform: scale(1) rotate(5deg); }\n` +
       `  ${(s2 * 100).toFixed(3)}% { transform: scale(1) rotate(-4deg); }\n` +
       `  ${(s3 * 100).toFixed(3)}% { transform: scale(1) rotate(3deg); }\n` +
-      `  ${(HOLD_END * 100).toFixed(3)}% { opacity: 1; transform: scale(1) rotate(0deg); }\n` +
-      `  ${(WILT_END * 100).toFixed(3)}% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
+      `  ${(wiltStart * 100).toFixed(3)}% { opacity: 1; transform: scale(1) rotate(0deg); }\n` +
+      `  ${(wiltEnd * 100).toFixed(3)}% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
       `  100% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
       `}\n`;
     plantEls += `<text x="${cx}" y="${cy}" font-size="${(g.CELL * tier.scale).toFixed(1)}" text-anchor="middle" dominant-baseline="central" filter="url(#plantShadow)" style="animation: ${name} ${CYCLE}s linear infinite; opacity:0;">${tier.icon}</text>\n`;
@@ -112,7 +120,7 @@ export function render(days, opts = {}) {
 </defs>
 <style>
 rect { shape-rendering: crispEdges; }
-text { font-family: -apple-system, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; transform-box: fill-box; transform-origin: 50% 65%; }
+text { font-family: -apple-system, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; transform-box: fill-box; transform-origin: center; }
 ${plantKeyframes}
 </style>
 <rect width="${g.width}" height="${g.height}" fill="${bg}"/>
