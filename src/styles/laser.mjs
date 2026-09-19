@@ -1,9 +1,9 @@
 // Style "laser" : un rayon ancré au coin en haut à gauche de la grille
 // traite les colonnes une par une, de la plus récente (droite) à la plus
-// ancienne (gauche). Sur chaque colonne, il vise ses jours actifs dans
-// l'ordre (haut vers bas sur les colonnes "aller", bas vers haut sur les
-// colonnes "retour" — le sens alterne d'une colonne à l'autre) et s'arrête
-// pile dessus un instant avant de continuer. Un jour touché devient un
+// ancienne (gauche). Sur chaque colonne, il glisse sur ses jours actifs
+// dans l'ordre (haut vers bas sur les colonnes "aller", bas vers haut sur
+// les colonnes "retour" — le sens alterne d'une colonne à l'autre), sans
+// jamais s'arrêter — juste le contact suffit. Un jour touché devient un
 // carré plein qui reste rempli jusqu'à la fin du passage sur toutes les
 // colonnes actives ; tout se réinitialise alors et ça reboucle.
 
@@ -12,12 +12,11 @@ import { LEVEL_COLOR, gridGeometry } from "../lib/contributions.mjs";
 export const meta = {
   id: "laser",
   label: "Commit Laser",
-  description: "Un rayon ancré en haut à gauche traite chaque colonne active une par une (droite à gauche), s'arrêtant sur chaque commit ; il devient un carré plein qui reste rempli jusqu'à la fin du passage.",
+  description: "Un rayon ancré en haut à gauche glisse sur chaque colonne active (droite à gauche) sans s'arrêter ; un jour touché au passage devient un carré plein qui reste rempli jusqu'à la fin du passage.",
 };
 
-const ANG_SPEED = 60;   // deg/s, vitesse de rotation constante entre deux arrêts
-const STOP_DWELL = 0.25; // s, pause du rayon sur chaque commit touché
-const HOLD = 0.6;       // s, pause une fois tous les commits traités
+const ANG_SPEED = 12;  // deg/s, vitesse de rotation constante (pas d'arrêt, juste un passage)
+const HOLD = 0.6;      // s, pause une fois tous les commits traités
 const RESET_DUR = 0.35; // s, retour à l'état de départ avant la boucle
 
 export function render(days, opts = {}) {
@@ -64,32 +63,30 @@ export function render(days, opts = {}) {
   const dists = ordered.map((x) => distOf(x.d));
   const maxDist = Math.max(...dists, 1);
 
-  // Timeline absolue (s) : arrivée sur la cible i, pause dessus, puis trajet
-  // vers i+1 à vitesse angulaire constante — proportionnel à la vraie
-  // distance angulaire (même leçon que le bug de vague de garden : un pas
-  // ne doit pas valoir un temps fixe si les écarts réels varient), que la
-  // cible suivante soit dans la même colonne ou dans la suivante.
+  // Timeline absolue (s) : le rayon glisse d'une cible à la suivante à
+  // vitesse angulaire constante, sans jamais s'arrêter — le temps entre
+  // deux touches est proportionnel à la vraie distance angulaire (même
+  // leçon que le bug de vague de garden : un pas ne doit pas valoir un
+  // temps fixe si les écarts réels varient), que la cible suivante soit
+  // dans la même colonne ou dans la suivante.
   const arrival = [0];
   for (let i = 1; i < n; i++) {
     const travel = Math.abs(angles[i] - angles[i - 1]) / ANG_SPEED;
-    arrival.push(arrival[i - 1] + STOP_DWELL + travel);
+    arrival.push(arrival[i - 1] + travel);
   }
-  const lastStopEnd = arrival[n - 1] + STOP_DWELL;
-  const holdEnd = lastStopEnd + HOLD;
+  const holdEnd = arrival[n - 1] + HOLD;
   const returnTravel = Math.abs(angles[0] - angles[n - 1]) / ANG_SPEED;
   const cycleEnd = holdEnd + Math.max(RESET_DUR, returnTravel);
   const pct = (s) => ((s / cycleEnd) * 100).toFixed(3);
 
-  // Le rayon : une seule animation qui visite chaque cible dans l'ordre,
-  // s'arrête dessus (sa longueur se cale sur la distance réelle à la
-  // cible, il ne la transperce pas), puis revient à son point de départ
-  // pour reboucler.
+  // Le rayon : une seule animation qui glisse sur chaque cible dans
+  // l'ordre (sa longueur se cale sur la distance réelle à la cible visée,
+  // il ne la transperce pas), en douceur (ease-in-out) entre chaque point,
+  // puis revient à son point de départ pour reboucler.
   const xf = (i) => `rotate(${angles[i].toFixed(2)}deg) scaleX(${(dists[i] / maxDist).toFixed(4)})`;
-  let beamKf = `0% { transform: ${xf(0)}; }\n`;
+  let beamKf = `0% { transform: ${xf(0)}; animation-timing-function: ease-in-out; }\n`;
   for (let i = 0; i < n; i++) {
-    const stopEnd = arrival[i] + STOP_DWELL;
-    beamKf += `${pct(arrival[i])}% { transform: ${xf(i)}; animation-timing-function: linear; }\n`;
-    beamKf += `${pct(stopEnd)}% { transform: ${xf(i)}; animation-timing-function: linear; }\n`;
+    beamKf += `${pct(arrival[i])}% { transform: ${xf(i)}; animation-timing-function: ease-in-out; }\n`;
   }
   beamKf += `${pct(holdEnd)}% { transform: ${xf(n - 1)}; animation-timing-function: ease-in-out; }\n`;
   beamKf += `100% { transform: ${xf(0)}; }\n`;
@@ -104,8 +101,8 @@ export function render(days, opts = {}) {
     keyframes += `@keyframes ${name} {
   0% { opacity: 0; transform: scale(0.3); }
   ${pct(touchAt)}% { opacity: 0; transform: scale(0.3); animation-timing-function: ease-out; }
-  ${pct(Math.min(cycleEnd, touchAt + 0.08))}% { opacity: 1; transform: scale(1.25); }
-  ${pct(Math.min(cycleEnd, touchAt + 0.16))}% { opacity: 1; transform: scale(1); }
+  ${pct(Math.min(cycleEnd, touchAt + 0.08))}% { opacity: 1; transform: scale(1.25); animation-timing-function: ease-in-out; }
+  ${pct(Math.min(cycleEnd, touchAt + 0.18))}% { opacity: 1; transform: scale(1); }
   ${pct(holdEnd)}% { opacity: 1; transform: scale(1); }
   ${pct(cycleEnd)}% { opacity: 0; transform: scale(0.3); animation-timing-function: ease-in; }
   100% { opacity: 0; transform: scale(0.3); }
