@@ -61,10 +61,41 @@ export function render(days, opts = {}) {
     return angleDeg <= cornerAngle ? g.gridWidth / Math.cos(rad) : g.gridHeight / Math.sin(rad);
   };
 
+  // Empreinte angulaire (depuis l'origine) de chaque jour actif de toute la
+  // grille — pas seulement de la colonne en cours : un rayon qui, à un
+  // angle donné, ne touche rien dans SA colonne peut quand même être
+  // bloqué par un commit d'une colonne plus proche de l'origine qui se
+  // trouve pile sur le même angle. Un vrai laser se cogne sur le premier
+  // obstacle rencontré, peu importe sa colonne.
+  const active = days.filter((d) => d.count > 0);
+  const obstacles = active.map((d) => {
+    const x0 = g.cellX(d.col), y0 = g.cellY(d.row);
+    const corners = [[x0, y0], [x0 + g.CELL, y0], [x0, y0 + g.CELL], [x0 + g.CELL, y0 + g.CELL]];
+    const cornerAngles = corners.map(([x, y]) => angleAt(x, y));
+    return {
+      minA: Math.min(...cornerAngles),
+      maxA: Math.max(...cornerAngles),
+      dist: distTo(x0 + g.CELL / 2, y0 + g.CELL / 2),
+    };
+  });
+  // Plus proche obstacle (de n'importe quelle colonne) dont l'empreinte
+  // couvre cet angle, sinon la distance de repli donnée (le mur, ou le
+  // commit de la colonne en cours si elle en a un à cette ligne).
+  const nearestBlocker = (angleDeg, fallback) => {
+    let best = fallback;
+    for (const o of obstacles) {
+      if (angleDeg >= o.minA - 1e-6 && angleDeg <= o.maxA + 1e-6 && o.dist < best) best = o.dist;
+    }
+    return best;
+  };
+
   // Pour chaque colonne active, un point par ligne (0..6), dans l'ordre de
   // balayage de cette colonne (aller = haut->bas, retour = bas->haut). Une
-  // ligne sans commit garde la pleine longueur (rien ne l'arrête) ; une
-  // ligne avec un commit se raccourcit pile dessus.
+  // ligne sans commit garde la pleine longueur, sauf si un commit d'une
+  // colonne plus proche de l'origine se trouve pile sur le même angle (il
+  // bloque la vue avant le mur). Une ligne avec un commit vise toujours
+  // pile ce commit-là — c'est le point dédié de sa visite, pas la peine de
+  // le laisser bloquer par un autre pour cet instant précis.
   const points = []; // { angle, dist, day? }
   cols.forEach((col, ci) => {
     const cx = g.cellX(col) + g.CELL / 2;
@@ -74,7 +105,8 @@ export function render(days, opts = {}) {
       const cy = g.cellY(row) + g.CELL / 2;
       const day = dayByRow.get(row);
       const angle = angleAt(cx, cy);
-      points.push({ angle, dist: day ? distTo(cx, cy) : boundaryDist(angle), day });
+      const dist = day ? distTo(cx, cy) : nearestBlocker(angle, boundaryDist(angle));
+      points.push({ angle, dist, day });
     });
   });
   const n = points.length;
