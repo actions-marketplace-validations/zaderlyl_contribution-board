@@ -6,8 +6,11 @@
 // distance, pas au rang du banc — et le pêche d'un coup (splash) à son
 // arrivée. Les bancs déjà pêchés restent vides jusqu'à la boucle suivante.
 //
-// Brouillon exploratoire, pas encore raffiné (cf. discussion) : fond plat,
-// poissons immobiles, splash simple. Premier jet volontairement simple.
+// Brouillon exploratoire (cf. discussion) : eau qui ondule doucement, léger
+// tangage du bateau et sillage derrière lui, poissons avec un flottement
+// partagé (pas de délai aléatoire par poisson, pour rester simple) — un
+// cran au-dessus du tout premier jet sans repartir sur des éléments plus
+// complexes (le filet-rectangle a été laissé de côté).
 
 import { gridGeometry } from "../lib/contributions.mjs";
 
@@ -87,7 +90,7 @@ export function render(days, opts = {}) {
       const tier = TIERS[d.level];
       const cx = g.cellX(d.col) + g.CELL / 2;
       const cy = g.cellY(d.row) + g.CELL / 2;
-      fishEls += `<text x="${cx.toFixed(1)}" y="${cy.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="${(g.CELL * tier.scale).toFixed(1)}" style="animation: catch${si} ${CYCLE}s linear infinite;">🐟</text>\n`;
+      fishEls += `<text x="${cx.toFixed(1)}" y="${cy.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="${(g.CELL * tier.scale).toFixed(1)}" style="animation: catch${si} ${CYCLE}s linear infinite, fishBob 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center;">🐟</text>\n`;
     });
     keyframes += `@keyframes splash${si} {
   0% { opacity: 0; r: 1px; }
@@ -98,16 +101,51 @@ export function render(days, opts = {}) {
     splashEls += `<circle cx="${school.centerX.toFixed(1)}" cy="${g.PAD_TOP + g.gridHeight / 2}" r="1" fill="none" stroke="#eaf6ff" stroke-width="1.2" style="animation: splash${si} ${CYCLE}s linear infinite;"/>\n`;
   });
 
+  // Surface de l'eau : une ondulation douce (grandes courbes en S) qui
+  // défile en boucle continue, indépendante du cycle des commits — même
+  // principe que le bord de vague du style tide, en plus discret.
+  const waveY = waterY + 6;
+  const WAVE_LEN = 40, WAVE_AMP = 1.6, WAVE_DUR = 4.5;
+  const half = WAVE_LEN / 2;
+  let waveD = `M${-WAVE_LEN},${waveY.toFixed(1)}`;
+  for (let x = -WAVE_LEN; x < g.width + WAVE_LEN * 2; x += WAVE_LEN) {
+    waveD += ` C${(x + half / 2).toFixed(1)},${(waveY - WAVE_AMP).toFixed(1)} ${(x + half).toFixed(1)},${(waveY - WAVE_AMP).toFixed(1)} ${(x + half).toFixed(1)},${waveY.toFixed(1)}`;
+    waveD += ` C${(x + half + half / 2).toFixed(1)},${(waveY + WAVE_AMP).toFixed(1)} ${(x + WAVE_LEN).toFixed(1)},${(waveY + WAVE_AMP).toFixed(1)} ${(x + WAVE_LEN).toFixed(1)},${waveY.toFixed(1)}`;
+  }
+
+  // Sillage : deux petits ronds qui reprennent le trajet du bateau avec un
+  // léger retard (delay négatif sur la même animation), et qui pulsent en
+  // s'estompant comme des remous.
+  // Chaque rond de sillage est dans son propre groupe : le décalage (translateX,
+  // via `sail` retardé) et le ricochet (scale/opacity, via `ripple`) touchent
+  // tous les deux `transform`, donc ils doivent être sur deux éléments
+  // différents pour ne pas s'écraser l'un l'autre.
+  const wake = [0.12, 0.24].map((delay, i) => (
+    `<g style="animation: sail ${CYCLE}s linear infinite; animation-delay: -${delay}s;">` +
+    `<circle cx="0" cy="${(waveY - 1).toFixed(1)}" r="2" fill="none" stroke="#eaf6ff" stroke-opacity="${(0.4 - i * 0.15).toFixed(2)}" stroke-width="1" ` +
+    `style="animation: ripple 1.6s ease-out infinite; animation-delay: -${(i * 0.5).toFixed(2)}s; transform-box: fill-box; transform-origin: center;"/>` +
+    `</g>`
+  )).join("");
+
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${g.width}" height="${g.height}" viewBox="0 0 ${g.width} ${g.height}">
 <style>
 text { font-family: -apple-system, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; }
 @keyframes sail { ${boatKf} }
+@keyframes bob { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-1.4px); } }
+@keyframes fishBob { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(1px); } }
+@keyframes wave { 0% { transform: translateX(0px); } 100% { transform: translateX(-${WAVE_LEN}px); } }
+@keyframes ripple { 0% { opacity: 0.6; transform: scale(0.4); } 100% { opacity: 0; transform: scale(1.6); } }
 ${keyframes}
 </style>
 <rect width="${g.width}" height="${g.height}" fill="${bg}"/>
-<line x1="0" y1="${(waterY + 6).toFixed(1)}" x2="${g.width}" y2="${(waterY + 6).toFixed(1)}" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+<g style="animation: wave ${WAVE_DUR}s linear infinite;">
+  <path d="${waveD}" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+</g>
 ${splashEls}
 ${fishEls}
-<text x="0" y="${waterY.toFixed(1)}" font-size="18" dominant-baseline="central" style="animation: sail ${CYCLE}s linear infinite;">⛵</text>
+${wake}
+<g style="animation: sail ${CYCLE}s linear infinite;">
+  <text x="0" y="${waterY.toFixed(1)}" font-size="18" dominant-baseline="central" style="animation: bob 2.1s ease-in-out infinite;">⛵</text>
+</g>
 </svg>`;
 }
