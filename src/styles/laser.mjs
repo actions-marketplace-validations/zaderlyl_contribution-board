@@ -1,22 +1,25 @@
 // Style "laser" : un rayon ancré au coin en haut à gauche de la grille
 // traite les colonnes une par une, de la plus récente (droite) à la plus
-// ancienne (gauche). Sur chaque colonne, il glisse sur ses jours actifs
-// dans l'ordre (haut vers bas sur les colonnes "aller", bas vers haut sur
-// les colonnes "retour" — le sens alterne d'une colonne à l'autre), sans
-// jamais s'arrêter — juste le contact suffit. Un jour touché devient un
-// carré plein qui reste rempli jusqu'à la fin du passage sur toutes les
-// colonnes actives ; tout se réinitialise alors et ça reboucle.
+// ancienne (gauche). Sur chaque colonne, il balaie vraiment les 7 lignes en
+// continu (haut vers bas sur les colonnes "aller", bas vers haut sur les
+// "retour" — le sens alterne d'une colonne à l'autre), pas seulement les
+// lignes actives. Comme un vrai laser : pleine longueur tant qu'il ne
+// touche rien, et il se raccourcit pile sur un jour actif (sans le
+// transpercer) avant de reprendre sa pleine longueur juste après. Un jour
+// touché devient un carré plein qui reste rempli jusqu'à la fin du passage
+// sur toutes les colonnes actives ; tout se réinitialise alors et ça
+// reboucle.
 
 import { LEVEL_COLOR, gridGeometry } from "../lib/contributions.mjs";
 
 export const meta = {
   id: "laser",
   label: "Commit Laser",
-  description: "Un rayon ancré en haut à gauche glisse sur chaque colonne active (droite à gauche) sans s'arrêter ; un jour touché au passage devient un carré plein qui reste rempli jusqu'à la fin du passage.",
+  description: "Un rayon ancré en haut à gauche balaie chaque colonne active ligne par ligne (droite à gauche), pleine longueur tant qu'il ne touche rien, raccourci pile sur les jours actifs qui deviennent alors des carrés pleins.",
 };
 
-const ANG_SPEED = 12;  // deg/s, vitesse de rotation constante (pas d'arrêt, juste un passage)
-const HOLD = 0.6;      // s, pause une fois tous les commits traités
+const ANG_SPEED = 12;   // deg/s, vitesse de rotation constante
+const HOLD = 0.6;       // s, pause une fois tous les commits traités
 const RESET_DUR = 0.35; // s, retour à l'état de départ avant la boucle
 
 export function render(days, opts = {}) {
@@ -31,10 +34,7 @@ export function render(days, opts = {}) {
     cellRects += `<rect x="${g.cellX(d.col)}" y="${g.cellY(d.row)}" width="${g.CELL}" height="${g.CELL}" rx="2" fill="#161b22"/>\n`;
   });
 
-  const angleOf = (d) => Math.atan2(g.cellY(d.row) + g.CELL / 2 - OY, g.cellX(d.col) + g.CELL / 2 - OX) * (180 / Math.PI);
-  // Distance du coin d'origine au bord proche de la case (pas son centre) :
-  // le rayon doit se cogner contre le commit, pas le transpercer jusqu'au milieu.
-  const distOf = (d) => Math.hypot(g.cellX(d.col) + g.CELL / 2 - OX, g.cellY(d.row) + g.CELL / 2 - OY) - g.CELL * 0.5;
+  const angleAt = (x, y) => Math.atan2(y - OY, x - OX) * (180 / Math.PI);
 
   // Regroupe les jours actifs par colonne, colonnes triées droite -> gauche.
   const byCol = new Map();
@@ -48,56 +48,70 @@ export function render(days, opts = {}) {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${g.width}" height="${g.height}" viewBox="0 0 ${g.width} ${g.height}"><rect width="${g.width}" height="${g.height}" fill="${bg}"/>${cellRects}</svg>`;
   }
 
-  // Ordre de visite complet : colonne par colonne (droite à gauche), et à
-  // l'intérieur de chaque colonne, du haut vers le bas sur les colonnes
-  // "aller" (paires), du bas vers le haut sur les "retour" (impaires) — ça
-  // enchaîne les colonnes sans jamais revenir sur ses pas.
-  const ordered = [];
-  cols.forEach((col, i) => {
-    const dayAngles = byCol.get(col).map((d) => ({ d, a: angleOf(d) }));
-    dayAngles.sort((x, y) => (i % 2 === 0 ? x.a - y.a : y.a - x.a));
-    ordered.push(...dayAngles);
-  });
-  const n = ordered.length;
-  const angles = ordered.map((x) => x.a);
-  const dists = ordered.map((x) => distOf(x.d));
-  const maxDist = Math.max(...dists, 1);
+  const maxDist = Math.hypot(g.gridWidth, g.gridHeight);
+  // Distance de l'origine au bord proche d'une case (pas son centre) : le
+  // rayon doit se cogner contre le commit, pas le transpercer.
+  const distTo = (cx, cy) => Math.hypot(cx - OX, cy - OY) - g.CELL * 0.5;
+  // Distance jusqu'au bord de la grille dans une direction donnée (sort par
+  // la droite ou par le bas, selon l'angle) : quand rien ne l'arrête, le
+  // rayon s'étire jusqu'au mur, pas jusqu'à une longueur arbitraire.
+  const cornerAngle = Math.atan2(g.gridHeight, g.gridWidth) * (180 / Math.PI);
+  const boundaryDist = (angleDeg) => {
+    const rad = (angleDeg * Math.PI) / 180;
+    return angleDeg <= cornerAngle ? g.gridWidth / Math.cos(rad) : g.gridHeight / Math.sin(rad);
+  };
 
-  // Timeline absolue (s) : le rayon glisse d'une cible à la suivante à
-  // vitesse angulaire constante, sans jamais s'arrêter — le temps entre
-  // deux touches est proportionnel à la vraie distance angulaire (même
-  // leçon que le bug de vague de garden : un pas ne doit pas valoir un
-  // temps fixe si les écarts réels varient), que la cible suivante soit
-  // dans la même colonne ou dans la suivante.
+  // Pour chaque colonne active, un point par ligne (0..6), dans l'ordre de
+  // balayage de cette colonne (aller = haut->bas, retour = bas->haut). Une
+  // ligne sans commit garde la pleine longueur (rien ne l'arrête) ; une
+  // ligne avec un commit se raccourcit pile dessus.
+  const points = []; // { angle, dist, day? }
+  cols.forEach((col, ci) => {
+    const cx = g.cellX(col) + g.CELL / 2;
+    const dayByRow = new Map(byCol.get(col).map((d) => [d.row, d]));
+    const rows = ci % 2 === 0 ? [0, 1, 2, 3, 4, 5, 6] : [6, 5, 4, 3, 2, 1, 0];
+    rows.forEach((row) => {
+      const cy = g.cellY(row) + g.CELL / 2;
+      const day = dayByRow.get(row);
+      const angle = angleAt(cx, cy);
+      points.push({ angle, dist: day ? distTo(cx, cy) : boundaryDist(angle), day });
+    });
+  });
+  const n = points.length;
+
+  // Timeline absolue (s) : vitesse angulaire constante entre deux points
+  // consécutifs (même leçon que le bug de vague de garden — proportionnel
+  // à l'écart réel, pas au rang).
   const arrival = [0];
   for (let i = 1; i < n; i++) {
-    const travel = Math.abs(angles[i] - angles[i - 1]) / ANG_SPEED;
+    const travel = Math.abs(points[i].angle - points[i - 1].angle) / ANG_SPEED;
     arrival.push(arrival[i - 1] + travel);
   }
   const holdEnd = arrival[n - 1] + HOLD;
-  const returnTravel = Math.abs(angles[0] - angles[n - 1]) / ANG_SPEED;
+  const returnTravel = Math.abs(points[0].angle - points[n - 1].angle) / ANG_SPEED;
   const cycleEnd = holdEnd + Math.max(RESET_DUR, returnTravel);
   const pct = (s) => ((s / cycleEnd) * 100).toFixed(3);
 
-  // Le rayon : une seule animation qui glisse sur chaque cible dans
-  // l'ordre (sa longueur se cale sur la distance réelle à la cible visée,
-  // il ne la transperce pas), en douceur (ease-in-out) entre chaque point,
-  // puis revient à son point de départ pour reboucler.
-  const xf = (i) => `rotate(${angles[i].toFixed(2)}deg) scaleX(${(dists[i] / maxDist).toFixed(4)})`;
-  let beamKf = `0% { transform: ${xf(0)}; animation-timing-function: ease-in-out; }\n`;
+  // Le rayon : une seule animation qui balaie chaque ligne de chaque
+  // colonne dans l'ordre, sans s'arrêter, puis revient à son point de
+  // départ pour reboucler.
+  const xf = (i) => `rotate(${points[i].angle.toFixed(2)}deg) scaleX(${(points[i].dist / maxDist).toFixed(4)})`;
+  let beamKf = `0% { transform: ${xf(0)}; animation-timing-function: linear; }\n`;
   for (let i = 0; i < n; i++) {
-    beamKf += `${pct(arrival[i])}% { transform: ${xf(i)}; animation-timing-function: ease-in-out; }\n`;
+    beamKf += `${pct(arrival[i])}% { transform: ${xf(i)}; animation-timing-function: linear; }\n`;
   }
   beamKf += `${pct(holdEnd)}% { transform: ${xf(n - 1)}; animation-timing-function: ease-in-out; }\n`;
   beamKf += `100% { transform: ${xf(0)}; }\n`;
 
-  // Chaque jour devient un carré plein pile quand le rayon s'arrête dessus,
-  // et le reste jusqu'à la remise à zéro finale.
+  // Chaque jour devient un carré plein pile quand le rayon le touche (donc
+  // se raccourcit dessus), et le reste jusqu'à la remise à zéro finale.
   let fillEls = "", keyframes = "";
-  ordered.forEach(({ d, a }, i) => {
+  let idx = 0;
+  points.forEach(({ day }, i) => {
+    if (!day) return;
     const touchAt = arrival[i];
-    const name = `fill${i}`;
-    const color = LEVEL_COLOR[d.level] ?? accent;
+    const name = `fill${idx++}`;
+    const color = LEVEL_COLOR[day.level] ?? accent;
     keyframes += `@keyframes ${name} {
   0% { opacity: 0; transform: scale(0.3); }
   ${pct(touchAt)}% { opacity: 0; transform: scale(0.3); animation-timing-function: ease-out; }
@@ -107,7 +121,7 @@ export function render(days, opts = {}) {
   ${pct(cycleEnd)}% { opacity: 0; transform: scale(0.3); animation-timing-function: ease-in; }
   100% { opacity: 0; transform: scale(0.3); }
 }\n`;
-    fillEls += `<rect x="${g.cellX(d.col).toFixed(1)}" y="${g.cellY(d.row).toFixed(1)}" width="${g.CELL}" height="${g.CELL}" rx="2" fill="${color}" ` +
+    fillEls += `<rect x="${g.cellX(day.col).toFixed(1)}" y="${g.cellY(day.row).toFixed(1)}" width="${g.CELL}" height="${g.CELL}" rx="2" fill="${color}" ` +
       `style="animation: ${name} ${cycleEnd.toFixed(2)}s linear infinite; transform-box: fill-box; transform-origin: center;"/>\n`;
   });
 
