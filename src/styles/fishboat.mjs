@@ -3,14 +3,15 @@
 // un algorithme de clustering glouton sur la colonne (semaine). Un bateau
 // navigue au-dessus de la grille, visite chaque banc dans l'ordre
 // chronologique — avec un temps de trajet proportionnel à la vraie
-// distance, pas au rang du banc — et le pêche d'un coup (splash) à son
-// arrivée. Les bancs déjà pêchés restent vides jusqu'à la boucle suivante.
+// distance, pas au rang du banc — et descend un vrai filet (corde + maille)
+// pour le pêcher à son arrivée. Les bancs déjà pêchés restent vides jusqu'à
+// la boucle suivante.
 //
-// Brouillon exploratoire (cf. discussion) : eau qui ondule doucement, léger
-// tangage du bateau et sillage derrière lui, poissons avec un flottement
-// partagé (pas de délai aléatoire par poisson, pour rester simple) — un
-// cran au-dessus du tout premier jet sans repartir sur des éléments plus
-// complexes (le filet-rectangle a été laissé de côté).
+// Brouillon exploratoire (cf. discussion) : eau qui ondule en continu, le
+// bateau flotte en rythme avec elle (translation + tangage synchronisés
+// sur la même période que la vague, pas un rebond indépendant), un poisson
+// différent selon le niveau d'activité, et un filet qui descend/se
+// referme/remonte plutôt qu'un simple flash.
 
 import { gridGeometry } from "../lib/contributions.mjs";
 
@@ -21,16 +22,16 @@ export const meta = {
 };
 
 const TIERS = {
-  FIRST_QUARTILE: { scale: 0.7 },
-  SECOND_QUARTILE: { scale: 0.85 },
-  THIRD_QUARTILE: { scale: 1.0 },
-  FOURTH_QUARTILE: { scale: 1.2 },
+  FIRST_QUARTILE: { scale: 0.7, icon: "🐟" },
+  SECOND_QUARTILE: { scale: 0.85, icon: "🐠" },
+  THIRD_QUARTILE: { scale: 1.0, icon: "🦑" },
+  FOURTH_QUARTILE: { scale: 1.25, icon: "🦈" },
 };
 const GAP_THRESHOLD = 3; // semaines d'écart max pour rester dans le même banc
 
 export function render(days, opts = {}) {
   const bg = opts.background ?? "#0a2233";
-  const CYCLE = opts.cycle ?? 16;
+  const CYCLE = opts.cycle ?? 18;
   const WATER_BAND = 22;
 
   const g = gridGeometry(days, { top: 8 + WATER_BAND, left: 12, right: 12, bottom: 8 });
@@ -46,7 +47,14 @@ export function render(days, opts = {}) {
     lastCol = d.col;
   }
   if (current.length) schools.push(current);
-  schools.forEach((s) => { s.centerX = s.reduce((sum, d) => sum + g.cellX(d.col) + g.CELL / 2, 0) / s.length; });
+  schools.forEach((s) => {
+    s.centerX = s.reduce((sum, d) => sum + g.cellX(d.col) + g.CELL / 2, 0) / s.length;
+    s.minCol = Math.min(...s.map((d) => d.col));
+    s.maxCol = Math.max(...s.map((d) => d.col));
+    s.minRow = Math.min(...s.map((d) => d.row));
+    s.maxRow = Math.max(...s.map((d) => d.row));
+    s.centerY = g.cellY((s.minRow + s.maxRow) / 2) + g.CELL / 2;
+  });
 
   // Trajet du bateau : temps de traversée proportionnel à la distance
   // réelle entre arrêts (même leçon que le bug de vague de garden — un
@@ -58,7 +66,7 @@ export function render(days, opts = {}) {
   let dist = 0;
   for (let i = 1; i < stops.length; i++) dist += Math.abs(stops[i] - stops[i - 1]);
 
-  const DWELL = 0.05, TAIL = 0.1;
+  const DWELL = 0.07, TAIL = 0.1;
   const travelBudget = 1 - DWELL * schools.length - TAIL;
   let t = 0;
   const arrival = [];
@@ -74,36 +82,83 @@ export function render(days, opts = {}) {
   });
   boatKf += `${((1 - TAIL) * 100).toFixed(2)}% { transform: translateX(${xEnd.toFixed(1)}px); animation-timing-function: ease-in; }\n100% { transform: translateX(${xEnd.toFixed(1)}px); }\n`;
 
-  // Poissons : immobiles, disparaissent d'un coup à l'arrivée du bateau,
-  // avec un splash rond au même instant.
-  let fishEls = "", splashEls = "", keyframes = "";
+  // --- Filet (corde + poche en maille) et poissons aspirés dedans ---------
+  let fishEls = "", netEls = "", keyframes = "";
   schools.forEach((school, si) => {
-    const catchAt = arrival[si] + DWELL * 0.4;
-    const pct = (f) => (f * 100).toFixed(2);
-    keyframes += `@keyframes catch${si} {
-  0% { opacity: 1; }
-  ${pct(catchAt)}% { opacity: 1; }
-  ${pct(Math.min(1, catchAt + 0.02))}% { opacity: 0; }
-  100% { opacity: 0; }
+    const d0 = arrival[si];
+    const dropDur = 0.012, pullDur = 0.012, holdDur = 0.008, riseDur = 0.012;
+    const d1 = d0 + dropDur;   // le filet touche l'eau
+    const d2 = d1 + pullDur;   // il se referme, poissons aspirés
+    const d3 = d2 + holdDur;   // pause, filet fermé
+    const d4 = d3 + riseDur;   // remonté au bateau
+    const pct = (f) => (Math.min(1, f) * 100).toFixed(3);
+
+    const depth = school.centerY - waterY;
+    // Filet en forme de poche (large en haut, effilée en bas) plutôt qu'un
+    // ovale plein — plus proche d'un vrai filet à main, plus compact.
+    const netRx = Math.max(4.5, (g.cellX(school.maxCol) - g.cellX(school.minCol) + g.CELL) / 2 + 1.5);
+    const netDrop = Math.max(7, (school.maxRow - school.minRow) * g.PITCH + g.CELL + 2);
+    const bagPath = `M${-netRx.toFixed(1)},0 C${-netRx.toFixed(1)},${(netDrop * 0.6).toFixed(1)} ${(-netRx * 0.35).toFixed(1)},${netDrop.toFixed(1)} 0,${netDrop.toFixed(1)} ` +
+      `C${(netRx * 0.35).toFixed(1)},${netDrop.toFixed(1)} ${netRx.toFixed(1)},${(netDrop * 0.6).toFixed(1)} ${netRx.toFixed(1)},0 Z`;
+
+    // La corde : une fine barre étirée depuis le bateau (transform-origin en
+    // haut) jusqu'à la profondeur du banc.
+    keyframes += `@keyframes rope${si} {
+  0% { transform: scaleY(0); }
+  ${pct(d0)}% { transform: scaleY(0); animation-timing-function: ease-out; }
+  ${pct(d1)}% { transform: scaleY(1); }
+  ${pct(d3)}% { transform: scaleY(1); animation-timing-function: ease-in; }
+  ${pct(d4)}% { transform: scaleY(0); }
+  100% { transform: scaleY(0); }
 }\n`;
-    school.forEach((d) => {
+    // La poche du filet : descend au bout de la corde, se resserre
+    // (scaleX) une fois les poissons aspirés, puis remonte.
+    keyframes += `@keyframes netbag${si} {
+  0% { opacity: 0; transform: translateY(0px) scaleX(1); }
+  ${pct(d0)}% { opacity: 0; transform: translateY(0px) scaleX(1); }
+  ${pct(d0 + 0.001)}% { opacity: 1; transform: translateY(0px) scaleX(1); }
+  ${pct(d1)}% { opacity: 1; transform: translateY(${depth.toFixed(1)}px) scaleX(1); animation-timing-function: ease-out; }
+  ${pct(d2)}% { opacity: 1; transform: translateY(${depth.toFixed(1)}px) scaleX(0.55); }
+  ${pct(d3)}% { opacity: 1; transform: translateY(${depth.toFixed(1)}px) scaleX(0.55); }
+  ${pct(d4)}% { opacity: 1; transform: translateY(0px) scaleX(1); animation-timing-function: ease-in; }
+  ${pct(d4 + 0.002)}% { opacity: 0; transform: translateY(0px) scaleX(1); }
+  100% { opacity: 0; transform: translateY(0px) scaleX(1); }
+}\n`;
+    netEls += `<g style="animation: rope${si} ${CYCLE}s linear infinite; transform-box: fill-box; transform-origin: top;">` +
+      `<rect x="${(school.centerX - 0.5).toFixed(1)}" y="${(waterY + 2).toFixed(1)}" width="1" height="${depth.toFixed(1)}" fill="#cfe9f7" opacity="0.5"/>` +
+      `</g>\n`;
+    // Groupe extérieur statique pour le positionnement (translate en
+    // attribut SVG), groupe intérieur pour l'animation CSS (translateY /
+    // scaleX) — les deux touchent `transform`, donc ils doivent rester sur
+    // deux éléments différents pour ne pas s'écraser l'un l'autre.
+    netEls += `<g transform="translate(${school.centerX.toFixed(1)},${waterY.toFixed(1)})">` +
+      `<g style="animation: netbag${si} ${CYCLE}s linear infinite; transform-box: fill-box; transform-origin: center;">` +
+      `<path d="${bagPath}" fill="url(#netMesh)" stroke="#eaf6ff" stroke-opacity="0.6" stroke-width="0.7"/>` +
+      `<ellipse cx="0" cy="0" rx="${netRx.toFixed(1)}" ry="1.4" fill="none" stroke="#eaf6ff" stroke-opacity="0.85" stroke-width="1"/>` +
+      `</g></g>\n`;
+
+    // Poissons : figés jusqu'à ce que le filet se referme, puis aspirés
+    // vers son centre en rétrécissant.
+    school.forEach((d, fi) => {
       const tier = TIERS[d.level];
       const cx = g.cellX(d.col) + g.CELL / 2;
       const cy = g.cellY(d.row) + g.CELL / 2;
-      fishEls += `<text x="${cx.toFixed(1)}" y="${cy.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="${(g.CELL * tier.scale).toFixed(1)}" style="animation: catch${si} ${CYCLE}s linear infinite, fishBob 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center;">🐟</text>\n`;
-    });
-    keyframes += `@keyframes splash${si} {
-  0% { opacity: 0; r: 1px; }
-  ${pct(catchAt)}% { opacity: 0.7; r: 1px; animation-timing-function: ease-out; }
-  ${pct(Math.min(1, catchAt + 0.03))}% { opacity: 0; r: ${(g.CELL * 1.6).toFixed(1)}px; }
-  100% { opacity: 0; r: ${(g.CELL * 1.6).toFixed(1)}px; }
+      const dx = (school.centerX - cx) * 0.8;
+      const dy = (school.centerY - cy) * 0.8;
+      const name = `fishcatch${si}_${fi}`;
+      keyframes += `@keyframes ${name} {
+  0% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  ${pct(d1)}% { opacity: 1; transform: translate(0px,0px) scale(1); }
+  ${pct(d2)}% { opacity: 0; transform: translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px) scale(0.2); animation-timing-function: ease-in; }
+  100% { opacity: 0; transform: translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px) scale(0.2); }
 }\n`;
-    splashEls += `<circle cx="${school.centerX.toFixed(1)}" cy="${g.PAD_TOP + g.gridHeight / 2}" r="1" fill="none" stroke="#eaf6ff" stroke-width="1.2" style="animation: splash${si} ${CYCLE}s linear infinite;"/>\n`;
+      fishEls += `<text x="${cx.toFixed(1)}" y="${cy.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="${(g.CELL * tier.scale).toFixed(1)}" ` +
+        `style="animation: ${name} ${CYCLE}s linear infinite; transform-box: fill-box; transform-origin: center;">${tier.icon}</text>\n`;
+    });
   });
 
-  // Surface de l'eau : une ondulation douce (grandes courbes en S) qui
-  // défile en boucle continue, indépendante du cycle des commits — même
-  // principe que le bord de vague du style tide, en plus discret.
+  // --- Surface de l'eau : ondulation continue, indépendante du cycle des
+  // commits — même principe que le bord de vague du style tide.
   const waveY = waterY + 6;
   const WAVE_LEN = 40, WAVE_AMP = 1.6, WAVE_DUR = 4.5;
   const half = WAVE_LEN / 2;
@@ -114,12 +169,7 @@ export function render(days, opts = {}) {
   }
 
   // Sillage : deux petits ronds qui reprennent le trajet du bateau avec un
-  // léger retard (delay négatif sur la même animation), et qui pulsent en
-  // s'estompant comme des remous.
-  // Chaque rond de sillage est dans son propre groupe : le décalage (translateX,
-  // via `sail` retardé) et le ricochet (scale/opacity, via `ripple`) touchent
-  // tous les deux `transform`, donc ils doivent être sur deux éléments
-  // différents pour ne pas s'écraser l'un l'autre.
+  // léger retard, et pulsent en s'estompant comme des remous.
   const wake = [0.12, 0.24].map((delay, i) => (
     `<g style="animation: sail ${CYCLE}s linear infinite; animation-delay: -${delay}s;">` +
     `<circle cx="0" cy="${(waveY - 1).toFixed(1)}" r="2" fill="none" stroke="#eaf6ff" stroke-opacity="${(0.4 - i * 0.15).toFixed(2)}" stroke-width="1" ` +
@@ -128,11 +178,22 @@ export function render(days, opts = {}) {
   )).join("");
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${g.width}" height="${g.height}" viewBox="0 0 ${g.width} ${g.height}">
+<defs>
+  <pattern id="netMesh" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="4" stroke="#eaf6ff" stroke-width="0.6" stroke-opacity="0.6"/>
+    <line x1="0" y1="0" x2="4" y2="0" stroke="#eaf6ff" stroke-width="0.6" stroke-opacity="0.6"/>
+  </pattern>
+</defs>
 <style>
 text { font-family: -apple-system, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; }
 @keyframes sail { ${boatKf} }
-@keyframes bob { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-1.4px); } }
-@keyframes fishBob { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(1px); } }
+@keyframes boatFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-1.6px) rotate(-3deg); }
+  50% { transform: translateY(0px) rotate(0deg); }
+  75% { transform: translateY(1.6px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
 @keyframes wave { 0% { transform: translateX(0px); } 100% { transform: translateX(-${WAVE_LEN}px); } }
 @keyframes ripple { 0% { opacity: 0.6; transform: scale(0.4); } 100% { opacity: 0; transform: scale(1.6); } }
 ${keyframes}
@@ -141,11 +202,11 @@ ${keyframes}
 <g style="animation: wave ${WAVE_DUR}s linear infinite;">
   <path d="${waveD}" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
 </g>
-${splashEls}
 ${fishEls}
+${netEls}
 ${wake}
 <g style="animation: sail ${CYCLE}s linear infinite;">
-  <text x="0" y="${waterY.toFixed(1)}" font-size="18" dominant-baseline="central" style="animation: bob 2.1s ease-in-out infinite;">⛵</text>
+  <text x="0" y="${waterY.toFixed(1)}" font-size="18" dominant-baseline="central" style="animation: boatFloat ${WAVE_DUR}s ease-in-out infinite;">⛵</text>
 </g>
 </svg>`;
 }
