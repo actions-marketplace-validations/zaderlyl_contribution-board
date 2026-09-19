@@ -80,6 +80,9 @@ export function render(days, opts = {}) {
     const cy = g.cellY(d.row) + g.CELL / 2;
     const growStart = (i / n) * GROW_END;
     const growEnd = growStart + growDur;
+    // Petit dépassement en poussant (0.25 -> ~1.18 -> 1), pour un "pop"
+    // plus organique qu'un arrêt net à la taille finale.
+    const growPeak = growStart + (growEnd - growStart) * 0.7;
 
     // Fanaison en vague, dans le même ordre chronologique que la pousse
     // (gauche à droite) — mais seulement après HOLD_END, une fois que tout
@@ -98,6 +101,7 @@ export function render(days, opts = {}) {
     plantKeyframes += `@keyframes ${name} {\n` +
       `  0% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
       `  ${(growStart * 100).toFixed(3)}% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
+      `  ${(growPeak * 100).toFixed(3)}% { opacity: 1; transform: scale(1.18) rotate(0deg); }\n` +
       `  ${(growEnd * 100).toFixed(3)}% { opacity: 1; transform: scale(1) rotate(0deg); }\n` +
       `  ${(s1 * 100).toFixed(3)}% { transform: scale(1) rotate(5deg); }\n` +
       `  ${(s2 * 100).toFixed(3)}% { transform: scale(1) rotate(-4deg); }\n` +
