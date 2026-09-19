@@ -1,6 +1,6 @@
 # Contribution Board
 
-Ta grille de contributions GitHub racontée autrement : pas un graphique statique, mais une petite scène qui rejoue tes vrais commits — un canon qui vise, une marée qui découvre des coquillages, un sonar qui détecte, une pluie de météores qui s'écrase, un jardin qui pousse. Chaque style lit les mêmes données réelles (l'API GraphQL de GitHub), juste mises en scène différemment.
+Ta grille de contributions GitHub racontée autrement : pas un graphique statique, mais une petite scène qui rejoue tes vrais commits — un canon qui vise, une marée qui découvre des coquillages, un sonar qui détecte, une pluie de météores qui s'écrase, un jardin qui pousse, un rayon laser qui balaie. Chaque style lit les mêmes données réelles (l'API GraphQL de GitHub), juste mises en scène différemment.
 
 Zéro dépendance externe (Node 20+, `fetch` global), self-hosted via GitHub Action — pas d'instance tierce qui peut tomber en panne, tout tourne chez toi.
 
@@ -12,6 +12,7 @@ Zéro dépendance externe (Node 20+, `fetch` global), self-hosted via GitHub Act
 | `meteor` | Une pluie de météores tombe à intervalles irréguliers et s'écrase sur chaque commit, laissant un cratère coloré et un éclat de particules qui se dissipe. |
 | `constellation` | Un point lumineux relie chaque commit par une ligne fine, dessinant une constellation qui prend forme au fil du temps. |
 | `garden` | Toute la grille devient un lit de terre ; chaque jour actif fait pousser une plante différente selon son niveau d'activité — herbe, fleur, puis arbre — dans l'ordre chronologique, comme un vrai jardin sur la saison. |
+| `laser` | Un rayon ancré en haut à gauche balaie chaque colonne active ligne par ligne (droite à gauche), pleine longueur tant qu'il ne touche rien, raccourci pile sur le premier commit rencontré — visité ou déjà allumé — qui devient alors un carré plein. |
 
 ## Démos
 
@@ -22,6 +23,7 @@ Zéro dépendance externe (Node 20+, `fetch` global), self-hosted via GitHub Act
 | [`sonar`](src/styles/sonar.mjs) | <img src="docs/demo-sonar.svg" width="360"> | Les 5 jours avec le plus de commits deviennent des émetteurs (rouges, clignotants) qui balaient en continu ; chaque autre jour actif est détecté au moment où le ping le plus proche l'atteint. |
 | [`meteor`](src/styles/meteor.mjs) | <img src="docs/demo-meteor.svg" width="360"> | Des météores tombent à intervalles irréguliers et s'écrasent sur chaque commit, laissant un cratère et un éclat de particules qui se dissipe. |
 | [`garden`](src/styles/garden.mjs) | <img src="docs/demo-garden.svg" width="360"> | Toute la grille devient un lit de terre ; chaque jour actif fait pousser une plante selon son niveau d'activité (herbe → fleur → arbre), dans l'ordre chronologique, jusqu'à pleine floraison puis fanaison avant la boucle suivante. |
+| [`laser`](src/styles/laser.mjs) | <img src="docs/demo-laser.svg" width="360"> | Un rayon ancré en haut à gauche balaie chaque colonne active ligne par ligne, du plus récent au plus ancien. Pleine longueur jusqu'au bord de la grille tant que rien ne l'arrête, raccourci pile sur le premier commit rencontré (visité ou déjà allumé) qui devient alors un carré plein. |
 
 Les aperçus ci-dessus sont générés depuis de vraies données (voir [Développement local](#développement-local) pour les régénérer) — GitHub anime les SVG normalement dans le rendu du README, pas besoin de GIF.
 
@@ -47,7 +49,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           username: ${{ github.repository_owner }}
-          style: cannon # ou tide / sonar / meteor / constellation / garden
+          style: cannon # ou tide / sonar / meteor / constellation / garden / laser
           output: assets/contribution-board.svg
       - run: |
           if [[ -n "$(git status --porcelain assets/contribution-board.svg)" ]]; then
@@ -72,7 +74,7 @@ Puis dans ton `README.md` :
 |---|---|---|
 | `username` | — | Compte GitHub (obligatoire) |
 | `github_token` | — | `secrets.GITHUB_TOKEN` suffit pour un profil public (obligatoire) |
-| `style` | `cannon` | `cannon` / `tide` / `sonar` / `meteor` / `constellation` / `garden` |
+| `style` | `cannon` | `cannon` / `tide` / `sonar` / `meteor` / `constellation` / `garden` / `laser` |
 | `output` | `contribution-board.svg` | Chemin du SVG généré |
 | `accent` | `ff9100` | Couleur d'accent (hex, sans `#`) — pas encore utilisée par tous les styles |
 | `background` | `#0d1117` | Couleur de fond |
@@ -98,6 +100,7 @@ src/
     meteor.mjs
     constellation.mjs
     garden.mjs
+    laser.mjs
   generate.mjs           # CLI : fetch les données, choisit le style, écrit le SVG
 action.yml               # empaquetage en GitHub Action composite (pas de bundling — juste Node natif)
 ```
