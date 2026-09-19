@@ -8,6 +8,11 @@
 // un moment, puis se fanent à leur tour dans ce même ordre chronologique —
 // une vague de fanaison, de gauche à droite, plutôt qu'un fondu groupé
 // instantané.
+//
+// PAS de filtre SVG (ex: feDropShadow) sur les plantes : testé et confirmé
+// cassé en usage réel (rendu invisible par intermittence sur un vrai profil
+// GitHub, pas juste un artefact de l'outil de dev) — voir l'historique de ce
+// fichier pour le détail.
 
 import { gridGeometry } from "../lib/contributions.mjs";
 
@@ -66,11 +71,9 @@ export function render(days, opts = {}) {
   const ordered = days
     .filter((d) => TIERS[d.level])
     .sort((a, b) => a.col - b.col || a.row - b.row);
-  const n = ordered.length;
-  const growSpan = GROW_END / Math.max(n, 1);
-  const growDur = Math.min(0.045, Math.max(0.014, growSpan * 0.8));
-  const wiltSpan = (WILT_END - HOLD_END) / Math.max(n, 1);
-  const wiltDur = Math.min(0.045, Math.max(0.014, wiltSpan * 0.8));
+  const maxCol = Math.max(1, g.cols - 1);
+  const growDur = 0.03;
+  const wiltDur = 0.03;
 
   let plantEls = "", plantKeyframes = "";
   ordered.forEach((d, i) => {
@@ -78,16 +81,22 @@ export function render(days, opts = {}) {
     const name = `plant${i}`;
     const cx = g.cellX(d.col) + g.CELL / 2;
     const cy = g.cellY(d.row) + g.CELL / 2;
-    const growStart = (i / n) * GROW_END;
+    // Calée sur la position réelle de la colonne (semaine) dans la grille,
+    // pas sur le rang parmi les jours actifs — sinon deux jours actifs très
+    // éloignés dans le temps (mais proches en rang, si le reste de l'année
+    // est vide) poussent presque au même instant alors qu'ils sont à
+    // l'autre bout de la grille : la vague "saute" au lieu de balayer.
+    const colFrac = d.col / maxCol;
+    const growStart = colFrac * GROW_END;
     const growEnd = growStart + growDur;
     // Petit dépassement en poussant (0.25 -> ~1.18 -> 1), pour un "pop"
     // plus organique qu'un arrêt net à la taille finale.
     const growPeak = growStart + (growEnd - growStart) * 0.7;
 
-    // Fanaison en vague, dans le même ordre chronologique que la pousse
-    // (gauche à droite) — mais seulement après HOLD_END, une fois que tout
-    // le jardin a eu son moment de pleine floraison ensemble.
-    const wiltStart = HOLD_END + (i / n) * (WILT_END - HOLD_END);
+    // Fanaison en vague, dans le même ordre (gauche à droite, calée sur la
+    // colonne) — mais seulement après HOLD_END, une fois que tout le
+    // jardin a eu son moment de pleine floraison ensemble.
+    const wiltStart = HOLD_END + colFrac * (WILT_END - HOLD_END);
     const wiltEnd = wiltStart + wiltDur;
 
     // Léger balancement une fois éclose : quelques degrés de rotation, deux
@@ -110,7 +119,7 @@ export function render(days, opts = {}) {
       `  ${(wiltEnd * 100).toFixed(3)}% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
       `  100% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
       `}\n`;
-    plantEls += `<text x="${cx}" y="${cy}" font-size="${(g.CELL * tier.scale).toFixed(1)}" text-anchor="middle" dominant-baseline="central" filter="url(#plantShadow)" style="animation: ${name} ${CYCLE}s linear infinite; opacity:0;">${tier.icon}</text>\n`;
+    plantEls += `<text x="${cx}" y="${cy}" font-size="${(g.CELL * tier.scale).toFixed(1)}" text-anchor="middle" dominant-baseline="central" style="animation: ${name} ${CYCLE}s linear infinite; opacity:0;">${tier.icon}</text>\n`;
   });
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${g.width}" height="${g.height}" viewBox="0 0 ${g.width} ${g.height}">
@@ -120,9 +129,6 @@ export function render(days, opts = {}) {
     <stop offset="55%" stop-color="#4a3320"/>
     <stop offset="100%" stop-color="#2c1e11"/>
   </linearGradient>
-  <filter id="plantShadow" x="-50%" y="-50%" width="200%" height="200%">
-    <feDropShadow dx="0" dy="0.6" stdDeviation="0.5" flood-color="#000000" flood-opacity="0.4"/>
-  </filter>
 </defs>
 <style>
 rect { shape-rendering: crispEdges; }
