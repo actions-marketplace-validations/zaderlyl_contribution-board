@@ -4,10 +4,10 @@
 // propre grille) — rien pour un jour sans commit, de l'herbe pour "presque
 // rien", puis fleur et enfin arbre pour les plus gros jours. Les plantes
 // poussent dans l'ordre chronologique (comme sur une vraie saison), ondulent
-// doucement une fois écloses, tiennent en pleine floraison le même temps
-// chacune, puis se fanent à leur tour dans le même ordre — une vague de
-// fanaison qui suit la vague de pousse, plutôt qu'un fondu groupé qui
-// couperait court aux plantes les plus récentes.
+// doucement une fois écloses, tiennent toutes ensemble en pleine floraison
+// un moment, puis se fanent à leur tour dans ce même ordre chronologique —
+// une vague de fanaison, de gauche à droite, plutôt qu'un fondu groupé
+// instantané.
 
 import { gridGeometry } from "../lib/contributions.mjs";
 
@@ -41,8 +41,9 @@ function hash(n) {
 export function render(days, opts = {}) {
   const bg = opts.background ?? "#0d1117";
   const CYCLE = opts.cycle ?? 16;
-  const GROW_END = 0.6;  // fin de la pousse (toutes les plantes ont poussé)
-  const BLOOM = 0.25;     // durée de pleine floraison, propre à chaque plante
+  const GROW_END = 0.55;  // fin de la pousse (toutes les plantes ont poussé)
+  const HOLD_END = 0.75;  // jardin entier en pleine floraison jusque-là
+  const WILT_END = 0.95;  // fin de la vague de fanaison (gauche à droite)
 
   const g = gridGeometry(days, { top: 8, left: 8, right: 8, bottom: 8 });
   const bedX = g.PAD_LEFT - 3, bedY = g.PAD_TOP - 3;
@@ -68,6 +69,8 @@ export function render(days, opts = {}) {
   const n = ordered.length;
   const growSpan = GROW_END / Math.max(n, 1);
   const growDur = Math.min(0.03, Math.max(0.006, growSpan * 0.8));
+  const wiltSpan = (WILT_END - HOLD_END) / Math.max(n, 1);
+  const wiltDur = Math.min(0.03, Math.max(0.006, wiltSpan * 0.8));
 
   let plantEls = "", plantKeyframes = "";
   ordered.forEach((d, i) => {
@@ -78,20 +81,19 @@ export function render(days, opts = {}) {
     const growStart = (i / n) * GROW_END;
     const growEnd = growStart + growDur;
 
-    // Chaque plante fleurit BLOOM (fraction du cycle) après avoir fini de
-    // pousser, puis se fane — indépendamment des autres. Comme la fanaison
-    // suit la pousse avec le même décalage pour toutes, elle balaie la
-    // grille dans le même ordre chronologique qu'une vague qui chasse
-    // l'autre, et chaque plante profite du même temps de floraison.
-    const wiltStart = growEnd + BLOOM;
-    const wiltEnd = wiltStart + growDur;
+    // Fanaison en vague, dans le même ordre chronologique que la pousse
+    // (gauche à droite) — mais seulement après HOLD_END, une fois que tout
+    // le jardin a eu son moment de pleine floraison ensemble.
+    const wiltStart = HOLD_END + (i / n) * (WILT_END - HOLD_END);
+    const wiltEnd = wiltStart + wiltDur;
 
     // Léger balancement une fois éclose : quelques degrés de rotation, deux
     // allers-retours, avant la fanaison — donne un peu de vie sans ajouter
     // une deuxième animation (tout reste dans le même `transform`).
-    const s1 = growEnd + BLOOM * 0.28;
-    const s2 = growEnd + BLOOM * 0.56;
-    const s3 = growEnd + BLOOM * 0.82;
+    const holdSpan = wiltStart - growEnd;
+    const s1 = growEnd + holdSpan * 0.28;
+    const s2 = growEnd + holdSpan * 0.56;
+    const s3 = growEnd + holdSpan * 0.82;
 
     plantKeyframes += `@keyframes ${name} {\n` +
       `  0% { opacity: 0; transform: scale(0.25) rotate(0deg); }\n` +
