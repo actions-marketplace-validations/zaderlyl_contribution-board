@@ -7,8 +7,11 @@
 // touche rien, et il se raccourcit pile sur un jour actif (sans le
 // transpercer) avant de reprendre sa pleine longueur juste après. Un jour
 // touché devient un carré plein qui reste rempli jusqu'à la fin du passage
-// sur toutes les colonnes actives ; tout se réinitialise alors et ça
-// reboucle.
+// sur toutes les colonnes actives. Une ligne vide peut aussi être bloquée
+// avant le mur si un commit DÉJÀ allumé (visité plus tôt, donc déjà un
+// carré visible) se trouve sur le même angle, même dans une autre colonne
+// — mais jamais par un carré pas encore atteint, qui n'existe pas encore
+// visuellement. Tout se réinitialise à la fin du passage et ça reboucle.
 
 import { LEVEL_COLOR, gridGeometry } from "../lib/contributions.mjs";
 
@@ -61,42 +64,20 @@ export function render(days, opts = {}) {
     return angleDeg <= cornerAngle ? g.gridWidth / Math.cos(rad) : g.gridHeight / Math.sin(rad);
   };
 
-  // Empreinte angulaire (depuis l'origine) de chaque jour actif de toute la
-  // grille — pas seulement de la colonne en cours : un rayon qui, à un
-  // angle donné, ne touche rien dans SA colonne peut quand même être
-  // bloqué par un commit d'une colonne plus proche de l'origine qui se
-  // trouve pile sur le même angle. Un vrai laser se cogne sur le premier
-  // obstacle rencontré, peu importe sa colonne.
-  const active = days.filter((d) => d.count > 0);
-  const obstacles = active.map((d) => {
-    const x0 = g.cellX(d.col), y0 = g.cellY(d.row);
+  // Empreinte angulaire (depuis l'origine) d'une case, pour savoir si un
+  // rayon à un angle donné la frôle.
+  const footprint = (col, row) => {
+    const x0 = g.cellX(col), y0 = g.cellY(row);
     const corners = [[x0, y0], [x0 + g.CELL, y0], [x0, y0 + g.CELL], [x0 + g.CELL, y0 + g.CELL]];
     const cornerAngles = corners.map(([x, y]) => angleAt(x, y));
-    return {
-      minA: Math.min(...cornerAngles),
-      maxA: Math.max(...cornerAngles),
-      dist: distTo(x0 + g.CELL / 2, y0 + g.CELL / 2),
-    };
-  });
-  // Plus proche obstacle (de n'importe quelle colonne) dont l'empreinte
-  // couvre cet angle, sinon la distance de repli donnée (le mur, ou le
-  // commit de la colonne en cours si elle en a un à cette ligne).
-  const nearestBlocker = (angleDeg, fallback) => {
-    let best = fallback;
-    for (const o of obstacles) {
-      if (angleDeg >= o.minA - 1e-6 && angleDeg <= o.maxA + 1e-6 && o.dist < best) best = o.dist;
-    }
-    return best;
+    return { minA: Math.min(...cornerAngles), maxA: Math.max(...cornerAngles) };
   };
 
   // Pour chaque colonne active, un point par ligne (0..6), dans l'ordre de
   // balayage de cette colonne (aller = haut->bas, retour = bas->haut). Une
-  // ligne sans commit garde la pleine longueur, sauf si un commit d'une
-  // colonne plus proche de l'origine se trouve pile sur le même angle (il
-  // bloque la vue avant le mur). Une ligne avec un commit vise toujours
-  // pile ce commit-là — c'est le point dédié de sa visite, pas la peine de
-  // le laisser bloquer par un autre pour cet instant précis.
-  const points = []; // { angle, dist, day? }
+  // ligne avec un commit vise toujours pile ce commit-là — c'est le point
+  // dédié de sa visite.
+  const points = []; // { angle, day?, footprint?, dist? }
   cols.forEach((col, ci) => {
     const cx = g.cellX(col) + g.CELL / 2;
     const dayByRow = new Map(byCol.get(col).map((d) => [d.row, d]));
@@ -105,11 +86,31 @@ export function render(days, opts = {}) {
       const cy = g.cellY(row) + g.CELL / 2;
       const day = dayByRow.get(row);
       const angle = angleAt(cx, cy);
-      const dist = day ? distTo(cx, cy) : nearestBlocker(angle, boundaryDist(angle));
-      points.push({ angle, dist, day });
+      if (day) {
+        points.push({ angle, day, dist: distTo(cx, cy), ...footprint(col, row) });
+      } else {
+        points.push({ angle, day: null });
+      }
     });
   });
   const n = points.length;
+
+  // Longueur des lignes vides, calculée après coup : une ligne sans commit
+  // garde la pleine longueur (jusqu'au mur), sauf si un commit DÉJÀ
+  // ALLUMÉ à ce moment-là (donc plus tôt dans le parcours, un carré déjà
+  // visible) se trouve pile sur le même angle — il bloque la vue avant le
+  // mur. Un carré pas encore atteint n'existe pas encore visuellement, le
+  // rayon ne peut pas se cogner dessus.
+  points.forEach((p, i) => {
+    if (p.day) return;
+    let best = boundaryDist(p.angle);
+    for (let j = 0; j < i; j++) {
+      const o = points[j];
+      if (!o.day) continue;
+      if (p.angle >= o.minA - 1e-6 && p.angle <= o.maxA + 1e-6 && o.dist < best) best = o.dist;
+    }
+    p.dist = best;
+  });
 
   // Timeline absolue (s) : vitesse angulaire constante entre deux points
   // consécutifs (même leçon que le bug de vague de garden — proportionnel
