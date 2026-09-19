@@ -75,9 +75,9 @@ export function render(days, opts = {}) {
 
   // Pour chaque colonne active, un point par ligne (0..6), dans l'ordre de
   // balayage de cette colonne (aller = haut->bas, retour = bas->haut). Une
-  // ligne avec un commit vise toujours pile ce commit-là — c'est le point
-  // dédié de sa visite.
-  const points = []; // { angle, day?, footprint?, dist? }
+  // ligne avec un commit vise en principe pile ce commit-là (sa distance
+  // "naturelle"), une ligne vide vise le mur — sauf blocage, voir plus bas.
+  const points = []; // { angle, day?, minA?, maxA?, dist }
   cols.forEach((col, ci) => {
     const cx = g.cellX(col) + g.CELL / 2;
     const dayByRow = new Map(byCol.get(col).map((d) => [d.row, d]));
@@ -89,21 +89,20 @@ export function render(days, opts = {}) {
       if (day) {
         points.push({ angle, day, dist: distTo(cx, cy), ...footprint(col, row) });
       } else {
-        points.push({ angle, day: null });
+        points.push({ angle, day: null, dist: boundaryDist(angle) });
       }
     });
   });
   const n = points.length;
 
-  // Longueur des lignes vides, calculée après coup : une ligne sans commit
-  // garde la pleine longueur (jusqu'au mur), sauf si un commit DÉJÀ
-  // ALLUMÉ à ce moment-là (donc plus tôt dans le parcours, un carré déjà
-  // visible) se trouve pile sur le même angle — il bloque la vue avant le
-  // mur. Un carré pas encore atteint n'existe pas encore visuellement, le
-  // rayon ne peut pas se cogner dessus.
+  // Blocage : QUEL que soit le point (même un commit visé pile à ce
+  // moment-là), si un commit DÉJÀ ALLUMÉ (visité plus tôt, donc déjà un
+  // carré visible) se trouve sur le même angle et plus proche, le rayon
+  // s'arrête dessus à la place — un vrai laser ne peut jamais transpercer
+  // un obstacle déjà là pour en atteindre un autre plus loin. Un carré pas
+  // encore atteint n'existe pas encore visuellement, il ne bloque rien.
   points.forEach((p, i) => {
-    if (p.day) return;
-    let best = boundaryDist(p.angle);
+    let best = p.dist;
     for (let j = 0; j < i; j++) {
       const o = points[j];
       if (!o.day) continue;
