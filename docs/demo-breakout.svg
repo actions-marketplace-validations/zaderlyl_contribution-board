@@ -2,9 +2,12 @@
 <style>
 rect { shape-rendering: crispEdges; }
 @keyframes ball { 0% { transform: translate(18.0px,52.0px); }
+0.000% { transform: translate(18.0px,52.0px); }
 0.739% { transform: translate(76.0px,94.1px); }
 2.165% { transform: translate(192.0px,9.9px); }
 3.591% { transform: translate(308.0px,94.1px); }
+4.177% { transform: translate(355.6px,59.5px); }
+5.018% { transform: translate(287.2px,9.9px); }
 6.444% { transform: translate(171.3px,94.1px); }
 7.871% { transform: translate(55.3px,9.9px); }
 8.431% { transform: translate(9.7px,43.0px); }
