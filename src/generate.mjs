@@ -17,6 +17,7 @@ const STYLES = {
   garden: () => import("./styles/garden.mjs"),
   fishboat: () => import("./styles/fishboat.mjs"),
   laser: () => import("./styles/laser.mjs"),
+  breakout: () => import("./styles/breakout.mjs"),
 };
 
 const [, , username, style = "cannon", outputPath = "contribution-board.svg"] = process.argv;
