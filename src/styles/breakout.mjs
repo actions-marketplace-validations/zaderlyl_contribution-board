@@ -45,6 +45,7 @@ function simulate(days, g) {
   const ballEvents = [{ t: 0, x: bx, y: by }];
   const paddleSamples = [{ t: 0, y: paddleY }];
   const breaks = []; // { t, brick }
+  const paddleHits = []; // { t, y }
   let t = 0, lastSample = 0;
   const SAMPLE_DT = 0.12;
 
@@ -68,6 +69,7 @@ function simulate(days, g) {
         const sp = Math.hypot(vx, vy);
         vx = (vx / sp) * BALL_SPEED; vy = (vy / sp) * BALL_SPEED;
         bounced = true;
+        paddleHits.push({ t, y: ny });
       }
     }
     for (const b of bricks) {
@@ -90,7 +92,7 @@ function simulate(days, g) {
   ballEvents.push({ t, x: bx, y: by });
   paddleSamples.push({ t, y: paddleY });
 
-  return { ballEvents, paddleSamples, breaks, endT: t, startX, startY, startPaddleY, PADDLE_H, FIELD_L };
+  return { ballEvents, paddleSamples, breaks, paddleHits, endT: t, startX, startY, startPaddleY, PADDLE_H, FIELD_L };
 }
 
 export function render(days, opts = {}) {
@@ -98,7 +100,7 @@ export function render(days, opts = {}) {
   const bg = opts.background ?? "#0d1117";
 
   const g = gridGeometry(days, { top: 8, left: 8, right: 8, bottom: 8 });
-  const { ballEvents, paddleSamples, breaks, endT, startX, startY, startPaddleY, PADDLE_H, FIELD_L } = simulate(days, g);
+  const { ballEvents, paddleSamples, breaks, paddleHits, endT, startX, startY, startPaddleY, PADDLE_H, FIELD_L } = simulate(days, g);
 
   const holdEnd = endT + HOLD;
   const cycleEnd = holdEnd + RESET_DUR;
@@ -147,6 +149,22 @@ export function render(days, opts = {}) {
     brickEls += `<circle cx="${x + g.CELL / 2}" cy="${y + g.CELL / 2}" r="0.5" fill="${color}" style="animation: ${flashName} ${cycleEnd.toFixed(2)}s linear infinite;"/>\n`;
   });
 
+  // Flash sur la plaque à chaque interception réussie — même principe que
+  // l'éclat des briques, pour donner un vrai retour visuel à l'élément
+  // qu'on "contrôle", qui sinon ne fait que glisser sans réaction.
+  let paddleFlashEls = "";
+  paddleHits.forEach((hit, i) => {
+    const name = `phit${i}`;
+    keyframes += `@keyframes ${name} {
+  0% { opacity: 0; r: 0.5px; }
+  ${pct(hit.t)}% { opacity: 0; r: 0.5px; }
+  ${pct(Math.min(cycleEnd, hit.t + 0.05))}% { opacity: 0.9; r: ${(PADDLE_H * 0.55).toFixed(1)}px; animation-timing-function: ease-out; }
+  ${pct(Math.min(cycleEnd, hit.t + 0.2))}% { opacity: 0; r: ${(PADDLE_H * 0.9).toFixed(1)}px; }
+  100% { opacity: 0; r: ${(PADDLE_H * 0.9).toFixed(1)}px; }
+}\n`;
+    paddleFlashEls += `<circle cx="${FIELD_L.toFixed(1)}" cy="${hit.y.toFixed(1)}" r="0.5" fill="${accent}" style="animation: ${name} ${cycleEnd.toFixed(2)}s linear infinite;"/>\n`;
+  });
+
   // Balle : ligne droite à vitesse constante entre deux événements, donc
   // interpolation linéaire exacte (pas d'approximation de la physique).
   let ballKf = `0% { transform: translate(${startX.toFixed(1)}px,${startY.toFixed(1)}px); }\n`;
@@ -175,6 +193,7 @@ ${keyframes}
 <rect width="${g.width}" height="${g.height}" fill="${bg}"/>
 ${cellRects}
 ${brickEls}
+${paddleFlashEls}
 <rect x="${FIELD_L.toFixed(1)}" y="0" width="2.2" height="${PADDLE_H.toFixed(1)}" rx="1" fill="${accent}" style="animation: paddle ${cycleEnd.toFixed(2)}s linear infinite;"/>
 <circle cx="0" cy="0" r="${BALL_R}" fill="#eaf6ff" style="animation: ball ${cycleEnd.toFixed(2)}s linear infinite;"/>
 </svg>`;
