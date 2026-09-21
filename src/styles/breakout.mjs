@@ -35,9 +35,9 @@ function simulate(days, g) {
     day: d, alive: true,
   }));
 
-  let bx = FIELD_R - 10, by = FIELD_T + g.gridHeight / 2;
+  let bx = FIELD_L + 10, by = FIELD_T + g.gridHeight / 2;
   const startX = bx, startY = by;
-  let angle = Math.PI * 0.8;
+  let angle = Math.PI * 0.2; // vers la droite (dans le champ), légèrement en biais
   let vx = Math.cos(angle) * BALL_SPEED, vy = Math.sin(angle) * BALL_SPEED;
   let paddleY = by - PADDLE_H / 2;
   const startPaddleY = paddleY;
