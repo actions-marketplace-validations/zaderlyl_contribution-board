@@ -13,6 +13,7 @@ Zéro dépendance externe (Node 20+, `fetch` global), self-hosted via GitHub Act
 | `constellation` | Un point lumineux relie chaque commit par une ligne fine, dessinant une constellation qui prend forme au fil du temps. |
 | `garden` | Toute la grille devient un lit de terre ; chaque jour actif fait pousser une plante différente selon son niveau d'activité — herbe, fleur, puis arbre — dans l'ordre chronologique, comme un vrai jardin sur la saison. |
 | `laser` | Un rayon ancré en haut à gauche balaie chaque colonne active ligne par ligne (droite à gauche), pleine longueur tant qu'il ne touche rien, raccourci pile sur le premier commit rencontré — visité ou déjà allumé — qui devient alors un carré plein. |
+| `breakout` | Une plaque verticale à gauche, mobile, poursuit une balle qui rebondit sur les murs et casse chaque jour actif percuté, comme un casse-brique. |
 
 ## Démos
 
@@ -24,6 +25,7 @@ Zéro dépendance externe (Node 20+, `fetch` global), self-hosted via GitHub Act
 | [`meteor`](src/styles/meteor.mjs) | <img src="docs/demo-meteor.svg" width="360"> | Des météores tombent à intervalles irréguliers et s'écrasent sur chaque commit, laissant un cratère et un éclat de particules qui se dissipe. |
 | [`garden`](src/styles/garden.mjs) | <img src="docs/demo-garden.svg" width="360"> | Toute la grille devient un lit de terre ; chaque jour actif fait pousser une plante selon son niveau d'activité (herbe → fleur → arbre), dans l'ordre chronologique, jusqu'à pleine floraison puis fanaison avant la boucle suivante. |
 | [`laser`](src/styles/laser.mjs) | <img src="docs/demo-laser.svg" width="360"> | Un rayon ancré en haut à gauche balaie chaque colonne active ligne par ligne, du plus récent au plus ancien. Pleine longueur jusqu'au bord de la grille tant que rien ne l'arrête, raccourci pile sur le premier commit rencontré (visité ou déjà allumé) qui devient alors un carré plein. |
+| [`breakout`](src/styles/breakout.mjs) | <img src="docs/demo-breakout.svg" width="360"> | Une plaque verticale à gauche poursuit une balle qui rebondit sur les murs et sur elle-même, cassant chaque jour actif percuté au premier impact, comme un casse-brique. |
 
 Les aperçus ci-dessus sont générés depuis de vraies données (voir [Développement local](#développement-local) pour les régénérer) — GitHub anime les SVG normalement dans le rendu du README, pas besoin de GIF.
 
@@ -49,7 +51,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           username: ${{ github.repository_owner }}
-          style: cannon # ou tide / sonar / meteor / constellation / garden / laser
+          style: cannon # ou tide / sonar / meteor / constellation / garden / laser / breakout
           output: assets/contribution-board.svg
       - run: |
           if [[ -n "$(git status --porcelain assets/contribution-board.svg)" ]]; then
@@ -74,7 +76,7 @@ Puis dans ton `README.md` :
 |---|---|---|
 | `username` | — | Compte GitHub (obligatoire) |
 | `github_token` | — | `secrets.GITHUB_TOKEN` suffit pour un profil public (obligatoire) |
-| `style` | `cannon` | `cannon` / `tide` / `sonar` / `meteor` / `constellation` / `garden` / `laser` |
+| `style` | `cannon` | `cannon` / `tide` / `sonar` / `meteor` / `constellation` / `garden` / `laser` / `breakout` |
 | `output` | `contribution-board.svg` | Chemin du SVG généré |
 | `accent` | `ff9100` | Couleur d'accent (hex, sans `#`) — pas encore utilisée par tous les styles |
 | `background` | `#0d1117` | Couleur de fond |
@@ -101,6 +103,7 @@ src/
     constellation.mjs
     garden.mjs
     laser.mjs
+    breakout.mjs
   generate.mjs           # CLI : fetch les données, choisit le style, écrit le SVG
 action.yml               # empaquetage en GitHub Action composite (pas de bundling — juste Node natif)
 ```
